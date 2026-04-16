@@ -1,0 +1,142 @@
+{# 1. منطق التخطيط (Boxed vs Full Width) #}
+{% set is_full_width = component['container-sec'] == 'Value 2' %}
+{% set section_id = 'special-slider-' ~ random() %}
+
+{# 2. تحويل خيارات النقاط (Dots) لكلاسات CSS #}
+{% set dots_class = 'dots-' ~ component.shkl_aalamat_altnql %}
+
+{# 3. منطق الارتفاع (Auto Height) #}
+{% set height_style = component['image-height'] ? 'h-auto' : 'h-[450px] md:h-[650px]' %}
+
+<section class="special-slider-outer {{ is_full_width ? 'is-full-screen' : 'container my-8' }}" id="{{ section_id }}">
+    <div class="slider-inner-container {{ not is_full_width ? 'rounded-[20px] overflow-hidden' : '' }}">
+
+        <salla-banner-slider autoplay-speed="{{ component.time > 0 ? component.time : 5000 }}"
+            animation-type="{{ component.move }}" class="{{ dots_class }}" {{ component['image-height'] ? 'auto-height'
+            : '' }}>
+            {% for banner in component.banners %}
+            <div class="swiper-slide relative overflow-hidden">
+
+                {# عرض الصور مع Fallback للموبايل #}
+                <picture class="w-full block">
+                    {% if banner['banners.mob-image'] %}
+                    <source media="(max-width: 767px)" srcset="{{ banner['banners.mob-image'] }}">
+                    {% endif %}
+                    <img src="{{ banner['banners.pc-image'] ?: banner['banners.mob-image'] }}"
+                        alt="{{ banner['banners.text-main'] }}" class="w-full object-cover {{ height_style }}">
+                </picture>
+
+                {# طبقة النصوص والتموضع #}
+                <div class="absolute inset-0 z-10 flex p-6 md:p-16 {{ component['text-align'] }}">
+
+                    {# كرت النص مع تأثير الغباش (Blur) #}
+                    <div class="content-card p-8 md:p-10 rounded-2xl transition-all duration-500"
+                        style="background-color: {{ component['bac-color-text'] }}; 
+                                    {% if component.blur %} backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); {% endif %}">
+
+                        {# العنوان الرئيسي مع تلوين آخر كلمة #}
+                        {% if banner['banners.text-main'] %}
+                        <h2 class="font-bold leading-tight mb-4"
+                            style="color: {{ component['main-color-text'] }}; 
+                                           font-size: {{ is_mobile ? (component['mob-size'] ?: 28) : (component['pc-size'] ?: 52) }}px;">
+
+                            {% set words = banner['banners.text-main']|split(' ') %}
+                            {% for word in words %}
+                            {% if loop.last %}
+                            <span style="color: {{ component['special-text-color'] }};">{{ word }}</span>
+                            {% else %}
+                            {{ word }}
+                            {% endif %}
+                            {% endfor %}
+                        </h2>
+                        {% endif %}
+
+                        {# الوصف #}
+                        {% if banner['banners.des-text'] %}
+                        <p class="opacity-90 mb-8"
+                            style="color: {{ component['des-color'] }}; 
+                                          font-size: {{ is_mobile ? (component['des-mob'] ?: 14) : (component['des-pc'] ?: 18) }}px;">
+                            {{ banner['banners.des-text'] }}
+                        </p>
+                        {% endif %}
+
+                        {# الزر #}
+                        {% if banner['banners.button-text'] %}
+                        <a href="{{ banner['banners.url-link'] }}"
+                            class="s-btn btn-custom px-10 py-3 rounded-lg font-bold"
+                            style="background-color: {{ component['bac-button'] }}; color: {{ component['text-button'] }};">
+                            {{ banner['banners.button-text'] }}
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </salla-banner-slider>
+    </div>
+</section>
+
+{# CSS مدمج لضمان عمل العناصر التي لا يوفرها Tailwind أو سلة تلقائياً #}
+<style>
+    /* Full Width Solution */
+    .is-full-screen {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+    }
+
+    /* Dots Styling */
+    #{{ section_id }
+    }
+
+    .dots-square .swiper-pagination-bullet {
+        border-radius: 0 !important;
+        width: 12px;
+        height: 12px;
+    }
+
+    #{{ section_id }
+    }
+
+    .dots-lines .swiper-pagination-bullet {
+        width: 30px;
+        height: 4px;
+        border-radius: 2px;
+    }
+
+    #{{ section_id }
+    }
+
+    .swiper-pagination-bullet-active {
+        background: {
+                {
+                component['main-color-text'] ?: '#000'
+            }
+        }
+
+        !important;
+        opacity: 1;
+    }
+
+    /* Content Card Specificity */
+    #{{ section_id }
+    }
+
+    .content-card {
+        max-width: 600px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-custom {
+        display: inline-flex;
+        transition: all 0.3s ease;
+    }
+
+    .btn-custom:hover {
+        transform: translateY(-3px);
+        filter: brightness(1.1);
+    }
+</style>
