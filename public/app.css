@@ -994,10 +994,6 @@ input:where([type='file']):focus {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
 }
-.my-2\.5 {
-    margin-top: 0.625rem;
-    margin-bottom: 0.625rem;
-}
 .-mb-52 {
     margin-bottom: -13rem;
 }
@@ -1368,9 +1364,6 @@ input:where([type='file']):focus {
 }
 .items-baseline {
     align-items: baseline;
-}
-.items-stretch {
-    align-items: stretch;
 }
 .justify-start {
     justify-content: flex-start;
