@@ -1448,6 +1448,169 @@
                     "required": false,
                     "minimum": 0,
                     "maximum": 50
+                },
+                {
+                    "id": "title",
+                    "type": "static",
+                    "format": "title",
+                    "label": "Title",
+                    "value": "تخصيص ألوان النصوص والخلفيات",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
+                },
+                {
+                    "id": "lon_alklmt_almmezt_(aakhr_klmt)_copy",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الرئيسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#032126",
+                    "required": false
+                },
+                {
+                    "id": "lon_alklmt_almmezt_(aakhr_klmt)",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الكلمة المميزة (آخر كلمة)",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#032126",
+                    "required": false
+                },
+                {
+                    "id": "lon_alns_alfraae",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون النص الفرعي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#032126",
+                    "required": false
+                },
+                {
+                    "id": "lon_khlfet_alns",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية النص",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#032126",
+                    "required": false
+                },
+                {
+                    "id": "lon_khlfet_alzr",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية الزر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#032126",
+                    "required": false
+                },
+                {
+                    "id": "lon_alaanoan_alreese",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون نص الزر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#032126",
+                    "required": false
+                },
+                {
+                    "id": "albnrat",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "البنرات",
+                    "description": "البنرات",
+                    "labelHTML": null,
+                    "item_label": null,
+                    "icon": "sicon-list-add",
+                    "fields": [
+                        {
+                            "id": "albnrat.alaanoan_alreese",
+                            "type": "string",
+                            "format": "text",
+                            "label": "العنوان الرئيسي",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": 6,
+                            "maxLength": 30
+                        },
+                        {
+                            "id": "albnrat.alns_alfraae",
+                            "type": "string",
+                            "format": "textarea",
+                            "label": "النص الفرعي",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Your text here",
+                            "icon": "sicon-typography",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": 20,
+                            "maxLength": 255
+                        },
+                        {
+                            "id": "albnrat.tsoq_alaan",
+                            "type": "string",
+                            "format": "text",
+                            "label": "نص الزر",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": 6,
+                            "maxLength": 30
+                        },
+                        {
+                            "id": "albnrat.rabt_alzr",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "رابط الزر",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-keyboard_arrow_down",
+                            "selected": [],
+                            "options": [
+                                {
+                                    "label": null,
+                                    "value": "Value 1",
+                                    "key": "cb246f7c-a698-4bec-a886-207518c8aa1e"
+                                }
+                            ],
+                            "source": "Pages",
+                            "multichoice": true,
+                            "searchable": false,
+                            "required": false,
+                            "value": []
+                        }
+                    ],
+                    "value": [],
+                    "minLength": 1,
+                    "maxLength": "10"
                 }
             ]
         }
