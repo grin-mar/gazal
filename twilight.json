@@ -1259,7 +1259,7 @@
                     "icon": "sicon-toggle-off",
                     "value": true,
                     "selected": false,
-                    "required": true
+                    "required": false
                 },
                 {
                     "id": "move",
@@ -1298,16 +1298,20 @@
                     "required": true
                 },
                 {
-                    "id": "move-time",
-                    "type": "string",
-                    "format": "time",
-                    "inputType": "time",
+                    "id": "TIME",
+                    "type": "number",
+                    "format": "float",
+                    "inputType": "number",
                     "label": "سرعة التنقل التلقائي (بالملي ثانية)",
                     "description": null,
                     "labelHTML": null,
-                    "icon": "sicon-time",
-                    "value": "01:00",
-                    "required": true
+                    "placeholder": null,
+                    "icon": "sicon-hashtag",
+                    "value": 0,
+                    "required": false,
+                    "step": "0",
+                    "minimum": null,
+                    "maximum": 100
                 },
                 {
                     "id": "text-pos",
@@ -1374,7 +1378,7 @@
                     "source": "Manual",
                     "multichoice": false,
                     "searchable": false,
-                    "required": true
+                    "required": false
                 },
                 {
                     "id": "slide-pag",
@@ -1404,7 +1408,7 @@
                     ],
                     "source": "Manual",
                     "multichoice": false,
-                    "required": true
+                    "required": false
                 },
                 {
                     "id": "blur",
@@ -1551,11 +1555,11 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-format-fill",
-                    "value": "#004956",
+                    "value": "#ffffff",
                     "required": false
                 },
                 {
-                    "id": "collection",
+                    "id": "banner-item",
                     "type": "collection",
                     "format": "collection",
                     "label": "Collection",
@@ -1565,7 +1569,7 @@
                     "icon": "sicon-list-add",
                     "fields": [
                         {
-                            "id": "collection.main-text",
+                            "id": "banner-item.collection.main-text",
                             "type": "string",
                             "format": "text",
                             "label": "نص رئيسي",
@@ -1580,7 +1584,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "collection.des",
+                            "id": "banner-item.collection.des",
                             "type": "string",
                             "format": "textarea",
                             "label": "نص فرعي",
@@ -1595,7 +1599,7 @@
                             "maxLength": 255
                         },
                         {
-                            "id": "collection.ns_alzr",
+                            "id": "banner-item.collection.ns_alzr",
                             "type": "string",
                             "format": "text",
                             "label": "نص الزر",
@@ -1610,7 +1614,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "collection.url-link",
+                            "id": "banner-item.collection.url-link",
                             "type": "items",
                             "format": "dropdown-list",
                             "label": "Dropdown List",
@@ -1626,7 +1630,7 @@
                             "value": []
                         },
                         {
-                            "id": "collection.pc-image",
+                            "id": "banner-item.collection.pc-image",
                             "type": "string",
                             "format": "image",
                             "label": "الشاشات الكبيرة",
@@ -1638,7 +1642,7 @@
                             "required": true
                         },
                         {
-                            "id": "collection.mob-ima",
+                            "id": "banner-item.collection.mob-ima",
                             "type": "string",
                             "format": "image",
                             "label": "الشاشات الصغيرة",
