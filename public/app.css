@@ -1292,6 +1292,9 @@ input:where([type='file']):focus {
 .flex-none {
     flex: none;
 }
+.flex-shrink-0 {
+    flex-shrink: 0;
+}
 .shrink-0 {
     flex-shrink: 0;
 }
