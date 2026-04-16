@@ -1072,6 +1072,16 @@
                     "maxLength": 30
                 }
             ]
+        },
+        {
+            "key": "4b691566-cdbd-4eba-899d-cd08f90344b8",
+            "title": {
+                "en": "Text Banner",
+                "ar": "بنر نصي"
+            },
+            "icon": "sicon-store",
+            "path": "text-banner",
+            "fields": []
         }
     ],
     "support_url": "https://example.com",
