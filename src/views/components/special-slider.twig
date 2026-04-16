@@ -1,235 +1,325 @@
-{% set section_id = 'special-slider-' ~ section.id|default(section.key|default(random())) %}
-{% set fields = section.fields|default({}) %}
+{% set slider_id = 'special-slider-' ~ (position|default(0)) %}
 
-{% set layout_value = fields['sec-width'].value|default(fields['sec-width'].selected[0].value|default('full'))|lower %}
-{% set is_boxed = layout_value == 'boxed' %}
-{% set auto_height = fields['height'].value ?? true %}
-{% set effect_value = fields['move'].value|default(fields['move'].selected[0].value|default('slide'))|lower %}
-{% set effect = effect_value in ['fade', 'flip', 'slide', 'zoom'] ? effect_value : 'slide' %}
-{% set autoplay_delay = fields['TIME'].value|default(5000) %}
-{% set content_position = fields['text-pos'].value|default(fields['text-pos'].selected[0].value|default('items-center
-justify-center text-center')) %}
-{% set pagination_value =
-fields['slide-pag'].value|default(fields['slide-pag'].selected[0].value|default('circle'))|lower %}
-{% set pagination_style = pagination_value == 'cricle' ? 'circle' : (pagination_value in ['circle', 'square', 'line',
-'bar'] ? pagination_value : 'circle') %}
-{% set blur = fields['blur'].value ?? true %}
+{% set layout_type = attribute(component, 'sec-width')|default('full')|lower %}
+{% set is_boxed = layout_type == 'boxed' %}
 
-{% set title_size_desktop = fields['pc-main-1'].value|default(48) %}
-{% set title_size_mobile = fields['mob-main'].value|default(28) %}
-{% set desc_size_desktop = fields['pc-des'].value|default(18) %}
-{% set desc_size_mobile = fields['mob-des'].value|default(14) %}
+{% set auto_height = attribute(component, 'height') is same as(true) %}
+{% set effect = attribute(component, 'move')|default('slide')|lower %}
+{% set autoplay_speed = attribute(component, 'TIME')|default(5000) %}
+{% set text_position = attribute(component, 'text-pos')|default('items-center justify-center text-center') %}
+{% set pagination_shape = attribute(component, 'slide-pag')|default('cricle')|lower %}
+{% set pagination_shape = pagination_shape == 'cricle' ? 'circle' : pagination_shape %}
+{% set blur = attribute(component, 'blur') is same as(true) %}
 
-{% set main_color = fields['main-color'].value|default('#FFFFFF') %}
-{% set special_color = fields['special-word'].value|default('#AED8E0') %}
-{% set desc_color = fields['des-color'].value|default('#F3F4F6') %}
-{% set text_bg = fields['background'].value|default('rgba(0,0,0,.30)') %}
-{% set button_bg = fields['burton-back'].value|default('#AED8E0') %}
-{% set button_color = fields['button-color'].value|default('#333333') %}
+{% set title_desktop = attribute(component, 'pc-main-1')|default(30) %}
+{% set title_mobile = attribute(component, 'mob-main')|default(20) %}
+{% set desc_desktop = attribute(component, 'pc-des')|default(18) %}
+{% set desc_mobile = attribute(component, 'mob-des')|default(16) %}
 
-{% set banners = fields['banner-item'].value|default([]) %}
+{% set main_color = attribute(component, 'main-color')|default('#004956') %}
+{% set special_color = attribute(component, 'special-word')|default('#ffffff') %}
+{% set desc_color = attribute(component, 'des-color')|default('#004956') %}
+{% set text_bg = attribute(component, 'background')|default('rgba(199,199,199,.45)') %}
+{% set button_bg = attribute(component, 'burton-back')|default('#004956') %}
+{% set button_color = attribute(component, 'button-color')|default('#ffffff') %}
+
+{% set banners = attribute(component, 'banner-item')|default([]) %}
 
 {% if banners|length %}
-<section id="{{ section_id }}"
-    class="s-block s-block--bundle-banner-slider special-banner-slider-block {{ is_boxed ? 'is-boxed' : 'is-full' }}"
-    data-effect="{{ effect }}" data-autoplay="{{ autoplay_delay }}"
-    data-auto-height="{{ auto_height ? 'true' : 'false' }}" data-pagination-style="{{ pagination_style }}">
-    <div class="{{ is_boxed ? 'container' : 'w-full max-w-full px-0 mx-0' }}">
-        <div class="special-banner-slider relative overflow-hidden {{ is_boxed ? 'rounded-2xl md:rounded-[28px]' : 'rounded-none' }} {{ effect == 'zoom' ? 'special-banner-slider--zoom' : '' }}"
-            style="
-                --special-main-color: {{ main_color }};
-                --special-special-color: {{ special_color }};
-                --special-desc-color: {{ desc_color }};
-                --special-text-bg: {{ text_bg }};
-                --special-button-bg: {{ button_bg }};
-                --special-button-color: {{ button_color }};
-                --special-title-desktop: {{ title_size_desktop }}px;
-                --special-title-mobile: {{ title_size_mobile }}px;
-                --special-desc-desktop: {{ desc_size_desktop }}px;
-                --special-desc-mobile: {{ desc_size_mobile }}px;
-            ">
-            <div class="swiper special-banner-slider__swiper">
-                <div class="swiper-wrapper">
-                    {% for banner in banners %}
-                    {% set title = attribute(banner, 'banner-item.collection.main-text')|default('') %}
-                    {% set subtitle = attribute(banner, 'banner-item.collection.des')|default('') %}
-                    {% set button_text = attribute(banner, 'banner-item.collection.ns_alzr')|default('') %}
-                    {% set button_url = attribute(banner, 'banner-item.collection.url-link')|default('') %}
-                    {% set desktop_image = attribute(banner, 'banner-item.collection.pc-image')|default('') %}
-                    {% set mobile_image = attribute(banner, 'banner-item.collection.mob-ima')|default(desktop_image) %}
-                    {% set words = title|trim ? title|trim|split(' ') : [] %}
-                    {% set last_word = words|length ? words|last : '' %}
-                    {% set first_words = words|length > 1 ? words|slice(0, words|length - 1)|join(' ') : '' %}
+<section
+    class="s-block s-block--special-slider {{ is_boxed ? '' : 's-block--full-bg' }} {{ is_repeated ? 'repeated-block' : '' }}"
+    dir="rtl">
+    <div class="{{ is_boxed ? 'container' : '' }}">
+        <salla-slider id="{{ slider_id }}" type="{{ is_boxed ? 'carousel' : 'fullwidth' }}"
+            class="home-slider special-slider special-slider--{{ pagination_shape }} {{ blur ? 'special-slider--blur' : 'special-slider--clear' }} {{ effect == 'zoom' ? 'special-slider--zoom' : '' }}"
+            dir="rtl" pagination auto-play show-controls="false"
+            effect="{{ effect in ['slide', 'fade', 'flip'] ? effect : 'slide' }}" speed="{{ autoplay_speed }}">
+            <div slot="items">
+                {% for banner in banners %}
+                {% set title = attribute(banner, 'banner-item.collection.main-text')|default('') %}
+                {% set subtitle = attribute(banner, 'banner-item.collection.des')|default('') %}
+                {% set button_text = attribute(banner, 'banner-item.collection.ns_alzr')|default('') %}
+                {% set button_url = attribute(banner, 'banner-item.collection.url-link')|default('#') %}
+                {% set desktop_image = attribute(banner, 'banner-item.collection.pc-image')|default('') %}
+                {% set mobile_image = attribute(banner, 'banner-item.collection.mob-ima')|default(desktop_image) %}
+                {% set alt_text = title|trim ? title : 'special banner' %}
 
-                    <div class="swiper-slide">
-                        <div class="relative w-full {{ auto_height ? 'h-auto' : 'h-[420px] md:h-[560px]' }}">
-                            <picture class="block w-full h-full">
-                                <source media="(max-width: 767px)" srcset="{{ mobile_image ?: desktop_image }}">
-                                <img src="{{ desktop_image }}" alt="{{ title ?: store.name }}"
-                                    class="special-banner-slider__image block w-full {{ auto_height ? 'h-auto' : 'h-full' }} object-cover"
-                                    loading="{{ loop.first ? 'eager' : 'lazy' }}">
-                            </picture>
+                {% set words = title|trim ? title|trim|split(' ') : [] %}
+                {% set last_word = words|length ? words|last : '' %}
+                {% set first_words = words|length > 1 ? words|slice(0, words|length - 1)|join(' ') : '' %}
 
-                            <div class="absolute inset-0 z-[1] flex {{ content_position }} p-4 md:p-8 lg:p-10">
-                                <div class="w-full max-w-[640px] rounded-2xl md:rounded-3xl p-5 md:p-8 {{ blur ? 'backdrop-blur-sm' : '' }}"
-                                    style="{{ blur ? 'background:' ~ text_bg ~ ';' : 'background:transparent;' }}">
-                                    {% if title %}
-                                    <h2 class="mb-3 text-[var(--special-title-mobile)] md:text-[var(--special-title-desktop)] leading-[1.15] font-extrabold break-words"
-                                        style="color: var(--special-main-color);">
-                                        {% if first_words %}
-                                        <span>{{ first_words }}</span>
-                                        {% endif %}
-                                        {% if last_word %}
-                                        <span style="color: var(--special-special-color);">{{ first_words ? ' ' : ''
-                                            }}{{ last_word }}</span>
-                                        {% endif %}
-                                    </h2>
-                                    {% endif %}
+                <div
+                    class="swiper-slide relative special-slide {{ auto_height ? 'special-slide--auto' : 'special-slide--fixed' }}">
+                    <picture>
+                        {% if mobile_image %}
+                        <source media="(max-width: 767px)" srcset="{{ mobile_image }}" />
+                        {% endif %}
+                        <img src="{{ desktop_image }}" alt="{{ alt_text }}" class="special-slide__img"
+                            loading="{{ loop.first ? 'eager' : 'lazy' }}" draggable="false" />
+                    </picture>
 
-                                    {% if subtitle %}
-                                    <div class="mb-5 text-[var(--special-desc-mobile)] md:text-[var(--special-desc-desktop)] leading-7 break-words"
-                                        style="color: var(--special-desc-color);">
-                                        {{ subtitle }}
-                                    </div>
-                                    {% endif %}
+                    <div class="special-slider__content absolute inset-0 flex {{ text_position }}">
+                        <div class="special-slide__text">
+                            {% if title %}
+                            <h3 class="special-slide__title"
+                                style="color:{{ main_color }}; --title-desktop: {{ title_desktop }}px; --title-mobile: {{ title_mobile }}px;">
+                                {% if first_words %}
+                                <span>{{ first_words }}</span>
+                                {% endif %}
+                                {% if last_word %}
+                                <span style="color:{{ special_color }};">{{ first_words ? ' ' : '' }}{{ last_word
+                                    }}</span>
+                                {% endif %}
+                            </h3>
+                            {% endif %}
 
-                                    {% if button_text and button_url %}
-                                    <a href="{{ button_url }}"
-                                        class="btn btn--primary inline-flex items-center justify-center min-w-[140px] rounded-full !border-0 px-6 py-3 text-sm md:text-base font-bold transition-opacity duration-300 hover:opacity-90"
-                                        style="background: var(--special-button-bg); color: var(--special-button-color);">
-                                        {{ button_text }}
-                                    </a>
-                                    {% endif %}
-                                </div>
-                            </div>
+                            {% if subtitle %}
+                            <p class="special-slide__body"
+                                style="color:{{ desc_color }}; --desc-desktop: {{ desc_desktop }}px; --desc-mobile: {{ desc_mobile }}px;">
+                                {{ subtitle }}
+                            </p>
+                            {% endif %}
+
+                            {% if button_text %}
+                            <a href="{{ button_url ?: '#' }}"
+                                class="special-slide__btn inline-flex items-center justify-center mt-6 px-6 py-3 no-underline"
+                                style="background:{{ button_bg }}; color:{{ button_color }};">
+                                {{ button_text }}
+                            </a>
+                            {% endif %}
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
-
-                {% if banners|length > 1 %}
-                <div class="special-banner-slider__pagination absolute inset-x-0 bottom-4 z-[2] flex justify-center">
-                </div>
-
-                <button type="button"
-                    class="special-banner-slider__prev absolute top-1/2 right-3 md:right-5 z-[2] -translate-y-1/2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/25 text-white transition-opacity duration-300 hover:opacity-90"
-                    aria-label="Previous">
-                    <i class="sicon-keyboard_arrow_right text-xl"></i>
-                </button>
-
-                <button type="button"
-                    class="special-banner-slider__next absolute top-1/2 left-3 md:left-5 z-[2] -translate-y-1/2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-black/25 text-white transition-opacity duration-300 hover:opacity-90"
-                    aria-label="Next">
-                    <i class="sicon-keyboard_arrow_left text-xl"></i>
-                </button>
-                {% endif %}
+                {% endfor %}
             </div>
-        </div>
+        </salla-slider>
     </div>
 </section>
 {% endif %}
 
-{% block styles %}
+{% block styleslider %}
 <style>
-    .special-banner-slider-block .swiper-pagination-bullets.swiper-pagination-horizontal {
-        width: auto;
+    .s-block--special-slider {
+        position: relative;
+        overflow: hidden;
     }
 
-    .special-banner-slider-block .swiper-pagination-bullet {
+    .s-block--special-slider .special-slider,
+    .s-block--special-slider .special-slider .swiper,
+    .s-block--special-slider .special-slider .swiper-wrapper {
+        direction: rtl;
+    }
+
+    .s-block--special-slider .special-slide {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .s-block--special-slider .special-slide--fixed {
+        min-height: 420px;
+    }
+
+    @media (min-width: 1024px) {
+        .s-block--special-slider .special-slide--fixed {
+            min-height: 560px;
+        }
+    }
+
+    .s-block--special-slider .special-slide__img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .s-block--special-slider .special-slide--fixed .special-slide__img {
+        object-fit: cover;
+    }
+
+    .s-block--special-slider .special-slide--auto .special-slide__img {
+        position: relative;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .s-block--special-slider .special-slider__content {
+        width: 100%;
+        padding-right: 24px;
+        padding-left: 24px;
+        box-sizing: border-box;
+        z-index: 2;
+    }
+
+    @media (min-width: 768px) {
+        .s-block--special-slider .special-slider__content {
+            padding-right: 53px;
+            padding-left: 53px;
+        }
+    }
+
+    .s-block--special-slider .special-slide__text {
+        max-width: 540px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .s-block--special-slider .special-slider--blur .special-slide__text {
+        background: {
+                {
+                text_bg
+            }
+        }
+
+        ;
+        backdrop-filter: blur(.5rem);
+        -webkit-backdrop-filter: blur(.5rem);
+    }
+
+    .s-block--special-slider .special-slider--clear .special-slide__text {
+        background: transparent;
+    }
+
+    .s-block--special-slider .special-slide__title {
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: -1px;
+        margin: 0;
+        font-size: var(--title-mobile);
+        text-align: inherit;
+    }
+
+    @media (min-width: 768px) {
+        .s-block--special-slider .special-slide__title {
+            font-size: var(--title-desktop);
+        }
+    }
+
+    .s-block--special-slider .special-slide__body {
+        font-weight: 400;
+        line-height: 1.8;
+        margin: 0;
+        font-size: var(--desc-mobile);
+        text-align: inherit;
+    }
+
+    @media (min-width: 768px) {
+        .s-block--special-slider .special-slide__body {
+            font-size: var(--desc-desktop);
+        }
+    }
+
+    .s-block--special-slider .special-slide__btn {
+        min-width: 160px;
+        min-height: 48px;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 1;
+        text-align: center;
+    }
+
+    .s-block--special-slider #{{ slider_id }
+    }
+
+    .swiper-pagination {
+        position: absolute;
+        right: 24px;
+        left: auto;
+        bottom: 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 20;
+    }
+
+    @media (min-width: 768px) {
+        .s-block--special-slider #{{ slider_id }
+    }
+
+    .swiper-pagination {
+        right: 53px;
+    }
+    }
+
+    .s-block--special-slider #{{ slider_id }
+    }
+
+    .swiper-pagination-bullet {
         opacity: 1;
-        background: rgba(255, 255, 255, 0.55);
+        background: rgba(255, 255, 255, .55);
         transition: all .25s ease;
     }
 
-    .special-banner-slider-block .swiper-pagination-bullet-active {
+    .s-block--special-slider #{{ slider_id }
+    }
+
+    .swiper-pagination-bullet-active {
         background: #fff;
     }
 
-    .special-banner-slider-block[data-pagination-style="circle"] .swiper-pagination-bullet {
-        width: 10px;
-        height: 10px;
-        border-radius: 9999px;
+    .s-block--special-slider .special-slider--circle .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
     }
 
-    .special-banner-slider-block[data-pagination-style="square"] .swiper-pagination-bullet {
-        width: 10px;
-        height: 10px;
+    .s-block--special-slider .special-slider--square .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
         border-radius: 3px;
     }
 
-    .special-banner-slider-block[data-pagination-style="line"] .swiper-pagination-bullet,
-    .special-banner-slider-block[data-pagination-style="bar"] .swiper-pagination-bullet {
-        width: 28px;
+    .s-block--special-slider .special-slider--line .swiper-pagination-bullet {
+        width: 30px;
         height: 4px;
-        border-radius: 9999px;
+        border-radius: 999px;
     }
 
-    .special-banner-slider-block .special-banner-slider__image {
+    .s-block--special-slider .swiper-button-next,
+    .s-block--special-slider .swiper-button-prev {
+        display: none !important;
+    }
+
+    .s-block--special-slider .special-slider--zoom .swiper-slide-active .special-slide__img {
+        transform: scale(1.06);
         transition: transform 6s linear;
     }
 
-    .special-banner-slider-block .special-banner-slider--zoom .swiper-slide-active .special-banner-slider__image {
-        transform: scale(1.06);
+    @media (max-width: 639px) {
+        .s-block--special-slider .special-slider__content {
+            padding-right: 16px;
+            padding-left: 16px;
+        }
+
+        .s-block--special-slider .special-slide__text {
+            max-width: 100%;
+            padding: 16px;
+            gap: 14px;
+        }
+
+        .s-block--special-slider .special-slide__btn {
+            padding: 8px 14px;
+            font-size: 14px;
+            margin-top: 12px;
+        }
+
+        .s-block--special-slider #{{ slider_id }
+    }
+
+    .swiper-pagination {
+        right: 16px;
+        bottom: 12px;
+        gap: 8px;
+    }
     }
 </style>
 {% endblock %}
 
-{% block scripts %}
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const sliders = document.querySelectorAll('.special-banner-slider-block');
-
-        if (!sliders.length || typeof Swiper === 'undefined') return;
-
-        sliders.forEach(function (block) {
-            const slider = block.querySelector('.special-banner-slider__swiper');
-            const pagination = block.querySelector('.special-banner-slider__pagination');
-            const nextEl = block.querySelector('.special-banner-slider__next');
-            const prevEl = block.querySelector('.special-banner-slider__prev');
-
-            if (!slider) return;
-
-            const requestedEffect = (block.dataset.effect || 'slide').toLowerCase();
-            const autoplayDelay = parseInt(block.dataset.autoplay || '5000', 10);
-            const autoHeight = block.dataset.autoHeight === 'true';
-            const slidesCount = block.querySelectorAll('.swiper-slide').length;
-
-            const swiperOptions = {
-                loop: slidesCount > 1,
-                slidesPerView: 1,
-                spaceBetween: 0,
-                speed: 700,
-                effect: ['slide', 'fade', 'flip'].includes(requestedEffect) ? requestedEffect : 'slide',
-                autoHeight: autoHeight,
-                autoplay: slidesCount > 1 ? {
-                    delay: autoplayDelay,
-                    disableOnInteraction: false,
-                    pauseOnMouseEnter: true
-                } : false,
-                pagination: {
-                    el: pagination,
-                    clickable: true
-                },
-                navigation: {
-                    nextEl: nextEl,
-                    prevEl: prevEl
-                }
-            };
-
-            if (requestedEffect === 'fade') {
-                swiperOptions.fadeEffect = {
-                    crossFade: true
-                };
-            }
-
-            if (requestedEffect === 'flip') {
-                swiperOptions.flipEffect = {
-                    slideShadows: false
-                };
-            }
-
-            new Swiper(slider, swiperOptions);
-        });
-    });
-</script>
-{% endblock %}
+{% block scriptslider %}{% endblock %}
