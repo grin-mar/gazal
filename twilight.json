@@ -1097,7 +1097,7 @@
                             "type": "static",
                             "format": "title",
                             "label": "النص الاساسي",
-                            "value": null,
+                            "value": "fff",
                             "variant": "h1",
                             "icon": "sicon-format-text"
                         },
@@ -1106,7 +1106,7 @@
                             "type": "static",
                             "format": "title",
                             "label": "النص الاساسي الملون",
-                            "value": null,
+                            "value": "ffff",
                             "variant": "h1",
                             "icon": "sicon-format-text"
                         },
