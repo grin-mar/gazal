@@ -1,6 +1,6 @@
 {
     "name": {
-        "ar": "Gazal",
+        "ar": "جزل",
         "en": "Gazal"
     },
     "repository": "https://github.com/grin-mar/gazal",
@@ -1076,7 +1076,7 @@
     ],
     "support_url": "https://example.com",
     "description": {
-        "ar": "",
-        "en": ""
+        "ar": null,
+        "en": null
     }
 }
