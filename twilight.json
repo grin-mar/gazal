@@ -1209,6 +1209,16 @@
                     "maxLength": 5
                 }
             ]
+        },
+        {
+            "key": "99bfd147-40a5-4beb-9d8a-7219507f4538",
+            "title": {
+                "en": "slider gaxal",
+                "ar": "بنر متحرك جزل"
+            },
+            "icon": "sicon-store",
+            "path": "special-slider",
+            "fields": []
         }
     ],
     "support_url": "https://example.com",
