@@ -1331,47 +1331,47 @@
                     "options": [
                         {
                             "label": "اعلي يمين",
-                            "value": "Value 1",
+                            "value": "justify-start items-start text-right",
                             "key": "607b65a4-99d1-428d-9769-05695a3265c4"
                         },
                         {
                             "label": "اعلي وسط",
-                            "value": "Value 2",
+                            "value": "justify-center items-start text-center",
                             "key": "495a08ad-0315-42f4-a64d-6fc179b54175"
                         },
                         {
                             "label": "اعلي يسار",
-                            "value": "Value 3",
+                            "value": "justify-end items-start text-left'",
                             "key": "92914fae-450a-4c43-98e2-8b717f220f81"
                         },
                         {
                             "label": "وسط يمين",
-                            "value": "Value 4",
+                            "value": "justify-start items-center text-right",
                             "key": "a5165fc7-a93b-4026-9e8b-795abc4bed29"
                         },
                         {
                             "label": "وسط وسط",
-                            "value": "Value 5",
+                            "value": "justify-center items-center text-center",
                             "key": "9fb329bc-e194-4903-bae5-4cf56d260461"
                         },
                         {
                             "label": "وسط يسار",
-                            "value": "Value 6",
+                            "value": "justify-end items-center text-left",
                             "key": "b9b649de-b3fc-4404-999e-d080fb6a291c"
                         },
                         {
                             "label": "اسفل يمين",
-                            "value": "Value 7",
+                            "value": "justify-start items-end text-right",
                             "key": "b0fa76c9-fb0c-4661-991e-60b1cb9fb5b4"
                         },
                         {
                             "label": "اسفل وسط",
-                            "value": "Value 8",
+                            "value": "justify-center items-end text-center",
                             "key": "859f609a-4e76-49ef-8034-b0918bede20c"
                         },
                         {
                             "label": "اسفل يسار",
-                            "value": "Value 9",
+                            "value": "justify-end items-end text-left",
                             "key": "bb18c173-6076-45f0-bd90-e6e979f81f54"
                         }
                     ],
@@ -1606,6 +1606,30 @@
                             "searchable": false,
                             "required": false,
                             "value": []
+                        },
+                        {
+                            "id": "banners.pc-image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة الشاشات الكبير",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": true
+                        },
+                        {
+                            "id": "banners.mob-image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة الشاشات الصغيرة",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": false
                         }
                     ],
                     "value": [],
