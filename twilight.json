@@ -1244,7 +1244,7 @@
                     "required": true
                 },
                 {
-                    "id": "noaa_altnql",
+                    "id": "move",
                     "type": "items",
                     "format": "dropdown-list",
                     "label": "نوع التنقل",
@@ -1320,7 +1320,7 @@
                     "required": false
                 },
                 {
-                    "id": "moqaa_omhazat_alns",
+                    "id": "text-align",
                     "type": "items",
                     "format": "dropdown-list",
                     "label": "موقع ومحاذاة النص",
@@ -1381,7 +1381,7 @@
                     "required": false
                 },
                 {
-                    "id": "althkm_fe_ahgam_alkhtot",
+                    "id": "size font",
                     "type": "static",
                     "format": "title",
                     "label": "التحكم في أحجام الخطوط",
@@ -1390,7 +1390,7 @@
                     "icon": "sicon-format-text"
                 },
                 {
-                    "id": "hgm_alaanoan_(kmbeotr)_copy",
+                    "id": "pc-size",
                     "type": "number",
                     "format": "integer",
                     "inputType": "number",
@@ -1405,7 +1405,7 @@
                     "maximum": 50
                 },
                 {
-                    "id": "hgm_alaanoan_(mobael)",
+                    "id": "mob-size",
                     "type": "number",
                     "format": "integer",
                     "inputType": "number",
@@ -1420,7 +1420,7 @@
                     "maximum": 50
                 },
                 {
-                    "id": "hgm_alosf(kmbeotr)",
+                    "id": "des-pc",
                     "type": "number",
                     "format": "integer",
                     "inputType": "number",
@@ -1435,7 +1435,7 @@
                     "maximum": 50
                 },
                 {
-                    "id": "integer",
+                    "id": "des-mob",
                     "type": "number",
                     "format": "integer",
                     "inputType": "number",
@@ -1459,7 +1459,7 @@
                     "icon": "sicon-format-text"
                 },
                 {
-                    "id": "lon_alklmt_almmezt_(aakhr_klmt)_copy",
+                    "id": "main-color-text",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1471,7 +1471,7 @@
                     "required": false
                 },
                 {
-                    "id": "lon_alklmt_almmezt_(aakhr_klmt)",
+                    "id": "special-text-color",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1483,7 +1483,7 @@
                     "required": false
                 },
                 {
-                    "id": "lon_alns_alfraae",
+                    "id": "des-color",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1495,11 +1495,11 @@
                     "required": false
                 },
                 {
-                    "id": "lon_khlfet_alns",
+                    "id": "bac-color-text",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
-                    "label": "لون خلفية النص",
+                    "label": "لون خلفية صندوق النص",
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-format-fill",
@@ -1507,7 +1507,7 @@
                     "required": false
                 },
                 {
-                    "id": "lon_khlfet_alzr",
+                    "id": "bac-button",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1519,7 +1519,7 @@
                     "required": false
                 },
                 {
-                    "id": "lon_alaanoan_alreese",
+                    "id": "text-button",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1541,7 +1541,7 @@
                     "icon": "sicon-list-add",
                     "fields": [
                         {
-                            "id": "banners.albnrat.alaanoan_alreese",
+                            "id": "banners.text-main",
                             "type": "string",
                             "format": "text",
                             "label": "العنوان الرئيسي",
@@ -1556,7 +1556,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "banners.albnrat.alns_alfraae",
+                            "id": "banners.des-text",
                             "type": "string",
                             "format": "textarea",
                             "label": "النص الفرعي",
@@ -1571,7 +1571,7 @@
                             "maxLength": 255
                         },
                         {
-                            "id": "banners.albnrat.tsoq_alaan",
+                            "id": "banners.button-text",
                             "type": "string",
                             "format": "text",
                             "label": "نص الزر",
@@ -1586,7 +1586,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "banners.albnrat.rabt_alzr",
+                            "id": "banners.url-link",
                             "type": "items",
                             "format": "dropdown-list",
                             "label": "رابط الزر",
