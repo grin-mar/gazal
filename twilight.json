@@ -1244,6 +1244,37 @@
                     "required": true
                 },
                 {
+                    "id": "shkl_aalamat_altnql",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "شكل علامات التنقل",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": "دوائر",
+                            "value": "circle",
+                            "key": "e5a2a0d3-995b-4642-94b9-702df2248474"
+                        },
+                        {
+                            "label": "مربعات",
+                            "value": "square",
+                            "key": "bd5b4272-a8a7-4b1f-9207-a513cb5d8e9c"
+                        },
+                        {
+                            "label": "خطوط",
+                            "value": "lines",
+                            "key": "df54e37d-2ca8-4be3-b67c-c83f49f5e5c7"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": false
+                },
+                {
                     "id": "move",
                     "type": "items",
                     "format": "dropdown-list",
