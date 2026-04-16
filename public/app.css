@@ -27893,14 +27893,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .ltr\:mr-3:where([dir="ltr"], [dir="ltr"] *) {
     margin-right: 0.75rem;
 }
-.ltr\:mr-4:where([dir="ltr"], [dir="ltr"] *) {
-    margin-right: 1rem;
-}
 .ltr\:mr-8:where([dir="ltr"], [dir="ltr"] *) {
     margin-right: 2rem;
 }
 .ltr\:mr-auto:where([dir="ltr"], [dir="ltr"] *) {
     margin-right: auto;
+}
+.ltr\:mr-4:where([dir="ltr"], [dir="ltr"] *) {
+    margin-right: 1rem;
 }
 .ltr\:rounded-l-none:where([dir="ltr"], [dir="ltr"] *) {
     border-top-left-radius: 0px;
@@ -28011,9 +28011,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .rtl\:ml-3:where([dir="rtl"], [dir="rtl"] *) {
     margin-left: 0.75rem;
 }
-.rtl\:ml-4:where([dir="rtl"], [dir="rtl"] *) {
-    margin-left: 1rem;
-}
 .rtl\:ml-8:where([dir="rtl"], [dir="rtl"] *) {
     margin-left: 2rem;
 }
@@ -28032,6 +28029,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .rtl\:mr-4:where([dir="rtl"], [dir="rtl"] *) {
     margin-right: 1rem;
+}
+.rtl\:ml-4:where([dir="rtl"], [dir="rtl"] *) {
+    margin-left: 1rem;
 }
 .rtl\:-scale-x-100:where([dir="rtl"], [dir="rtl"] *) {
     --tw-scale-x: -1;
