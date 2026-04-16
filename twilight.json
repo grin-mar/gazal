@@ -1614,6 +1614,21 @@
                             "maxLength": 30
                         },
                         {
+                            "id": "banner-item.rabt_alzr",
+                            "type": "string",
+                            "format": "url",
+                            "inputType": "url",
+                            "label": "رابط الزر",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://salla.sa",
+                            "icon": "sicon-link",
+                            "value": null,
+                            "required": false,
+                            "minLength": "1",
+                            "maxLength": 30
+                        },
+                        {
                             "id": "banner-item.button-url",
                             "type": "items",
                             "format": "dropdown-list",
@@ -1622,11 +1637,17 @@
                             "labelHTML": null,
                             "icon": "sicon-keyboard_arrow_down",
                             "selected": [],
-                            "options": [],
-                            "source": "Pages",
+                            "options": [
+                                {
+                                    "label": null,
+                                    "value": "Value 1",
+                                    "key": "d2045b86-c0d2-4bde-bfe7-43ae5bd1eade"
+                                }
+                            ],
+                            "source": "Manual",
                             "multichoice": false,
                             "searchable": false,
-                            "required": true,
+                            "required": false,
                             "value": []
                         },
                         {
