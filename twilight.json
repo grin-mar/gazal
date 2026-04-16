@@ -1660,7 +1660,7 @@
                             "placeholder": "e.g. https://hostname.com/image.png",
                             "icon": "sicon-image",
                             "value": null,
-                            "required": false
+                            "required": true
                         },
                         {
                             "id": "banner-item.collection.mob-ima",
