@@ -1081,7 +1081,116 @@
             },
             "icon": "sicon-store",
             "path": "text-banner",
-            "fields": []
+            "fields": [
+                {
+                    "id": "text-banner",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "text-banner",
+                    "description": "بنر نصي مع الوان لابراز العنصر",
+                    "labelHTML": null,
+                    "item_label": null,
+                    "icon": "sicon-list-add",
+                    "fields": [
+                        {
+                            "id": "text-banner.main-text",
+                            "type": "static",
+                            "format": "title",
+                            "label": "النص الاساسي",
+                            "value": null,
+                            "variant": "h1",
+                            "icon": "sicon-format-text"
+                        },
+                        {
+                            "id": "text-banner.main-text-color",
+                            "type": "static",
+                            "format": "title",
+                            "label": "النص الاساسي الملون",
+                            "value": null,
+                            "variant": "h1",
+                            "icon": "sicon-format-text"
+                        },
+                        {
+                            "id": "text-banner.description",
+                            "type": "static",
+                            "format": "description",
+                            "label": "النص الفرعي",
+                            "value": null,
+                            "variant": "h1",
+                            "icon": "sicon-format-size"
+                        },
+                        {
+                            "id": "text-banner.main-color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون النص الاساسي",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#000000",
+                            "required": false
+                        },
+                        {
+                            "id": "text-banner.main-color-special",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون النص المميز",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#ff2e2e",
+                            "required": false
+                        },
+                        {
+                            "id": "text-banner.second-color",
+                            "type": "string",
+                            "format": "color",
+                            "inputType": "color",
+                            "label": "لون النص الفرعي",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-format-fill",
+                            "value": "#000000",
+                            "required": false
+                        },
+                        {
+                            "id": "text-banner.text-button",
+                            "type": "string",
+                            "format": "text",
+                            "label": "محتوي الزر",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": 6,
+                            "maxLength": 30
+                        },
+                        {
+                            "id": "text-banner.url",
+                            "type": "string",
+                            "format": "url",
+                            "inputType": "url",
+                            "label": "رابط المحتوي",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://salla.sa",
+                            "icon": "sicon-link",
+                            "value": null,
+                            "required": false,
+                            "minLength": "2",
+                            "maxLength": 30
+                        }
+                    ],
+                    "value": [],
+                    "minLength": 1,
+                    "maxLength": 5
+                }
+            ]
         }
     ],
     "support_url": "https://example.com",
