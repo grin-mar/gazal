@@ -1311,7 +1311,7 @@
                     "required": false,
                     "step": "0",
                     "minimum": null,
-                    "maximum": 100
+                    "maximum": "80000"
                 },
                 {
                     "id": "text-pos",
@@ -1562,7 +1562,7 @@
                     "id": "banner-item",
                     "type": "collection",
                     "format": "collection",
-                    "label": "Collection",
+                    "label": "بنرات",
                     "description": null,
                     "labelHTML": null,
                     "item_label": null,
@@ -1599,7 +1599,7 @@
                             "maxLength": 255
                         },
                         {
-                            "id": "banner-item.collection.ns_alzr",
+                            "id": "banner-item.button-text",
                             "type": "string",
                             "format": "text",
                             "label": "نص الزر",
@@ -1614,10 +1614,10 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "banner-item.collection.url-link",
+                            "id": "banner-item.button-url",
                             "type": "items",
                             "format": "dropdown-list",
-                            "label": "Dropdown List",
+                            "label": "رابط الزر",
                             "description": null,
                             "labelHTML": null,
                             "icon": "sicon-keyboard_arrow_down",
@@ -1626,7 +1626,7 @@
                             "source": "Pages",
                             "multichoice": false,
                             "searchable": false,
-                            "required": false,
+                            "required": true,
                             "value": []
                         },
                         {
