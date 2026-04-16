@@ -1094,30 +1094,48 @@
                     "fields": [
                         {
                             "id": "text-banner.main-text",
-                            "type": "static",
-                            "format": "title",
+                            "type": "string",
+                            "format": "text",
                             "label": "النص الاساسي",
-                            "value": "fff",
-                            "variant": "h1",
-                            "icon": "sicon-format-text"
-                        },
-                        {
-                            "id": "text-banner.main-text-color",
-                            "type": "static",
-                            "format": "title",
-                            "label": "النص الاساسي الملون",
-                            "value": "ffff",
-                            "variant": "h1",
-                            "icon": "sicon-format-text"
-                        },
-                        {
-                            "id": "text-banner.description",
-                            "type": "static",
-                            "format": "description",
-                            "label": "النص الفرعي",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
                             "value": null,
-                            "variant": "h1",
-                            "icon": "sicon-format-size"
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": 6,
+                            "maxLength": 30
+                        },
+                        {
+                            "id": "text-banner.main-text-colourfull",
+                            "type": "string",
+                            "format": "text",
+                            "label": "النص الاساسي ملون",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": 6,
+                            "maxLength": 30
+                        },
+                        {
+                            "id": "text-banner.second-text",
+                            "type": "string",
+                            "format": "text",
+                            "label": "النص الفرعي",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": 6,
+                            "maxLength": 30
                         },
                         {
                             "id": "text-banner.main-color",
