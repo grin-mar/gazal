@@ -1218,7 +1218,238 @@
             },
             "icon": "sicon-store",
             "path": "special-slider",
-            "fields": []
+            "fields": [
+                {
+                    "id": "container-sec",
+                    "type": "items",
+                    "format": "radio-list",
+                    "label": "تخطيط العنصر",
+                    "description": "شكل العنصر",
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": "داخل إطار (Boxed)",
+                            "value": "Value 1",
+                            "key": "b68046dc-ccda-45b1-b25a-b12ee0566c70"
+                        },
+                        {
+                            "label": "عرض كامل الشاشة",
+                            "value": "Value 2",
+                            "key": "d748e757-06be-4243-ba7f-9213fe845d53"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "noaa_altnql",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "نوع التنقل",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": "قلب Flip",
+                            "value": "Value 1",
+                            "key": "4cfecee6-af81-4396-a53e-f183b3908fae"
+                        },
+                        {
+                            "label": "تكبير Zoom",
+                            "value": "Value 2",
+                            "key": "b77d644f-aa7f-4c23-afea-a58acebde65f"
+                        },
+                        {
+                            "label": "تلاشي Fade",
+                            "value": "Value 3",
+                            "key": "d20996a3-c96a-4981-9e94-ddf50a8552aa"
+                        },
+                        {
+                            "label": "انزلاق Slide",
+                            "value": "Value 4",
+                            "key": "af2fddab-3467-44b8-b80c-cbc9625766d1"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": true,
+                    "searchable": false,
+                    "required": false
+                },
+                {
+                    "id": "image-height",
+                    "type": "boolean",
+                    "format": "checkbox",
+                    "label": "ارتفاع تلقائي حسب الصورة",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-check-square",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "time",
+                    "type": "number",
+                    "format": "float",
+                    "inputType": "number",
+                    "label": "سرعة التنقل التلقائي (بالملي ثانية)",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Input a number between -10.10 and 100.",
+                    "icon": "sicon-hashtag",
+                    "value": 0,
+                    "required": false,
+                    "step": 0.1,
+                    "minimum": -10.1,
+                    "maximum": 100
+                },
+                {
+                    "id": "blur",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل تأثير الغباش (Blur) خلف النص",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false
+                },
+                {
+                    "id": "moqaa_omhazat_alns",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "موقع ومحاذاة النص",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": "اعلي يمين",
+                            "value": "Value 1",
+                            "key": "607b65a4-99d1-428d-9769-05695a3265c4"
+                        },
+                        {
+                            "label": "اعلي وسط",
+                            "value": "Value 2",
+                            "key": "495a08ad-0315-42f4-a64d-6fc179b54175"
+                        },
+                        {
+                            "label": "اعلي يسار",
+                            "value": "Value 3",
+                            "key": "92914fae-450a-4c43-98e2-8b717f220f81"
+                        },
+                        {
+                            "label": "وسط يمين",
+                            "value": "Value 4",
+                            "key": "a5165fc7-a93b-4026-9e8b-795abc4bed29"
+                        },
+                        {
+                            "label": "وسط وسط",
+                            "value": "Value 5",
+                            "key": "9fb329bc-e194-4903-bae5-4cf56d260461"
+                        },
+                        {
+                            "label": "وسط يسار",
+                            "value": "Value 6",
+                            "key": "b9b649de-b3fc-4404-999e-d080fb6a291c"
+                        },
+                        {
+                            "label": "اسفل يمين",
+                            "value": "Value 7",
+                            "key": "b0fa76c9-fb0c-4661-991e-60b1cb9fb5b4"
+                        },
+                        {
+                            "label": "اسفل وسط",
+                            "value": "Value 8",
+                            "key": "859f609a-4e76-49ef-8034-b0918bede20c"
+                        },
+                        {
+                            "label": "اسفل يسار",
+                            "value": "Value 9",
+                            "key": "bb18c173-6076-45f0-bd90-e6e979f81f54"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": true,
+                    "searchable": false,
+                    "required": false
+                },
+                {
+                    "id": "althkm_fe_ahgam_alkhtot",
+                    "type": "static",
+                    "format": "title",
+                    "label": "التحكم في أحجام الخطوط",
+                    "value": "التحكم في أحجام الخطوط",
+                    "variant": "h1",
+                    "icon": "sicon-format-text"
+                },
+                {
+                    "id": "hgm_alaanoan_(kmbeotr)_copy",
+                    "type": "number",
+                    "format": "integer",
+                    "inputType": "number",
+                    "label": "حجم العنوان (كمبيوتر)",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Input an integer number between 5 and 50.",
+                    "icon": "sicon-hashtag",
+                    "value": 0,
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 50
+                },
+                {
+                    "id": "hgm_alaanoan_(mobael)",
+                    "type": "number",
+                    "format": "integer",
+                    "inputType": "number",
+                    "label": "حجم العنوان (موبايل)",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Input an integer number between 5 and 50.",
+                    "icon": "sicon-hashtag",
+                    "value": null,
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 50
+                },
+                {
+                    "id": "hgm_alosf(kmbeotr)",
+                    "type": "number",
+                    "format": "integer",
+                    "inputType": "number",
+                    "label": "حجم الوصف(كمبيوتر)",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Input an integer number between 5 and 50.",
+                    "icon": "sicon-hashtag",
+                    "value": null,
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 50
+                },
+                {
+                    "id": "integer",
+                    "type": "number",
+                    "format": "integer",
+                    "inputType": "number",
+                    "label": "حجم الوصف(موبايل)",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Input an integer number between 5 and 50.",
+                    "icon": "sicon-hashtag",
+                    "value": null,
+                    "required": false,
+                    "minimum": 0,
+                    "maximum": 50
+                }
+            ]
         }
     ],
     "support_url": "https://example.com",
