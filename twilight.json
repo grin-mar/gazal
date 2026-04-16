@@ -1218,7 +1218,443 @@
             },
             "icon": "sicon-store",
             "path": "special-slider",
-            "fields": []
+            "fields": [
+                {
+                    "id": "sec-width",
+                    "type": "items",
+                    "format": "radio-list",
+                    "label": "تخطيط العنصر",
+                    "description": "شكل عرض العنصر",
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "عرض كامل الشاشة",
+                            "value": "full",
+                            "key": "52479bac-5b44-4843-b228-6b1b0472ff4d"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "داخل إطار (Boxed)",
+                            "value": "Boxed",
+                            "key": "7d344076-a4f6-464f-a33a-f674aad3af15"
+                        },
+                        {
+                            "label": "عرض كامل الشاشة",
+                            "value": "full",
+                            "key": "52479bac-5b44-4843-b228-6b1b0472ff4d"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "height",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "ارتفاع تلقائي حسب الصورة",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": true
+                },
+                {
+                    "id": "move",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "نوع حركة التنقل",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": "قلب Flip",
+                            "value": "flip",
+                            "key": "5f4fc685-6306-4aa0-9e48-45e91c865936"
+                        },
+                        {
+                            "label": "تكبير Zoom",
+                            "value": "Zoom",
+                            "key": "7b75eca2-906f-476d-8679-0b65c7d92038"
+                        },
+                        {
+                            "label": "تلاشي Fade",
+                            "value": "Fade",
+                            "key": "b704160e-45a7-48a2-bb69-fb78977b1e66"
+                        },
+                        {
+                            "label": "انزلاق Slide",
+                            "value": "Slide",
+                            "key": "68251f88-5c70-4fc7-a954-6e02ec8c6617"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": false,
+                    "searchable": false,
+                    "required": true
+                },
+                {
+                    "id": "move-time",
+                    "type": "string",
+                    "format": "time",
+                    "inputType": "time",
+                    "label": "سرعة التنقل التلقائي (بالملي ثانية)",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-time",
+                    "value": "01:00",
+                    "required": true
+                },
+                {
+                    "id": "text-pos",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "موقع ومحاذاة النص",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [
+                        {
+                            "label": "وسط-وسط",
+                            "value": "items-center justify-center text-center",
+                            "key": "747368bd-4b95-46b3-950e-c21daf6023ce"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "وسط-وسط",
+                            "value": "items-center justify-center text-center",
+                            "key": "747368bd-4b95-46b3-950e-c21daf6023ce"
+                        },
+                        {
+                            "label": "وسط-يمين",
+                            "value": "items-center justify-start text-right",
+                            "key": "1084774d-218d-46f8-a5f9-e3214b202be3"
+                        },
+                        {
+                            "label": "وسط-يسار",
+                            "value": "items-center justify-end text-left",
+                            "key": "9d405b1d-cebd-4152-938f-6f4ea49a6392"
+                        },
+                        {
+                            "label": "اعلي-يمين",
+                            "value": "items-start justify-start text-right",
+                            "key": "d95f131d-654d-48a3-9cc8-ac2dbca4f77a"
+                        },
+                        {
+                            "label": "اعلي-وسط",
+                            "value": "items-start justify-center text-center",
+                            "key": "63d9ad5d-1316-4ca3-abd0-9a3f2c2e4551"
+                        },
+                        {
+                            "label": "اعلي-يسار",
+                            "value": "items-start justify-end text-left",
+                            "key": "7b571c52-90e8-493e-8ca8-f64233fc0cb7"
+                        },
+                        {
+                            "label": "اسفل-يمين",
+                            "value": "items-end justify-start text-right",
+                            "key": "56111f5b-f559-4345-8680-ed906ce52a81"
+                        },
+                        {
+                            "label": "اسفل-وسط",
+                            "value": "items-end justify-center text-center",
+                            "key": "0fb86ffd-18e8-44af-a7ab-d05a95d587ad"
+                        },
+                        {
+                            "label": "اسفل-يسار",
+                            "value": "items-end justify-end text-left",
+                            "key": "2dc35d5d-3e05-479b-9615-b101325d0f3f"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": false,
+                    "searchable": false,
+                    "required": true
+                },
+                {
+                    "id": "slide-pag",
+                    "type": "items",
+                    "format": "checkbox-list",
+                    "label": "شكل علامات التنقل",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-list-check",
+                    "selected": [],
+                    "options": [
+                        {
+                            "label": "دائرة",
+                            "value": "cricle",
+                            "key": "713de641-2c95-48ca-bf36-d1a6400fc045"
+                        },
+                        {
+                            "label": "خطي",
+                            "value": "line",
+                            "key": "4ee77e37-a21c-41a6-b7e0-60839dcbd22c"
+                        },
+                        {
+                            "label": "مربع",
+                            "value": "square",
+                            "key": "b7fc68aa-b10f-420e-b20d-e73b2deef47d"
+                        }
+                    ],
+                    "source": "Manual",
+                    "multichoice": false,
+                    "required": true
+                },
+                {
+                    "id": "blur",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل تأثير الغباش (Blur) خلف النص",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
+                    "id": "pc-main-1",
+                    "type": "number",
+                    "format": "float",
+                    "inputType": "number",
+                    "label": "حجم النص الاساسي(كمبيوتر)",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": null,
+                    "icon": "sicon-hashtag",
+                    "value": 24,
+                    "required": false,
+                    "step": null,
+                    "minimum": "0",
+                    "maximum": 100
+                },
+                {
+                    "id": "mob-main",
+                    "type": "number",
+                    "format": "float",
+                    "inputType": "number",
+                    "label": "حجم النص الاساسي(موبايل)",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": null,
+                    "icon": "sicon-hashtag",
+                    "value": 20,
+                    "required": false,
+                    "step": null,
+                    "minimum": "0",
+                    "maximum": 100
+                },
+                {
+                    "id": "mob-des",
+                    "type": "number",
+                    "format": "float",
+                    "inputType": "number",
+                    "label": "حجم النص الفرعي(موبايل)",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": null,
+                    "icon": "sicon-hashtag",
+                    "value": 16,
+                    "required": false,
+                    "step": null,
+                    "minimum": "0",
+                    "maximum": 100
+                },
+                {
+                    "id": "pc-des",
+                    "type": "number",
+                    "format": "float",
+                    "inputType": "number",
+                    "label": "حجم النص الفرعي(كمبيوتر)",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": null,
+                    "icon": "sicon-hashtag",
+                    "value": 18,
+                    "required": false,
+                    "step": null,
+                    "minimum": "0",
+                    "maximum": 100
+                },
+                {
+                    "id": "main-color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الرئيسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#004956",
+                    "required": false
+                },
+                {
+                    "id": "special-word",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الكلمة المميزة (آخر كلمة)",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#ffffff",
+                    "required": false
+                },
+                {
+                    "id": "des-color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون النص الفرعي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#004956",
+                    "required": false
+                },
+                {
+                    "id": "background",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية النص",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#c7c7c7",
+                    "required": false
+                },
+                {
+                    "id": "burton-back",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون خلفية الزر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#004956",
+                    "required": false
+                },
+                {
+                    "id": "button-color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون نص الزر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#004956",
+                    "required": false
+                },
+                {
+                    "id": "collection",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "Collection",
+                    "description": null,
+                    "labelHTML": null,
+                    "item_label": null,
+                    "icon": "sicon-list-add",
+                    "fields": [
+                        {
+                            "id": "collection.main-text",
+                            "type": "string",
+                            "format": "text",
+                            "label": "نص رئيسي",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": "1",
+                            "maxLength": 30
+                        },
+                        {
+                            "id": "collection.des",
+                            "type": "string",
+                            "format": "textarea",
+                            "label": "نص فرعي",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Your text here",
+                            "icon": "sicon-typography",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": "4",
+                            "maxLength": 255
+                        },
+                        {
+                            "id": "collection.ns_alzr",
+                            "type": "string",
+                            "format": "text",
+                            "label": "نص الزر",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "تسوق الآن",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": "1",
+                            "maxLength": 30
+                        },
+                        {
+                            "id": "collection.url-link",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "Dropdown List",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-keyboard_arrow_down",
+                            "selected": [],
+                            "options": [],
+                            "source": "Pages",
+                            "multichoice": false,
+                            "searchable": false,
+                            "required": false,
+                            "value": []
+                        },
+                        {
+                            "id": "collection.pc-image",
+                            "type": "string",
+                            "format": "image",
+                            "label": "الشاشات الكبيرة",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": true
+                        },
+                        {
+                            "id": "collection.mob-ima",
+                            "type": "string",
+                            "format": "image",
+                            "label": "الشاشات الصغيرة",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": false
+                        }
+                    ],
+                    "value": [],
+                    "minLength": 1,
+                    "maxLength": 5
+                }
+            ]
         }
     ],
     "support_url": "https://example.com",
