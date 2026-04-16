@@ -1531,7 +1531,7 @@
                     "required": false
                 },
                 {
-                    "id": "albnrat",
+                    "id": "banners",
                     "type": "collection",
                     "format": "collection",
                     "label": "البنرات",
@@ -1541,7 +1541,7 @@
                     "icon": "sicon-list-add",
                     "fields": [
                         {
-                            "id": "albnrat.alaanoan_alreese",
+                            "id": "banners.albnrat.alaanoan_alreese",
                             "type": "string",
                             "format": "text",
                             "label": "العنوان الرئيسي",
@@ -1556,7 +1556,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "albnrat.alns_alfraae",
+                            "id": "banners.albnrat.alns_alfraae",
                             "type": "string",
                             "format": "textarea",
                             "label": "النص الفرعي",
@@ -1571,7 +1571,7 @@
                             "maxLength": 255
                         },
                         {
-                            "id": "albnrat.tsoq_alaan",
+                            "id": "banners.albnrat.tsoq_alaan",
                             "type": "string",
                             "format": "text",
                             "label": "نص الزر",
@@ -1586,7 +1586,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "albnrat.rabt_alzr",
+                            "id": "banners.albnrat.rabt_alzr",
                             "type": "items",
                             "format": "dropdown-list",
                             "label": "رابط الزر",
