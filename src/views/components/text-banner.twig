@@ -1,1 +1,98 @@
-<p>kjmllllllllllllllll</p>
+<p>kjmllllllllييييllllllll</p>
+<section class="s-block text-banner-block container" dir="rtl">
+
+{% if component.text_banner|length %}
+
+  <div class="text-banner-wrapper">
+
+    {% for item in component.text_banner %}
+
+      <div class="text-banner-item">
+
+        <!-- MAIN TEXT -->
+        <h2 
+          class="main-title"
+          style="color: {{ item['text-banner.main-color'] ?? '#000' }}"
+        >
+          {{ item['text-banner.main-text'] }}
+
+          <span style="color: {{ item['text-banner.main-color-special'] ?? '#ff2e2e' }}">
+            {{ item['text-banner.main-text-colourfull'] }}
+          </span>
+        </h2>
+
+        <!-- SUB TEXT -->
+        {% if item['text-banner.second-text'] %}
+          <p 
+            class="sub-text"
+            style="color: {{ item['text-banner.second-color'] ?? '#333' }}"
+          >
+            {{ item['text-banner.second-text'] }}
+          </p>
+        {% endif %}
+
+        <!-- BUTTON -->
+        {% if item['text-banner.text-button'] %}
+          <a 
+            href="{{ item['text-banner.url'] ?? '#' }}" 
+            class="banner-btn"
+          >
+            {{ item['text-banner.text-button'] }}
+          </a>
+        {% endif %}
+
+      </div>
+
+    {% endfor %}
+
+  </div>
+
+{% else %}
+  <p style="text-align:center">لا يوجد محتوى</p>
+{% endif %}
+
+</section>
+{% block styles %}
+<style>
+
+.text-banner-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.text-banner-item {
+  background: #f8f8f8;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.text-banner-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.main-title {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.sub-text {
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.banner-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #000;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+</style>
+{% endblock %}
