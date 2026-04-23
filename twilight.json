@@ -1581,7 +1581,7 @@
                             "multilanguage": false,
                             "required": false,
                             "minLength": "1",
-                            "maxLength": 30
+                            "maxLength": "100"
                         },
                         {
                             "id": "bannersitem.banner-des",
@@ -1614,21 +1614,6 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "bannersitem.banner-url-bu",
-                            "type": "string",
-                            "format": "url",
-                            "inputType": "url",
-                            "label": "رابط الزر",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "e.g. https://salla.sa",
-                            "icon": "sicon-link",
-                            "value": null,
-                            "required": false,
-                            "minLength": "1",
-                            "maxLength": 30
-                        },
-                        {
                             "id": "bannersitem.banner-url-but",
                             "type": "items",
                             "format": "dropdown-list",
@@ -1639,12 +1624,22 @@
                             "selected": [],
                             "options": [
                                 {
-                                    "label": null,
-                                    "value": "Value 1",
+                                    "label": "أحدث المنتجات",
+                                    "value": "latest-products",
                                     "key": "d2045b86-c0d2-4bde-bfe7-43ae5bd1eade"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "value": "offers",
+                                    "key": "59758f87-badc-4873-b468-6e3fe780f892"
+                                },
+                                {
+                                    "label": "الماركات",
+                                    "value": "brands",
+                                    "key": "f01f99ed-8ff3-414d-b9f2-710d97eccd47"
                                 }
                             ],
-                            "source": "Manual",
+                            "source": "Categories",
                             "multichoice": false,
                             "searchable": false,
                             "required": false,
