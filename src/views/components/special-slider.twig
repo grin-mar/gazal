@@ -1,325 +1,235 @@
-{% set slider_id = 'special-slider-' ~ (position|default(0)) %}
+<section 
+  class="s-block super-slider 
+  {{ section.settings['sec-width'] == 'Boxed' ? 'is-boxed' : 'is-full' }}" 
+  dir="rtl"
+>
 
-{% set layout_type = attribute(component, 'sec-width')|default('full')|lower %}
-{% set is_boxed = layout_type == 'boxed' %}
+{% set banners = section.settings.bannersitem|default([]) %}
+{% set height_auto = section.settings.height|default(true) %}
+{% set text_pos = section.settings['text-pos']|default('items-center justify-center text-center') %}
+{% set speed = section.settings.TIME|default(5000) %}
+{% set effect = section.settings.move|default('slide')|lower %}
 
-{% set auto_height = attribute(component, 'height') is same as(true) %}
-{% set effect = attribute(component, 'move')|default('slide')|lower %}
-{% set autoplay_speed = attribute(component, 'TIME')|default(5000) %}
-{% set text_position = attribute(component, 'text-pos')|default('items-center justify-center text-center') %}
-{% set pagination_shape = attribute(component, 'slide-pag')|default('cricle')|lower %}
-{% set pagination_shape = pagination_shape == 'cricle' ? 'circle' : pagination_shape %}
-{% set blur = attribute(component, 'blur') is same as(true) %}
+<div class="{{ section.settings['sec-width'] == 'Boxed' ? 'container' : '' }}">
 
-{% set title_desktop = attribute(component, 'pc-main-1')|default(30) %}
-{% set title_mobile = attribute(component, 'mob-main')|default(20) %}
-{% set desc_desktop = attribute(component, 'pc-des')|default(18) %}
-{% set desc_mobile = attribute(component, 'mob-des')|default(16) %}
+<salla-slider
+  auto-play
+  interval="{{ speed }}"
+  effect="{{ effect }}"
+  pagination
+  type="fullwidth"
+  class="super-slider__wrapper"
+>
 
-{% set main_color = attribute(component, 'main-color')|default('#004956') %}
-{% set special_color = attribute(component, 'special-word')|default('#ffffff') %}
-{% set desc_color = attribute(component, 'des-color')|default('#004956') %}
-{% set text_bg = attribute(component, 'background')|default('rgba(199,199,199,.45)') %}
-{% set button_bg = attribute(component, 'burton-back')|default('#004956') %}
-{% set button_color = attribute(component, 'button-color')|default('#ffffff') %}
+<div slot="items">
 
-{% set banners = attribute(component, 'banner-item')|default([]) %}
+{% if banners and banners|length %}
+{% for item in banners %}
 
-{% if banners|length %}
-<section
-    class="s-block s-block--special-slider {{ is_boxed ? '' : 's-block--full-bg' }} {{ is_repeated ? 'repeated-block' : '' }}"
-    dir="rtl">
-    <div class="{{ is_boxed ? 'container' : '' }}">
-        <salla-slider id="{{ slider_id }}" type="{{ is_boxed ? 'carousel' : 'fullwidth' }}"
-            class="home-slider special-slider special-slider--{{ pagination_shape }} {{ blur ? 'special-slider--blur' : 'special-slider--clear' }} {{ effect == 'zoom' ? 'special-slider--zoom' : '' }}"
-            dir="rtl" pagination auto-play show-controls="false"
-            effect="{{ effect in ['slide', 'fade', 'flip'] ? effect : 'slide' }}" speed="{{ autoplay_speed }}">
-            <div slot="items">
-                {% for banner in banners %}
-                {% set title = attribute(banner, 'banner-item.collection.main-text')|default('') %}
-                {% set subtitle = attribute(banner, 'banner-item.collection.des')|default('') %}
-                {% set button_text = attribute(banner, 'banner-item.collection.ns_alzr')|default('') %}
-                {% set button_url = attribute(banner, 'banner-item.collection.url-link')|default('#') %}
-                {% set desktop_image = attribute(banner, 'banner-item.collection.pc-image')|default('') %}
-                {% set mobile_image = attribute(banner, 'banner-item.collection.mob-ima')|default(desktop_image) %}
-                {% set alt_text = title|trim ? title : 'special banner' %}
+<div class="swiper-slide super-slide {{ height_auto ? 'auto-height' : 'fixed-height' }}">
 
-                {% set words = title|trim ? title|trim|split(' ') : [] %}
-                {% set last_word = words|length ? words|last : '' %}
-                {% set first_words = words|length > 1 ? words|slice(0, words|length - 1)|join(' ') : '' %}
+  <!-- IMAGE -->
+  <picture>
+    <source 
+      media="(max-width:768px)" 
+      srcset="{{ item['bannersitem.banner-small'] ?: item['bannersitem.banner-img-big'] }}"
+    >
+    <img 
+      src="{{ item['bannersitem.banner-img-big'] }}" 
+      class="slide-img"
+      loading="lazy"
+      draggable="false"
+      alt="banner"
+    >
+  </picture>
 
-                <div
-                    class="swiper-slide relative special-slide {{ auto_height ? 'special-slide--auto' : 'special-slide--fixed' }}">
-                    <picture>
-                        {% if mobile_image %}
-                        <source media="(max-width: 767px)" srcset="{{ mobile_image }}" />
-                        {% endif %}
-                        <img src="{{ desktop_image }}" alt="{{ alt_text }}" class="special-slide__img"
-                            loading="{{ loop.first ? 'eager' : 'lazy' }}" draggable="false" />
-                    </picture>
+  <!-- CONTENT -->
+  <div class="slide-overlay flex {{ text_pos }}">
+    
+    <div class="slide-content {{ section.settings.blur ? 'has-blur' : '' }}">
 
-                    <div class="special-slider__content absolute inset-0 flex {{ text_position }}">
-                        <div class="special-slide__text">
-                            {% if title %}
-                            <h3 class="special-slide__title"
-                                style="color:{{ main_color }}; --title-desktop: {{ title_desktop }}px; --title-mobile: {{ title_mobile }}px;">
-                                {% if first_words %}
-                                <span>{{ first_words }}</span>
-                                {% endif %}
-                                {% if last_word %}
-                                <span style="color:{{ special_color }};">{{ first_words ? ' ' : '' }}{{ last_word
-                                    }}</span>
-                                {% endif %}
-                            </h3>
-                            {% endif %}
+      {% if item['bannersitem.banner-main'] %}
+        {% set words = item['bannersitem.banner-main']|split(' ') %}
+        {% set last = words|last %}
+        {% set first = words|slice(0, words|length - 1)|join(' ') %}
 
-                            {% if subtitle %}
-                            <p class="special-slide__body"
-                                style="color:{{ desc_color }}; --desc-desktop: {{ desc_desktop }}px; --desc-mobile: {{ desc_mobile }}px;">
-                                {{ subtitle }}
-                            </p>
-                            {% endif %}
+        <h2 class="main-title">
+          {{ first }}
+          <span class="highlight">{{ last }}</span>
+        </h2>
+      {% endif %}
 
-                            {% if button_text %}
-                            <a href="{{ button_url ?: '#' }}"
-                                class="special-slide__btn inline-flex items-center justify-center mt-6 px-6 py-3 no-underline"
-                                style="background:{{ button_bg }}; color:{{ button_color }};">
-                                {{ button_text }}
-                            </a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </salla-slider>
+      {% if item['bannersitem.banner-des'] %}
+        <p class="sub-text">{{ item['bannersitem.banner-des'] }}</p>
+      {% endif %}
+
+      {% if item['bannersitem.banner-button'] %}
+        <a 
+          href="{{ item['bannersitem.banner-url-bu']|default('#') }}" 
+          class="slide-btn"
+        >
+          {{ item['bannersitem.banner-button'] }}
+        </a>
+      {% endif %}
+
     </div>
-</section>
+
+  </div>
+
+</div>
+
+{% endfor %}
+{% else %}
+<p style="text-align:center">لا يوجد بنرات</p>
 {% endif %}
 
-{% block styleslider %}
+</div>
+</salla-slider>
+
+</div>
+</section>
+
+{% block styles %}
 <style>
-    .s-block--special-slider {
-        position: relative;
-        overflow: hidden;
-    }
 
-    .s-block--special-slider .special-slider,
-    .s-block--special-slider .special-slider .swiper,
-    .s-block--special-slider .special-slider .swiper-wrapper {
-        direction: rtl;
-    }
+/* ===== WRAPPER ===== */
+.super-slider {
+  position: relative;
+}
 
-    .s-block--special-slider .special-slide {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-    }
+.super-slider.is-full {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
 
-    .s-block--special-slider .special-slide--fixed {
-        min-height: 420px;
-    }
+.super-slider.is-boxed .container {
+  border-radius: 14px;
+  overflow: hidden;
+}
 
-    @media (min-width: 1024px) {
-        .s-block--special-slider .special-slide--fixed {
-            min-height: 560px;
-        }
-    }
+/* ===== SLIDE ===== */
+.super-slide {
+  position: relative;
+  width: 100%;
+}
 
-    .s-block--special-slider .special-slide__img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-    }
+.super-slide.fixed-height {
+  height: 550px;
+}
 
-    .s-block--special-slider .special-slide--fixed .special-slide__img {
-        object-fit: cover;
-    }
+.super-slide.auto-height img {
+  height: auto;
+}
 
-    .s-block--special-slider .special-slide--auto .special-slide__img {
-        position: relative;
-        height: auto;
-        object-fit: contain;
-    }
+/* ===== IMAGE ===== */
+.slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    .s-block--special-slider .special-slider__content {
-        width: 100%;
-        padding-right: 24px;
-        padding-left: 24px;
-        box-sizing: border-box;
-        z-index: 2;
-    }
+/* ===== CONTENT ===== */
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 40px;
+}
 
-    @media (min-width: 768px) {
-        .s-block--special-slider .special-slider__content {
-            padding-right: 53px;
-            padding-left: 53px;
-        }
-    }
+.slide-content {
+  max-width: 500px;
+  padding: 20px;
+}
 
-    .s-block--special-slider .special-slide__text {
-        max-width: 540px;
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-        justify-content: flex-start;
-        align-items: flex-start;
-        padding: 20px;
-        border-radius: 20px;
-    }
+/* ===== BLUR ===== */
+.slide-content.has-blur {
+  backdrop-filter: blur(5px);
+  background: {{ section.settings.background|default('#00000033') }};
+  border-radius: 10px;
+}
 
-    .s-block--special-slider .special-slider--blur .special-slide__text {
-        background: {
-                {
-                text_bg
-            }
-        }
+/* ===== TEXT ===== */
+.main-title {
+  font-size: {{ section.settings['pc-main-1']|default(24) }}px;
+  color: {{ section.settings['main-color']|default('#000') }};
+  margin-bottom: 10px;
+}
 
-        ;
-        backdrop-filter: blur(.5rem);
-        -webkit-backdrop-filter: blur(.5rem);
-    }
+.highlight {
+  color: {{ section.settings['special-word']|default('#fff') }};
+}
 
-    .s-block--special-slider .special-slider--clear .special-slide__text {
-        background: transparent;
-    }
+.sub-text {
+  font-size: {{ section.settings['pc-des']|default(18) }}px;
+  color: {{ section.settings['des-color']|default('#333') }};
+  line-height: 1.6;
+}
 
-    .s-block--special-slider .special-slide__title {
-        font-weight: 700;
-        line-height: 1.15;
-        letter-spacing: -1px;
-        margin: 0;
-        font-size: var(--title-mobile);
-        text-align: inherit;
-    }
+/* ===== BUTTON ===== */
+.slide-btn {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 24px;
+  background: {{ section.settings['burton-back']|default('#000') }};
+  color: {{ section.settings['button-color']|default('#fff') }};
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
 
-    @media (min-width: 768px) {
-        .s-block--special-slider .special-slide__title {
-            font-size: var(--title-desktop);
-        }
-    }
+.slide-btn:hover {
+  transform: translateY(-3px);
+  opacity: .9;
+}
 
-    .s-block--special-slider .special-slide__body {
-        font-weight: 400;
-        line-height: 1.8;
-        margin: 0;
-        font-size: var(--desc-mobile);
-        text-align: inherit;
-    }
+/* ===== PAGINATION ===== */
+.super-slider .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+}
 
-    @media (min-width: 768px) {
-        .s-block--special-slider .special-slide__body {
-            font-size: var(--desc-desktop);
-        }
-    }
+{% if section.settings['slide-pag'] == 'square' %}
+.super-slider .swiper-pagination-bullet {
+  border-radius: 2px;
+}
+{% elseif section.settings['slide-pag'] == 'line' %}
+.super-slider .swiper-pagination-bullet {
+  width: 40px;
+  height: 6px;
+  border-radius: 999px;
+}
+{% else %}
+.super-slider .swiper-pagination-bullet {
+  border-radius: 50%;
+}
+{% endif %}
 
-    .s-block--special-slider .special-slide__btn {
-        min-width: 160px;
-        min-height: 48px;
-        border-radius: 999px;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 1;
-        text-align: center;
-    }
+/* ===== MOBILE ===== */
+@media(max-width:768px){
 
-    .s-block--special-slider #{{ slider_id }
-    }
+  .super-slide.fixed-height {
+    height: 400px;
+  }
 
-    .swiper-pagination {
-        position: absolute;
-        right: 24px;
-        left: auto;
-        bottom: 18px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        z-index: 20;
-    }
+  .slide-overlay {
+    padding: 20px;
+  }
 
-    @media (min-width: 768px) {
-        .s-block--special-slider #{{ slider_id }
-    }
+  .main-title {
+    font-size: {{ section.settings['mob-main']|default(20) }}px;
+  }
 
-    .swiper-pagination {
-        right: 53px;
-    }
-    }
+  .sub-text {
+    font-size: {{ section.settings['mob-des']|default(16) }}px;
+  }
 
-    .s-block--special-slider #{{ slider_id }
-    }
+}
 
-    .swiper-pagination-bullet {
-        opacity: 1;
-        background: rgba(255, 255, 255, .55);
-        transition: all .25s ease;
-    }
-
-    .s-block--special-slider #{{ slider_id }
-    }
-
-    .swiper-pagination-bullet-active {
-        background: #fff;
-    }
-
-    .s-block--special-slider .special-slider--circle .swiper-pagination-bullet {
-        width: 12px;
-        height: 12px;
-        border-radius: 999px;
-    }
-
-    .s-block--special-slider .special-slider--square .swiper-pagination-bullet {
-        width: 12px;
-        height: 12px;
-        border-radius: 3px;
-    }
-
-    .s-block--special-slider .special-slider--line .swiper-pagination-bullet {
-        width: 30px;
-        height: 4px;
-        border-radius: 999px;
-    }
-
-    .s-block--special-slider .swiper-button-next,
-    .s-block--special-slider .swiper-button-prev {
-        display: none !important;
-    }
-
-    .s-block--special-slider .special-slider--zoom .swiper-slide-active .special-slide__img {
-        transform: scale(1.06);
-        transition: transform 6s linear;
-    }
-
-    @media (max-width: 639px) {
-        .s-block--special-slider .special-slider__content {
-            padding-right: 16px;
-            padding-left: 16px;
-        }
-
-        .s-block--special-slider .special-slide__text {
-            max-width: 100%;
-            padding: 16px;
-            gap: 14px;
-        }
-
-        .s-block--special-slider .special-slide__btn {
-            padding: 8px 14px;
-            font-size: 14px;
-            margin-top: 12px;
-        }
-
-        .s-block--special-slider #{{ slider_id }
-    }
-
-    .swiper-pagination {
-        right: 16px;
-        bottom: 12px;
-        gap: 8px;
-    }
-    }
 </style>
 {% endblock %}
 
-{% block scriptslider %}{% endblock %}
+{% block scripts %}
+<script>
+// جاهز لأي تطوير بعدين
+</script>
+{% endblock %}
