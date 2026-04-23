@@ -26,30 +26,30 @@
 {% if banners and banners|length %}
 {% for item in banners %}
 
+{% set img = item['banner-img-big'].url ?? '' %}
+{% set img_mobile = item['banner-small'].url ?? img %}
+
 <div class="swiper-slide super-slide {{ height_auto ? 'auto-height' : 'fixed-height' }}">
 
-  <!-- IMAGE -->
+  {% if img %}
   <picture>
-    <source 
-      media="(max-width:768px)" 
-      srcset="{{ item['bannersitem.banner-small'] ?: item['bannersitem.banner-img-big'] }}"
-    >
+    <source media="(max-width:768px)" srcset="{{ img_mobile }}">
     <img 
-      src="{{ item['bannersitem.banner-img-big'] }}" 
+      src="{{ img }}" 
       class="slide-img"
       loading="lazy"
       draggable="false"
       alt="banner"
     >
   </picture>
+  {% endif %}
 
-  <!-- CONTENT -->
   <div class="slide-overlay flex {{ text_pos }}">
     
     <div class="slide-content {{ section.settings.blur ? 'has-blur' : '' }}">
 
-      {% if item['bannersitem.banner-main'] %}
-        {% set words = item['bannersitem.banner-main']|split(' ') %}
+      {% if item['banner-main'] %}
+        {% set words = item['banner-main']|split(' ') %}
         {% set last = words|last %}
         {% set first = words|slice(0, words|length - 1)|join(' ') %}
 
@@ -59,16 +59,16 @@
         </h2>
       {% endif %}
 
-      {% if item['bannersitem.banner-des'] %}
-        <p class="sub-text">{{ item['bannersitem.banner-des'] }}</p>
+      {% if item['banner-des'] %}
+        <p class="sub-text">{{ item['banner-des'] }}</p>
       {% endif %}
 
-      {% if item['bannersitem.banner-button'] %}
+      {% if item['banner-button'] %}
         <a 
-          href="{{ item['bannersitem.banner-url-bu']|default('#') }}" 
+          href="{{ item['banner-url-bu']|default('#') }}" 
           class="slide-btn"
         >
-          {{ item['bannersitem.banner-button'] }}
+          {{ item['banner-button'] }}
         </a>
       {% endif %}
 
@@ -92,10 +92,7 @@
 {% block styles %}
 <style>
 
-/* ===== WRAPPER ===== */
-.super-slider {
-  position: relative;
-}
+.super-slider { position: relative; }
 
 .super-slider.is-full {
   width: 100%;
@@ -108,28 +105,18 @@
   overflow: hidden;
 }
 
-/* ===== SLIDE ===== */
-.super-slide {
-  position: relative;
-  width: 100%;
-}
+/* SLIDE */
+.super-slide.fixed-height { height: 550px; }
+.super-slide.auto-height img { height: auto; }
 
-.super-slide.fixed-height {
-  height: 550px;
-}
-
-.super-slide.auto-height img {
-  height: auto;
-}
-
-/* ===== IMAGE ===== */
+/* IMAGE */
 .slide-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* ===== CONTENT ===== */
+/* CONTENT */
 .slide-overlay {
   position: absolute;
   inset: 0;
@@ -141,14 +128,14 @@
   padding: 20px;
 }
 
-/* ===== BLUR ===== */
+/* BLUR */
 .slide-content.has-blur {
   backdrop-filter: blur(5px);
   background: {{ section.settings.background|default('#00000033') }};
   border-radius: 10px;
 }
 
-/* ===== TEXT ===== */
+/* TEXT */
 .main-title {
   font-size: {{ section.settings['pc-main-1']|default(24) }}px;
   color: {{ section.settings['main-color']|default('#000') }};
@@ -162,10 +149,9 @@
 .sub-text {
   font-size: {{ section.settings['pc-des']|default(18) }}px;
   color: {{ section.settings['des-color']|default('#333') }};
-  line-height: 1.6;
 }
 
-/* ===== BUTTON ===== */
+/* BUTTON */
 .slide-btn {
   display: inline-block;
   margin-top: 16px;
@@ -182,16 +168,14 @@
   opacity: .9;
 }
 
-/* ===== PAGINATION ===== */
+/* PAGINATION */
 .super-slider .swiper-pagination-bullet {
   width: 12px;
   height: 12px;
 }
 
 {% if section.settings['slide-pag'] == 'square' %}
-.super-slider .swiper-pagination-bullet {
-  border-radius: 2px;
-}
+.super-slider .swiper-pagination-bullet { border-radius: 2px; }
 {% elseif section.settings['slide-pag'] == 'line' %}
 .super-slider .swiper-pagination-bullet {
   width: 40px;
@@ -199,21 +183,15 @@
   border-radius: 999px;
 }
 {% else %}
-.super-slider .swiper-pagination-bullet {
-  border-radius: 50%;
-}
+.super-slider .swiper-pagination-bullet { border-radius: 50%; }
 {% endif %}
 
-/* ===== MOBILE ===== */
+/* MOBILE */
 @media(max-width:768px){
 
-  .super-slide.fixed-height {
-    height: 400px;
-  }
+  .super-slide.fixed-height { height: 400px; }
 
-  .slide-overlay {
-    padding: 20px;
-  }
+  .slide-overlay { padding: 20px; }
 
   .main-title {
     font-size: {{ section.settings['mob-main']|default(20) }}px;
