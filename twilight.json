@@ -1646,18 +1646,6 @@
                             "value": []
                         },
                         {
-                            "id": "bannersitem.banner-img-big",
-                            "type": "string",
-                            "format": "image",
-                            "label": "الشاشات الكبيرة",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "e.g. https://hostname.com/image.png",
-                            "icon": "sicon-image",
-                            "value": null,
-                            "required": true
-                        },
-                        {
                             "id": "bannersitem.banner-small",
                             "type": "string",
                             "format": "image",
@@ -1668,6 +1656,18 @@
                             "icon": "sicon-image",
                             "value": null,
                             "required": false
+                        },
+                        {
+                            "id": "bannersitem.banner-img-big",
+                            "type": "string",
+                            "format": "image",
+                            "label": "الشاشات الكبيرة",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": true
                         }
                     ],
                     "value": [],
