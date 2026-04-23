@@ -2,51 +2,40 @@
 
 <section class="s-block text-banner-block container" dir="rtl">
 
-
-{# نحاول نقرأ كل احتمالات الاسم #}
-{% set banners = component.text_banner 
-  ?? component['text-banner'] 
-  ?? component.textBanner 
-  ?? [] 
-%}
-
-{% if banners and banners|length %}
+{% if attribute(_context, 'text-banner') and attribute(_context, 'text-banner')|length %}
 
   <div class="text-banner-wrapper">
 
-    {% for item in banners %}
+    {% for item in attribute(_context, 'text-banner') %}
 
       <div class="text-banner-item">
 
-        <!-- TITLE -->
         <h2 
           class="main-title"
-          style="color: {{ item['text-banner.main-color']|default('#000') }}"
+          style="color: {{ item['main-color']|default('#000') }}"
         >
-          {{ item['text-banner.main-text'] }}
+          {{ item['main-text'] }}
 
-          <span style="color: {{ item['text-banner.main-color-special']|default('#ff2e2e') }}">
-            {{ item['text-banner.main-text-colourfull'] }}
+          <span style="color: {{ item['main-color-special']|default('#ff2e2e') }}">
+            {{ item['main-text-colourfull'] }}
           </span>
         </h2>
 
-        <!-- SUB -->
-        {% if item['text-banner.second-text'] %}
+        {% if item['second-text'] %}
           <p 
             class="sub-text"
-            style="color: {{ item['text-banner.second-color']|default('#333') }}"
+            style="color: {{ item['second-color']|default('#333') }}"
           >
-            {{ item['text-banner.second-text'] }}
+            {{ item['second-text'] }}
           </p>
         {% endif %}
 
-        <!-- BUTTON -->
-        {% if item['text-banner.text-button'] %}
+        {% if item['text-button'] %}
           <a 
-            href="{{ item['text-banner.url']|default('#') }}" 
+            href="{{ item['url']|default('#') }}" 
             class="banner-btn"
           >
-            {{ item['text-banner.text-button'] }}
+            {{ item['text-button'] }}
           </a>
         {% endif %}
 
@@ -57,58 +46,7 @@
   </div>
 
 {% else %}
-  <p style="text-align:center; padding:20px;">لا يوجد محتوى</p>
+  <p style="text-align:center">لا يوجد محتوى</p>
 {% endif %}
 
 </section>
-
-
-{% block styles %}
-<style>
-
-.text-banner-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.text-banner-item {
-  background: #f8f8f8;
-  padding: 30px;
-  border-radius: 12px;
-  text-align: center;
-  transition: 0.3s;
-}
-
-.text-banner-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-.main-title {
-  font-size: 26px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.sub-text {
-  font-size: 15px;
-  margin-bottom: 15px;
-}
-
-.banner-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #000;
-  color: #fff;
-  border-radius: 6px;
-  text-decoration: none;
-}
-
-</style>
-{% endblock %}
-
-<pre>{{ component|json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
-
-
-<pre>{{ component|json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
