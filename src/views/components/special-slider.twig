@@ -4,7 +4,14 @@
   dir="rtl"
 >
 
-{% set banners = section.settings.bannersitem|default([]) %}
+{# ✅ حل قراءة البيانات بكل الحالات #}
+{% set banners = 
+  section.settings.bannersitem.value.data 
+  ?? section.settings.bannersitem.value 
+  ?? section.settings.bannersitem 
+  ?? [] 
+%}
+
 {% set height_auto = section.settings.height|default(true) %}
 {% set text_pos = section.settings['text-pos']|default('items-center justify-center text-center') %}
 {% set speed = section.settings.TIME|default(5000) %}
@@ -26,8 +33,9 @@
 {% if banners and banners|length %}
 {% for item in banners %}
 
-{% set img = item['banner-img-big'].url ?? '' %}
-{% set img_mobile = item['banner-small'].url ?? img %}
+{# ✅ دعم الصور object أو string #}
+{% set img = item['banner-img-big'].url ?? item['banner-img-big'] ?? '' %}
+{% set img_mobile = item['banner-small'].url ?? item['banner-small'] ?? img %}
 
 <div class="swiper-slide super-slide {{ height_auto ? 'auto-height' : 'fixed-height' }}">
 
@@ -208,6 +216,6 @@
 
 {% block scripts %}
 <script>
-// جاهز لأي تطوير بعدين
+// جاهز لأي تطوير
 </script>
 {% endblock %}
