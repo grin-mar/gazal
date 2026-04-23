@@ -1,31 +1,40 @@
-<p>kjmllllllllييييllllllll</p>
+<p>kjmllllllllllllllll</p>
+<pre>{{ component|json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
 <section class="s-block text-banner-block container" dir="rtl">
 
-{% if component.text_banner|length %}
+
+{# نحاول نقرأ كل احتمالات الاسم #}
+{% set banners = component.text_banner 
+  ?? component['text-banner'] 
+  ?? component.textBanner 
+  ?? [] 
+%}
+
+{% if banners and banners|length %}
 
   <div class="text-banner-wrapper">
 
-    {% for item in component.text_banner %}
+    {% for item in banners %}
 
       <div class="text-banner-item">
 
-        <!-- MAIN TEXT -->
+        <!-- TITLE -->
         <h2 
           class="main-title"
-          style="color: {{ item['text-banner.main-color'] ?? '#000' }}"
+          style="color: {{ item['text-banner.main-color']|default('#000') }}"
         >
           {{ item['text-banner.main-text'] }}
 
-          <span style="color: {{ item['text-banner.main-color-special'] ?? '#ff2e2e' }}">
+          <span style="color: {{ item['text-banner.main-color-special']|default('#ff2e2e') }}">
             {{ item['text-banner.main-text-colourfull'] }}
           </span>
         </h2>
 
-        <!-- SUB TEXT -->
+        <!-- SUB -->
         {% if item['text-banner.second-text'] %}
           <p 
             class="sub-text"
-            style="color: {{ item['text-banner.second-color'] ?? '#333' }}"
+            style="color: {{ item['text-banner.second-color']|default('#333') }}"
           >
             {{ item['text-banner.second-text'] }}
           </p>
@@ -34,7 +43,7 @@
         <!-- BUTTON -->
         {% if item['text-banner.text-button'] %}
           <a 
-            href="{{ item['text-banner.url'] ?? '#' }}" 
+            href="{{ item['text-banner.url']|default('#') }}" 
             class="banner-btn"
           >
             {{ item['text-banner.text-button'] }}
@@ -48,10 +57,12 @@
   </div>
 
 {% else %}
-  <p style="text-align:center">لا يوجد محتوى</p>
+  <p style="text-align:center; padding:20px;">لا يوجد محتوى</p>
 {% endif %}
 
 </section>
+
+
 {% block styles %}
 <style>
 
@@ -96,3 +107,8 @@
 
 </style>
 {% endblock %}
+
+<pre>{{ component|json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
+
+
+<pre>{{ component|json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
