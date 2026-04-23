@@ -1559,7 +1559,7 @@
                     "required": false
                 },
                 {
-                    "id": "banner-item",
+                    "id": "bannersitem",
                     "type": "collection",
                     "format": "collection",
                     "label": "بنرات",
@@ -1569,7 +1569,7 @@
                     "icon": "sicon-list-add",
                     "fields": [
                         {
-                            "id": "banner-item.collection.main-text",
+                            "id": "bannersitem.banner-main",
                             "type": "string",
                             "format": "text",
                             "label": "نص رئيسي",
@@ -1584,7 +1584,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "banner-item.collection.des",
+                            "id": "bannersitem.banner-des",
                             "type": "string",
                             "format": "textarea",
                             "label": "نص فرعي",
@@ -1599,7 +1599,7 @@
                             "maxLength": 255
                         },
                         {
-                            "id": "banner-item.button-text",
+                            "id": "bannersitem.banner-button",
                             "type": "string",
                             "format": "text",
                             "label": "نص الزر",
@@ -1614,7 +1614,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "banner-item.rabt_alzr",
+                            "id": "bannersitem.banner-url-bu",
                             "type": "string",
                             "format": "url",
                             "inputType": "url",
@@ -1629,7 +1629,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "banner-item.button-url",
+                            "id": "bannersitem.banner-url-but",
                             "type": "items",
                             "format": "dropdown-list",
                             "label": "رابط الزر",
@@ -1651,7 +1651,7 @@
                             "value": []
                         },
                         {
-                            "id": "banner-item.collection.pc-image",
+                            "id": "bannersitem.banner-img-big",
                             "type": "string",
                             "format": "image",
                             "label": "الشاشات الكبيرة",
@@ -1663,7 +1663,7 @@
                             "required": true
                         },
                         {
-                            "id": "banner-item.collection.mob-ima",
+                            "id": "bannersitem.banner-small",
                             "type": "string",
                             "format": "image",
                             "label": "الشاشات الصغيرة",
@@ -1677,7 +1677,7 @@
                     ],
                     "value": [],
                     "minLength": 1,
-                    "maxLength": 5
+                    "maxLength": "10"
                 }
             ]
         }
