@@ -1,34 +1,48 @@
 <section class="s-block super-slider" dir="rtl">
 
+{% set banners = component.bannersitem ?? [] %}
+
 <salla-slider auto-play pagination>
 
 <div slot="items">
 
-{% for item in items %}
+{% if banners|length %}
 
-<div class="swiper-slide">
+  {% for item in banners %}
 
-  <!-- IMAGE -->
-  {% if item.image.url %}
-    <img src="{{ item.image.url }}" alt="banner">
-  {% endif %}
+    {% set img = item.banner-img-big.url ?? '' %}
+    {% set img_mobile = item.banner-small.url ?? img %}
 
-  <!-- TEXT -->
-  {% if item.title %}
-    <h2>{{ item.title }}</h2>
-  {% endif %}
+    <div class="swiper-slide">
 
-  {% if item.description %}
-    <p>{{ item.description }}</p>
-  {% endif %}
+      <!-- IMAGE -->
+      {% if img %}
+        <picture>
+          <source media="(max-width:768px)" srcset="{{ img_mobile }}">
+          <img src="{{ img }}" alt="banner">
+        </picture>
+      {% endif %}
 
-  {% if item.url %}
-    <a href="{{ item.url }}">تسوق الآن</a>
-  {% endif %}
+      <!-- TEXT -->
+      {% if item.banner-main %}
+        <h2>{{ item.banner-main }}</h2>
+      {% endif %}
 
-</div>
+      {% if item.banner-des %}
+        <p>{{ item.banner-des }}</p>
+      {% endif %}
 
-{% endfor %}
+      {% if item.banner-button %}
+        <a href="#">{{ item.banner-button }}</a>
+      {% endif %}
+
+    </div>
+
+  {% endfor %}
+
+{% else %}
+  <p>لا يوجد بنرات</p>
+{% endif %}
 
 </div>
 </salla-slider>
