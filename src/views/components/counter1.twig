@@ -259,3 +259,115 @@
 </script>
 {% endblock %}
 <h2 style="color: rgb(211, 0, 0);">ssssss</h2>
+
+<section class="s-block s-block--counter" dir="rtl">
+
+    {% set target = (section.settings.counter_date ??
+    attribute(section.settings,'counter_date') ??
+    component.counter_date ??
+    attribute(component,'counter_date') ?? '')|default('')|trim %}
+
+    {% set mainText = (section.settings.main_text_count ??
+    attribute(section.settings,'main_text_count') ??
+    component.main_text_count ??
+    attribute(component,'main_text_count') ?? '')|default('')|trim %}
+
+    {% set subText = (section.settings.sub_text_count ??
+    attribute(section.settings,'sub_text_count') ??
+    component.sub_text_count ??
+    attribute(component,'sub_text_count') ?? '')|default('')|trim %}
+
+    {% set imgSrc = (section.settings.image_count ??
+    attribute(section.settings,'image_count') ??
+    component.image_count ??
+    attribute(component,'image_count') ?? '')|default('')|trim %}
+
+    {% set itemBg = section.settings.item_bac ??
+    attribute(section.settings,'item_bac') ??
+    component.item_bac ??
+    attribute(component,'item_bac') ?? '#bdc5c7' %}
+
+    {% set mainColor = section.settings.main_txt_color ??
+    attribute(section.settings,'main_txt_color') ??
+    component.main_txt_color ??
+    attribute(component,'main_txt_color') ?? '#000' %}
+
+    {% set subColor = section.settings.sub_txt_color ??
+    attribute(section.settings,'sub_txt_color') ??
+    component.sub_txt_color ??
+    attribute(component,'sub_txt_color') ?? '#000' %}
+
+    {% set buttonUrl = section.settings.button_url1 ??
+    attribute(section.settings,'button_url1') ??
+    component.button_url1 ??
+    attribute(component,'button_url1') ?? '' %}
+
+    {% set buttonText = section.settings.button_name ??
+    attribute(section.settings,'button_name') ??
+    component.button_name ??
+    attribute(component,'button_name') ?? '' %}
+
+    {% set btnBg = section.settings.back_button ??
+    attribute(section.settings,'back_button') ??
+    component.back_button ??
+    attribute(component,'back_button') ?? '#004956' %}
+
+    {% set btnColor = section.settings.button_color ??
+    attribute(section.settings,'button_color') ??
+    component.button_color ??
+    attribute(component,'button_color') ?? '#ffffff' %}
+
+    {% set buttonUrl = buttonUrl|default('')|trim %}
+    {% set buttonText = buttonText|default('')|trim %}
+
+    <div class="counter-wrap s-card rounded-md {{ imgSrc ? '' : 'no-image' }}" data-countdown="{{ target }}"
+        style="background: {{ itemBg }};">
+
+        <div class="counter-left">
+
+            <div class="counter-cells">
+                <div class="cell">
+                    <div class="num js-days">00</div>
+                    <div class="lbl">أيام</div>
+                </div>
+                <div class="cell">
+                    <div class="num js-hours">00</div>
+                    <div class="lbl">ساعات</div>
+                </div>
+                <div class="cell">
+                    <div class="num js-mins">00</div>
+                    <div class="lbl">دقائق</div>
+                </div>
+                <div class="cell">
+                    <div class="num js-secs">00</div>
+                    <div class="lbl">ثواني</div>
+                </div>
+            </div>
+
+            {% if mainText %}
+            <h3 class="counter-title" style="color: {{ mainColor }};">{{ mainText }}</h3>
+            {% endif %}
+
+            {% if subText %}
+            <p class="counter-sub" style="color: {{ subColor }};">{{ subText }}</p>
+            {% endif %}
+
+            <div class="counter-msg" hidden></div>
+
+            {% if buttonUrl and buttonText %}
+            <a href="{{ buttonUrl }}" class="counter-btn" style="background:{{ btnBg }};color:{{ btnColor }};">
+                {{ buttonText }}
+            </a>
+            {% endif %}
+
+        </div>
+
+        {% if imgSrc %}
+        <div class="counter-right">
+            <img class="counter-image" src="{{ imgSrc }}" alt="" loading="lazy" />
+        </div>
+        {% endif %}
+
+    </div>
+
+</section>
