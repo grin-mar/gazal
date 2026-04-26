@@ -7,8 +7,8 @@
 
       {% for banner in section.settings.banner_item %}
 
-      {% set img = banner.banner_mg_big %}
-      {% set mob = banner.banne_small ?: img %}
+      {% set img = banner['banner_item.banner_mg_big'] %}
+      {% set mob = banner['banner_item.banne_small'] ?: img %}
 
       <div class="swiper-slide home-slide">
 
@@ -21,17 +21,21 @@
 
           <div class="home-content {{ section.settings.blur2 ? 'blur' : '' }}">
 
-            {% if banner.banner_main %}
-            <h2 class="home-title">{{ banner.banner_main }}</h2>
+            {% if banner['banner_item.banner_main'] %}
+            <h2 class="home-title">
+              {{ banner['banner_item.banner_main'] }}
+            </h2>
             {% endif %}
 
-            {% if banner.banne_des %}
-            <p class="home-desc">{{ banner.banne_des }}</p>
+            {% if banner['banner_item.banne_des'] %}
+            <p class="home-desc">
+              {{ banner['banner_item.banne_des'] }}
+            </p>
             {% endif %}
 
-            {% if banner.banner_button %}
-            <a href="{{ banner.banner_url_but ?: '#' }}" class="home-btn">
-              {{ banner.banner_button }}
+            {% if banner['banner_item.banner_button'] %}
+            <a href="#" class="home-btn">
+              {{ banner['banner_item.banner_button'] }}
             </a>
             {% endif %}
 
@@ -46,4 +50,7 @@
   </salla-slider>
 
 </section>
-  <h2 style="color: rgb(21, 0, 4);">يييي</h2>
+
+
+  <h2 style="color: rgb(148, 0, 27);">يييي</h2>
+  
