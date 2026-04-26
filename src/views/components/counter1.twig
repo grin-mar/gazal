@@ -1,21 +1,21 @@
 <section class="s-block s-block--counter" dir="rtl">
 
-    {% set target = (section.settings.counter_date ?? component.counter_date ?? '')|default('')|trim %}
-    {% set mainText = (section.settings.main_text_count ?? component.main_text_count ?? '')|default('')|trim %}
-    {% set subText = (section.settings.sub_text_count ?? component.sub_text_count ?? '')|default('')|trim %}
-    {% set imgSrc = (section.settings.image_count ?? component.image_count ?? '')|default('')|trim %}
+    {% set target = (section.settings.counter_date ?? component.counter_date ?? '')|trim %}
+    {% set main_text = (section.settings.main_text_count ?? component.main_text_count ?? '')|trim %}
+    {% set sub_text = (section.settings.sub_text_count ?? component.sub_text_count ?? '')|trim %}
+    {% set img_src = (section.settings.image_count ?? component.image_count ?? '')|trim %}
 
-    {% set itemBg = (section.settings.item_bac ?? component.item_bac ?? '#bdc5c7') %}
-    {% set mainColor = (section.settings.main_txt_color ?? component.main_txt_color ?? '#000') %}
-    {% set subColor = (section.settings.sub_txt_color ?? component.sub_txt_color ?? '#000') %}
+    {% set item_bg = (section.settings.item_bac ?? component.item_bac ?? '#bdc5c7') %}
+    {% set main_color = (section.settings.main_txt_color ?? component.main_txt_color ?? '#000') %}
+    {% set sub_color = (section.settings.sub_txt_color ?? component.sub_txt_color ?? '#000') %}
 
-    {% set buttonUrl = (section.settings.button_url1 ?? component.button_url1 ?? '')|default('')|trim %}
-    {% set buttonText = (section.settings.button_name ?? component.button_name ?? '')|default('')|trim %}
-    {% set btnBg = (section.settings.back_button ?? component.back_button ?? '#004956') %}
-    {% set btnColor = (section.settings.button_color ?? component.button_color ?? '#ffffff') %}
+    {% set button_url = (section.settings.button_url1 ?? component.button_url1 ?? '')|trim %}
+    {% set button_text = (section.settings.button_name ?? component.button_name ?? '')|trim %}
+    {% set btn_bg = (section.settings.back_button ?? component.back_button ?? '#004956') %}
+    {% set btn_color = (section.settings.button_color ?? component.button_color ?? '#ffffff') %}
 
-    <div class="counter-wrap s-card rounded-md {{ imgSrc ? '' : 'no-image' }}" data-countdown="{{ target }}"
-        style="background: {{ itemBg }};">
+    <div class="counter-wrap s-card rounded-md {{ img_src ? '' : 'no-image' }}" data-countdown="{{ target }}"
+        style="background: {{ item_bg }};">
 
         <div class="counter-left">
 
@@ -38,27 +38,25 @@
                 </div>
             </div>
 
-            {% if mainText %}
-            <h3 class="counter-title" style="color: {{ mainColor }};">{{ mainText }}</h3>
+            {% if main_text %}
+            <h3 class="counter-title" style="color: {{ main_color }};">{{ main_text }}</h3>
             {% endif %}
 
-            {% if subText %}
-            <p class="counter-sub" style="color: {{ subColor }};">{{ subText }}</p>
+            {% if sub_text %}
+            <p class="counter-sub" style="color: {{ sub_color }};">{{ sub_text }}</p>
             {% endif %}
 
-            <div class="counter-msg" hidden></div>
-
-            {% if buttonUrl and buttonText %}
-            <a href="{{ buttonUrl }}" class="counter-btn" style="background:{{ btnBg }};color:{{ btnColor }};">
-                {{ buttonText }}
+            {% if button_url and button_text %}
+            <a href="{{ button_url }}" class="counter-btn" style="background:{{ btn_bg }};color:{{ btn_color }};">
+                {{ button_text }}
             </a>
             {% endif %}
 
         </div>
 
-        {% if imgSrc %}
+        {% if img_src %}
         <div class="counter-right">
-            <img class="counter-image" src="{{ imgSrc }}" alt="" loading="lazy" />
+            <img class="counter-image" src="{{ img_src }}" alt="" loading="lazy" />
         </div>
         {% endif %}
 
@@ -101,7 +99,6 @@
         height: 100%;
         min-height: 460px;
         object-fit: cover;
-        display: block;
     }
 
     .counter-left {
@@ -145,13 +142,11 @@
     .counter-title {
         font-size: 40px;
         font-weight: 700;
-        line-height: 1.4;
         text-align: right;
     }
 
     .counter-sub {
         font-size: 17px;
-        line-height: 1.6;
         text-align: right;
     }
 
@@ -159,7 +154,6 @@
         min-width: 180px;
         padding: 12px 22px;
         border-radius: 10px;
-        font-size: 15px;
         transition: 0.3s;
     }
 
@@ -205,11 +199,6 @@
 
         .counter-right {
             width: 100%;
-        }
-
-        .counter-image {
-            min-height: auto;
-            height: auto;
         }
 
         .counter-title,
@@ -269,5 +258,4 @@
     })();
 </script>
 {% endblock %}
-
-<h2 style="color: aqua;">ssssss</h2>
+<h2 style="color: rgb(211, 0, 0);">ssssss</h2>
