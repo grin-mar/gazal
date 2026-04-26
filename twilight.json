@@ -1220,7 +1220,7 @@
             "path": "special-slider",
             "fields": [
                 {
-                    "id": "sec-width",
+                    "id": "sec_width",
                     "type": "items",
                     "format": "radio-list",
                     "label": "تخطيط العنصر",
@@ -1250,7 +1250,7 @@
                     "required": true
                 },
                 {
-                    "id": "height",
+                    "id": "height1",
                     "type": "boolean",
                     "format": "switch",
                     "label": "ارتفاع تلقائي حسب الصورة",
@@ -1262,7 +1262,7 @@
                     "required": false
                 },
                 {
-                    "id": "move",
+                    "id": "move1",
                     "type": "items",
                     "format": "dropdown-list",
                     "label": "نوع حركة التنقل",
@@ -1298,7 +1298,7 @@
                     "required": true
                 },
                 {
-                    "id": "TIME",
+                    "id": "TIME1",
                     "type": "number",
                     "format": "float",
                     "inputType": "number",
@@ -1314,7 +1314,7 @@
                     "maximum": "80000"
                 },
                 {
-                    "id": "text-pos",
+                    "id": "text_pos",
                     "type": "items",
                     "format": "dropdown-list",
                     "label": "موقع ومحاذاة النص",
@@ -1381,7 +1381,7 @@
                     "required": false
                 },
                 {
-                    "id": "slide-pag",
+                    "id": "slide_pag",
                     "type": "items",
                     "format": "checkbox-list",
                     "label": "شكل علامات التنقل",
@@ -1411,7 +1411,7 @@
                     "required": false
                 },
                 {
-                    "id": "blur",
+                    "id": "blur2",
                     "type": "boolean",
                     "format": "switch",
                     "label": "تفعيل تأثير الغباش (Blur) خلف النص",
@@ -1423,7 +1423,7 @@
                     "required": false
                 },
                 {
-                    "id": "pc-main-1",
+                    "id": "pc_main_1",
                     "type": "number",
                     "format": "float",
                     "inputType": "number",
@@ -1439,7 +1439,7 @@
                     "maximum": 100
                 },
                 {
-                    "id": "mob-main",
+                    "id": "mob_main",
                     "type": "number",
                     "format": "float",
                     "inputType": "number",
@@ -1455,7 +1455,7 @@
                     "maximum": 100
                 },
                 {
-                    "id": "mob-des",
+                    "id": "mob_des",
                     "type": "number",
                     "format": "float",
                     "inputType": "number",
@@ -1471,7 +1471,7 @@
                     "maximum": 100
                 },
                 {
-                    "id": "pc-des",
+                    "id": "pc_des",
                     "type": "number",
                     "format": "float",
                     "inputType": "number",
@@ -1487,7 +1487,7 @@
                     "maximum": 100
                 },
                 {
-                    "id": "main-color",
+                    "id": "main_color",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1499,7 +1499,7 @@
                     "required": false
                 },
                 {
-                    "id": "special-word",
+                    "id": "special_word",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1511,7 +1511,7 @@
                     "required": false
                 },
                 {
-                    "id": "des-color",
+                    "id": "des_color",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1523,7 +1523,7 @@
                     "required": false
                 },
                 {
-                    "id": "background",
+                    "id": "background22",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1535,7 +1535,7 @@
                     "required": false
                 },
                 {
-                    "id": "burton-back",
+                    "id": "burton_back",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1547,7 +1547,7 @@
                     "required": false
                 },
                 {
-                    "id": "button-color",
+                    "id": "button_color",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1559,7 +1559,7 @@
                     "required": false
                 },
                 {
-                    "id": "bannersitem",
+                    "id": "banner_item",
                     "type": "collection",
                     "format": "collection",
                     "label": "بنرات",
@@ -1569,7 +1569,7 @@
                     "icon": "sicon-list-add",
                     "fields": [
                         {
-                            "id": "bannersitem.banner-main",
+                            "id": "banner_item.banner_main",
                             "type": "string",
                             "format": "text",
                             "label": "نص رئيسي",
@@ -1584,7 +1584,7 @@
                             "maxLength": "100"
                         },
                         {
-                            "id": "bannersitem.banner-des",
+                            "id": "banner_item.banne_des",
                             "type": "string",
                             "format": "textarea",
                             "label": "نص فرعي",
@@ -1599,7 +1599,7 @@
                             "maxLength": 255
                         },
                         {
-                            "id": "bannersitem.banner-button",
+                            "id": "banner_item.banner_button",
                             "type": "string",
                             "format": "text",
                             "label": "نص الزر",
@@ -1614,7 +1614,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "bannersitem.banner-url-but",
+                            "id": "banner_item.banner_url_but",
                             "type": "items",
                             "format": "dropdown-list",
                             "label": "رابط الزر",
@@ -1639,14 +1639,14 @@
                                     "key": "f01f99ed-8ff3-414d-b9f2-710d97eccd47"
                                 }
                             ],
-                            "source": "Categories",
+                            "source": "Manual",
                             "multichoice": false,
                             "searchable": false,
                             "required": false,
                             "value": []
                         },
                         {
-                            "id": "bannersitem.banner-small",
+                            "id": "banner_item.banne_small",
                             "type": "string",
                             "format": "image",
                             "label": "الشاشات الصغيرة",
@@ -1658,7 +1658,7 @@
                             "required": false
                         },
                         {
-                            "id": "bannersitem.banner-img-big",
+                            "id": "banner_item.banner_mg_big",
                             "type": "string",
                             "format": "image",
                             "label": "الشاشات الكبيرة",
