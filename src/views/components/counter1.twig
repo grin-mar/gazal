@@ -1,42 +1,23 @@
 <section class="s-block s-block--counter" dir="rtl">
 
-    {# ================= SAFE GET ================= #}
-
     {% set target = (section.settings.counterdate ?? component.counterdate ?? '')|default('')|trim %}
     {% set mainText = (section.settings.maintextcount ?? component.maintextcount ?? '')|default('')|trim %}
     {% set subText = (section.settings.subtextcount ?? component.subtextcount ?? '')|default('')|trim %}
     {% set imgSrc = (section.settings.imagecount ?? component.imagecount ?? '')|default('')|trim %}
 
-    {# 🎨 NEW COLORS (مع fallback) #}
     {% set itemBg = (section.settings['item-bac'] ?? attribute(component,'item-bac') ?? '#bdc5c7') %}
     {% set mainColor = (section.settings['main-txt-color'] ?? attribute(component,'main-txt-color') ?? '#000') %}
     {% set subColor = (section.settings['sub-txt-color'] ?? attribute(component,'sub-txt-color') ?? '#000') %}
 
-    {# BUTTON #}
-    {% set buttonUrl = section.settings.buttonurl1 ??
-    attribute(section.settings,'buttonurl1') ??
-    component.buttonurl1 ??
-    attribute(component,'buttonurl1') ?? '' %}
-
-    {% set buttonText = section.settings.buttonname ??
-    attribute(section.settings,'buttonname') ??
-    component.buttonname ??
-    attribute(component,'buttonname') ?? '' %}
-
-    {% set btnBg = section.settings.backbutton ??
-    attribute(section.settings,'backbutton') ??
-    component.backbutton ??
-    attribute(component,'backbutton') ?? '#004956' %}
-
-    {% set btnColor = section.settings.buttoncolor ??
-    attribute(section.settings,'buttoncolor') ??
-    component.buttoncolor ??
-    attribute(component,'buttoncolor') ?? '#ffffff' %}
+    {% set buttonUrl = section.settings.buttonurl1 ?? attribute(component,'buttonurl1') ?? '' %}
+    {% set buttonText = section.settings.buttonname ?? attribute(component,'buttonname') ?? '' %}
+    {% set btnBg = section.settings.backbutton ?? attribute(component,'backbutton') ?? '#004956' %}
+    {% set btnColor = section.settings.buttoncolor ?? attribute(component,'buttoncolor') ?? '#ffffff' %}
 
     {% set buttonUrl = buttonUrl|default('')|trim %}
     {% set buttonText = buttonText|default('')|trim %}
 
-    <div class="counter-wrap" data-countdown="{{ target }}" style="background: {{ itemBg }};">
+    <div class="counter-wrap s-card rounded-md" data-countdown="{{ target }}" style="background: {{ itemBg }};">
 
         <div class="counter-left">
 
@@ -93,184 +74,114 @@
 {% block stylecounter %}
 <style>
     .s-block--counter {
-        padding: 40px 0;
-    }
+    padding: 40px 0;
+}
+
+.s-block--counter .counter-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row-reverse;
+    overflow: hidden;
+}
+
+.s-block--counter .counter-right {
+    width: 423px;
+    flex: 0 0 423px;
+}
+
+.s-block--counter .counter-image {
+    width: 100%;
+    height: 100%;
+    min-height: 483px;
+    object-fit: cover;
+    display: block;
+}
+
+.s-block--counter .counter-left {
+    flex: 1;
+    padding: 48px 56px;
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: flex-start;
+}
+
+.s-block--counter .counter-cells {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+.s-block--counter .cell {
+    width: 112px;
+    height: 132px;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+}
+
+.counter-title {
+    font-size: 36px;
+    text-align: right;
+}
+
+.counter-sub {
+    font-size: 16px;
+    text-align: right;
+}
+
+/* 🔥 زرار مضبوط */
+.counter-btn {
+    width: fit-content;
+    min-width: 160px;
+    max-width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 18px;
+    margin-top: 10px;
+
+    border-radius: 8px;
+
+    transition: 0.3s;
+}
+
+.counter-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* 📱 Mobile */
+@media (max-width: 767px) {
 
     .s-block--counter .counter-wrap {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: row-reverse;
-        overflow: hidden;
-    }
-
-    .s-block--counter .counter-right {
-        width: 423px;
-        flex: 0 0 423px;
-    }
-
-    .s-block--counter .counter-image {
-        width: 100%;
-        height: 100%;
-        min-height: 483px;
-        object-fit: cover;
-        display: block;
+        flex-direction: column-reverse;
+        padding: 16px;
     }
 
     .s-block--counter .counter-left {
-        flex: 1 1 auto;
-        padding: 48px 56px;
-        display: flex;
-        gap: 24px;
-        flex-direction: column;
-        justify-content: center;
+        align-items: center;
+        padding: 28px 16px;
+    }
+
+    .counter-title,
+    .counter-sub {
         text-align: center;
-    }
-
-    .s-block--counter .counter-cells {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 16px;
-        justify-items: center;
-        margin-bottom: 36px;
-        width: fit-content;
-    }
-
-    .s-block--counter .cell {
-        width: 112px;
-        height: 132px;
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        border-radius: 15px;
-        display: grid;
-        place-items: center;
-        padding: 24px;
-        box-sizing: border-box;
-    }
-
-    .s-block--counter .cell .num {
-        font-family: Cairo, sans-serif;
-        font-weight: 700;
-        font-size: 36px;
-        line-height: 1.2;
-        text-align: center;
-    }
-
-    .s-block--counter .cell .lbl {
-        font-family: Cairo, sans-serif;
-        font-weight: 300;
-        font-size: 20px;
-        line-height: 1.2;
-        opacity: 0.85;
-        margin-top: 8px;
-        text-align: center;
-    }
-
-    .s-block--counter .counter-title {
-        font-family: Cairo, sans-serif;
-        font-weight: 700;
-        font-size: 36px;
-        line-height: 1.5;
-        margin: 0;
-        text-align: right;
-    }
-
-    .s-block--counter .counter-sub {
-        font-family: Cairo, sans-serif;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 1.5;
-        margin: 0;
-        opacity: 0.9;
-        text-align: right;
-    }
-
-    .s-block--counter .counter-msg {
-        margin-top: 14px;
-        font-family: Cairo, sans-serif;
-        font-size: 13px;
-        opacity: 0.8;
-        text-align: right;
-    }
-
-    @media (max-width: 992px) {
-        .s-block--counter .counter-title {
-            font-size: 24px;
-            text-align: center;
-        }
-
-        .s-block--counter .counter-sub,
-        .s-block--counter .counter-msg {
-            text-align: center;
-        }
-
-        .s-block--counter .cell {
-            width: 67px;
-            height: 80px;
-            padding: 14px;
-        }
-
-        .s-block--counter .cell .num {
-            font-size: 24px;
-        }
-
-        .s-block--counter .cell .lbl {
-            font-size: 16px;
-        }
-    }
-
-    @media (max-width: 767px) {
-        .s-block--counter .counter-cells {
-            padding: 16px;
-            margin-inline: auto;
-        }
-
-        .s-block--counter .counter-wrap {
-            flex-direction: column-reverse;
-        }
-
-        .s-block--counter .counter-right {
-            width: 100%;
-            flex: 0 0 auto;
-        }
-
-        .s-block--counter .counter-image {
-            min-width: 343px;
-            min-height: 391px;
-        }
-
-        .s-block--counter .counter-left {
-            padding: 28px 16px;
-        }
-
-        .s-block--counter .counter-wrap {
-            flex-direction: column-reverse;
-            padding: 16px;
-        }
     }
 
     .counter-btn {
-        width: 203px;
-        min-height: 48px;
-        height: auto;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-
-        padding: 6px 12px;
-        border-radius: 2px;
-        box-sizing: border-box;
-
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 1.2;
-        letter-spacing: 0;
-
-        white-space: normal;
-        overflow-wrap: anywhere;
-        word-break: break-word;
+        width: 100%;
+        max-width: 260px;
+        margin-inline: auto;
     }
+}
 </style>
 {% endblock %} {% block scriptcounter %}
 <script>
