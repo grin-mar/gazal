@@ -1,0 +1,64 @@
+<section class="s-block s-block--counter" dir="rtl">
+
+    {# DATA #}
+    {% set target = section.settings.counterdate|default('')|trim %}
+    {% set mainText = section.settings.maintextcount|default('')|trim %}
+    {% set subText = section.settings.subtextcount|default('')|trim %}
+    {% set imgSrc = section.settings.imagecount|default('')|trim %}
+
+    {% set buttonUrl = section.settings.buttonurl1|default('')|trim %}
+    {% set buttonText = section.settings.buttonname|default('')|trim %}
+    {% set btnBg = section.settings.backbutton|default('#004956')|trim %}
+    {% set btnColor = section.settings.buttoncolor|default('#ffffff')|trim %}
+
+    <div class="counter-wrap" data-countdown="{{ target }}">
+
+        <!-- LEFT -->
+        <div class="counter-left">
+
+            <div class="counter-cells">
+                <div class="cell">
+                    <div class="num js-days">00</div>
+                    <div class="lbl">أيام</div>
+                </div>
+                <div class="cell">
+                    <div class="num js-hours">00</div>
+                    <div class="lbl">ساعات</div>
+                </div>
+                <div class="cell">
+                    <div class="num js-mins">00</div>
+                    <div class="lbl">دقائق</div>
+                </div>
+                <div class="cell">
+                    <div class="num js-secs">00</div>
+                    <div class="lbl">ثواني</div>
+                </div>
+            </div>
+
+            {% if mainText %}
+            <h3 class="counter-title">{{ mainText }}</h3>
+            {% endif %}
+
+            {% if subText %}
+            <p class="counter-sub">{{ subText }}</p>
+            {% endif %}
+
+            <div class="counter-msg" hidden></div>
+
+            {% if buttonUrl and buttonText %}
+            <a href="{{ buttonUrl }}" class="counter-btn" style="background:{{ btnBg }}; color:{{ btnColor }};">
+                {{ buttonText }}
+            </a>
+            {% endif %}
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="counter-right">
+            {% if imgSrc %}
+            <img class="counter-image" src="{{ imgSrc }}" alt="" loading="lazy" />
+            {% endif %}
+        </div>
+
+    </div>
+</section>
