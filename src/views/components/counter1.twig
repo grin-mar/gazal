@@ -1,21 +1,21 @@
 <section class="s-block s-block--counter" dir="rtl">
 
-    {% set target = section.settings.counter_date|default('')|trim %}
-    {% set main_text = section.settings.main_text_count|default('')|trim %}
-    {% set sub_text = section.settings.sub_text_count|default('')|trim %}
-    {% set img_src = section.settings.image_count|default('')|trim %}
+    {% set target = (section.settings.counter_date ?? component.counter_date ?? '')|default('')|trim %}
+    {% set mainText = (section.settings.main_text_count ?? component.main_text_count ?? '')|default('')|trim %}
+    {% set subText = (section.settings.sub_text_count ?? component.sub_text_count ?? '')|default('')|trim %}
+    {% set imgSrc = (section.settings.image_count ?? component.image_count ?? '')|default('')|trim %}
 
-    {% set item_bg = section.settings.item_bac|default('#bdc5c7') %}
-    {% set main_color = section.settings.main_txt_color|default('#000') %}
-    {% set sub_color = section.settings.sub_txt_color|default('#000') %}
+    {% set itemBg = (section.settings.item_bac ?? component.item_bac ?? '#bdc5c7') %}
+    {% set mainColor = (section.settings.main_txt_color ?? component.main_txt_color ?? '#000') %}
+    {% set subColor = (section.settings.sub_txt_color ?? component.sub_txt_color ?? '#000') %}
 
-    {% set button_url = section.settings.button_url1|default('')|trim %}
-    {% set button_text = section.settings.button_name|default('')|trim %}
-    {% set btn_bg = section.settings.back_button|default('#004956') %}
-    {% set btn_color = section.settings.button_color|default('#ffffff') %}
+    {% set buttonUrl = (section.settings.button_url1 ?? component.button_url1 ?? '')|default('')|trim %}
+    {% set buttonText = (section.settings.button_name ?? component.button_name ?? '')|default('')|trim %}
+    {% set btnBg = (section.settings.back_button ?? component.back_button ?? '#004956') %}
+    {% set btnColor = (section.settings.button_color ?? component.button_color ?? '#ffffff') %}
 
-    <div class="counter-wrap s-card rounded-md {{ img_src ? '' : 'no-image' }}" data-countdown="{{ target }}"
-        style="background: {{ item_bg }};">
+    <div class="counter-wrap s-card rounded-md {{ imgSrc ? '' : 'no-image' }}" data-countdown="{{ target }}"
+        style="background: {{ itemBg }};">
 
         <div class="counter-left">
 
@@ -38,25 +38,27 @@
                 </div>
             </div>
 
-            {% if main_text %}
-            <h3 class="counter-title" style="color: {{ main_color }};">{{ main_text }}</h3>
+            {% if mainText %}
+            <h3 class="counter-title" style="color: {{ mainColor }};">{{ mainText }}</h3>
             {% endif %}
 
-            {% if sub_text %}
-            <p class="counter-sub" style="color: {{ sub_color }};">{{ sub_text }}</p>
+            {% if subText %}
+            <p class="counter-sub" style="color: {{ subColor }};">{{ subText }}</p>
             {% endif %}
 
-            {% if button_url and button_text %}
-            <a href="{{ button_url }}" class="counter-btn" style="background:{{ btn_bg }};color:{{ btn_color }};">
-                {{ button_text }}
+            <div class="counter-msg" hidden></div>
+
+            {% if buttonUrl and buttonText %}
+            <a href="{{ buttonUrl }}" class="counter-btn" style="background:{{ btnBg }};color:{{ btnColor }};">
+                {{ buttonText }}
             </a>
             {% endif %}
 
         </div>
 
-        {% if img_src %}
+        {% if imgSrc %}
         <div class="counter-right">
-            <img class="counter-image" src="{{ img_src }}" alt="" loading="lazy">
+            <img class="counter-image" src="{{ imgSrc }}" alt="" loading="lazy" />
         </div>
         {% endif %}
 
