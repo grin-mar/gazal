@@ -1,51 +1,193 @@
-<section class="s-block super-slider" dir="rtl">
+<section class="s-block gaxal-slider {{ section.settings.sec_width == 'full' ? 'is-full' : 'is-boxed' }}" dir="rtl">
 
-{% set banners = component.bannersitem ?? [] %}
+  <salla-slider id="gaxalSlider" auto-play="{{ section.settings.TIME1 > 0 ? 'true' : 'false' }}"
+    interval="{{ section.settings.TIME1 }}" pagination="true" show-controls="false" dir="rtl">
 
-<salla-slider auto-play pagination>
+    <div slot="items">
 
-<div slot="items">
+      {% for banner in section.settings.banner_item %}
 
-{% if banners|length %}
+      {% set img = banner.banner_mg_big %}
+      {% set mob = banner.banne_small ?: img %}
 
-  {% for item in banners %}
+      <div class="swiper-slide gaxal-slide">
 
-    {% set img = item.banner-img-big.url ?? '' %}
-    {% set img_mobile = item.banner-small.url ?? img %}
-
-    <div class="swiper-slide">
-
-      <!-- IMAGE -->
-      {% if img %}
         <picture>
-          <source media="(max-width:768px)" srcset="{{ img_mobile }}">
-          <img src="{{ img }}" alt="banner">
+          <source media="(max-width:768px)" srcset="{{ mob }}">
+          <img src="{{ img }}" class="gaxal-img" loading="lazy">
         </picture>
-      {% endif %}
 
-      <!-- TEXT -->
-      {% if item.banner-main %}
-        <h2>{{ item.banner-main }}</h2>
-      {% endif %}
+        <div class="gaxal-overlay {{ section.settings.text_pos }}">
 
-      {% if item.banner-des %}
-        <p>{{ item.banner-des }}</p>
-      {% endif %}
+          <div class="gaxal-content {{ section.settings.blur2 ? 'has-blur' : '' }}">
 
-      {% if item.banner-button %}
-        <a href="#">{{ item.banner-button }}</a>
-      {% endif %}
+            {% if banner.banner_main %}
+            <h2 class="gaxal-title">
+              {{ banner.banner_main }}
+            </h2>
+            {% endif %}
+
+            {% if banner.banne_des %}
+            <p class="gaxal-desc">
+              {{ banner.banne_des }}
+            </p>
+            {% endif %}
+
+            {% if banner.banner_button %}
+            <a href="#" class="gaxal-btn">
+              {{ banner.banner_button }}
+            </a>
+            {% endif %}
+
+          </div>
+        </div>
+
+      </div>
+
+      {% endfor %}
 
     </div>
-
-  {% endfor %}
-
-{% else %}
-  <p>لا يوجد بنرات</p>
-{% endif %}
-
-</div>
-</salla-slider>
+  </salla-slider>
 
 </section>
-<pre>{{ component|json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
+
+{% block styleslider %}
+<style>
+.gaxal-slider.is-full{
+    width:100%;
+}
+
+.gaxal-slider.is-boxed{
+    max-width:1200px;
+    margin:auto;
+    border-radius:16px;
+    overflow:hidden;
+}
+
+.gaxal-slide{
+    position:relative;
+}
+
+.gaxal-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    position:absolute;
+    inset:0;
+}
+
+.gaxal-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    padding:40px;
+}
+
+.gaxal-content{
+    max-width:500px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.gaxal-content.has-blur{
+    backdrop-filter:blur(5px);
+    background:var(--overlay-bg);
+    padding:20px;
+    border-radius:12px;
+}
+
+.gaxal-title{
+    font-size:var(--title-size);
+    color:var(--title-color);
+    font-weight:700;
+}
+
+.gaxal-desc{
+    font-size:var(--desc-size);
+    color:var(--desc-color);
+}
+
+.gaxal-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:220px;
+    height:48px;
+
+    background:var(--btn-bg);
+    color:var(--btn-color);
+    border-radius:10px;
+    font-weight:600;
+}
+
+#gaxalSlider .swiper-pagination{
+    right:30px;
+    bottom:20px;
+}
+
+#gaxalSlider .swiper-pagination-bullet{
+    background:#fff;
+    opacity:0.6;
+}
+
+#gaxalSlider .swiper-pagination-bullet-active{
+    opacity:1;
+}
+
+@media(max-width:768px){
+
+.gaxal-overlay{
+    padding:16px;
+}
+
+.gaxal-title{
+    font-size:var(--title-size-mobile);
+}
+
+.gaxal-desc{
+    font-size:var(--desc-size-mobile);
+}
+
+.gaxal-btn{
+    width:100%;
+    max-width:200px;
+}
+
+}
+</style>
+{% endblock %}
+
+{% block scriptslider%}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+      const slider = document.querySelector("#gaxalSlider");
+      if (!slider) return;
+
+      const swiper = slider.swiper;
+      if (!swiper) return;
+
+      /* effect */
+      const effect = slider.getAttribute("data-effect");
+
+      if (effect === "fade") {
+        swiper.params.effect = "fade";
+      }
+      else if (effect === "flip") {
+        swiper.params.effect = "flip";
+      }
+      else if (effect === "zoom") {
+        swiper.params.effect = "fade";
+      }
+      else {
+        swiper.params.effect = "slide";
+      }
+
+      swiper.update();
+
+    });
+  </script>
+  {% endblock %}
+  <h2 style="color: rgb(255, 200, 209);">ssssss</h2>
