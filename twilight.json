@@ -1260,7 +1260,7 @@
                     "icon": "sicon-list-add",
                     "fields": [
                         {
-                            "id": "banner_item.banner_main",
+                            "id": "banner_main",
                             "type": "string",
                             "format": "text",
                             "label": "نص رئيسي",
@@ -1275,7 +1275,7 @@
                             "maxLength": "100"
                         },
                         {
-                            "id": "banner_item.banne_des",
+                            "id": "banne_des",
                             "type": "string",
                             "format": "textarea",
                             "label": "نص فرعي",
@@ -1290,7 +1290,7 @@
                             "maxLength": 255
                         },
                         {
-                            "id": "banner_item.banner_button",
+                            "id": "banner_button",
                             "type": "string",
                             "format": "text",
                             "label": "نص الزر",
@@ -1305,7 +1305,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "banner_item.banner_url_but",
+                            "id": "banner_url_but",
                             "type": "items",
                             "format": "dropdown-list",
                             "label": "رابط الزر",
@@ -1337,7 +1337,7 @@
                             "value": []
                         },
                         {
-                            "id": "banner_item.banne_small",
+                            "id": "banne_small",
                             "type": "string",
                             "format": "image",
                             "label": "الشاشات الصغيرة",
@@ -1349,7 +1349,7 @@
                             "required": false
                         },
                         {
-                            "id": "banner_item.banner_mg_big",
+                            "id": "banner_mg_big",
                             "type": "string",
                             "format": "image",
                             "label": "الشاشات الكبيرة",
