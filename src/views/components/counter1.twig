@@ -1,16 +1,19 @@
 <section class="s-block s-block--counter" dir="rtl"
     style="background: {{ section.settings['item-bac']|default('#bdc5c7') }};">
 
-    {% set target = (section.settings.counterdate ?? component.counterdate ?? '')|default('')|trim %}
+    {% set target = (section.settings.counterdate ?? component.counterdate ?? '')
+    | default('') | trim %}
 
-    {% set mainText = (section.settings.maintextcount ?? component.maintextcount ?? '')|default('')|trim %}
+    {% set mainText = (section.settings.maintextcount ?? component.maintextcount ?? '')
+    | default('') | trim %}
 
-    {% set subText = (section.settings.subtextcount ?? component.subtextcount ?? '')|default('')|trim %}
+    {% set subText = (section.settings.subtextcount ?? component.subtextcount ?? '')
+    | default('') | trim %}
 
-    {% set imgSrc = (section.settings.imagecount ?? component.imagecount ?? '')|default('')|trim %}
+    {% set imgSrc = (section.settings.imagecount ?? component.imagecount ?? '')
+    | default('') | trim %}
 
     <div class="counter-wrap" data-countdown="{{ target }}">
-
         <div class="counter-left">
 
             <div class="counter-cells">
@@ -93,7 +96,6 @@
             <img class="counter-image" src="{{ imgSrc }}" alt="" loading="lazy" />
             {% endif %}
         </div>
-
     </div>
 </section>
 {% block stylecounter %}
