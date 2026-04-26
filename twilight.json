@@ -1794,6 +1794,30 @@
                     "maxLength": 30
                 },
                 {
+                    "id": "main-txt-color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لو المحتوي الاساسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#7a0025",
+                    "required": false
+                },
+                {
+                    "id": "sub-txt-color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون المحتوي الفرعي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#000000",
+                    "required": false
+                },
+                {
                     "id": "counterdate",
                     "type": "string",
                     "format": "datetime",
