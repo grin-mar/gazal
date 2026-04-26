@@ -1,22 +1,40 @@
 <section class="s-block s-block--counter" dir="rtl">
 
-    {# ================= SETTINGS ================= #}
+    {# ================= SAFE GET ================= #}
 
-    {% set target = section.settings.counterdate|default('')|trim %}
-    {% set mainText = section.settings.maintextcount|default('')|trim %}
-    {% set subText = section.settings.subtextcount|default('')|trim %}
-    {% set imgSrc = section.settings.imagecount|default('')|trim %}
+    {% set target = (section.settings.counterdate ?? component.counterdate ?? '')|default('')|trim %}
+    {% set mainText = (section.settings.maintextcount ?? component.maintextcount ?? '')|default('')|trim %}
+    {% set subText = (section.settings.subtextcount ?? component.subtextcount ?? '')|default('')|trim %}
+    {% set imgSrc = (section.settings.imagecount ?? component.imagecount ?? '')|default('')|trim %}
 
-    {# 🎨 NEW COLORS #}
-    {% set itemBg = section.settings['item-bac']|default('#bdc5c7') %}
-    {% set mainColor = section.settings['main-txt-color']|default('#000') %}
-    {% set subColor = section.settings['sub-txt-color']|default('#000') %}
+    {# 🎨 NEW COLORS (مع fallback) #}
+    {% set itemBg = (section.settings['item-bac'] ?? attribute(component,'item-bac') ?? '#bdc5c7') %}
+    {% set mainColor = (section.settings['main-txt-color'] ?? attribute(component,'main-txt-color') ?? '#000') %}
+    {% set subColor = (section.settings['sub-txt-color'] ?? attribute(component,'sub-txt-color') ?? '#000') %}
 
     {# BUTTON #}
-    {% set buttonUrl = section.settings.buttonurl1|default('')|trim %}
-    {% set buttonText = section.settings.buttonname|default('')|trim %}
-    {% set btnBg = section.settings.backbutton|default('#004956') %}
-    {% set btnColor = section.settings.buttoncolor|default('#fff') %}
+    {% set buttonUrl = section.settings.buttonurl1 ??
+    attribute(section.settings,'buttonurl1') ??
+    component.buttonurl1 ??
+    attribute(component,'buttonurl1') ?? '' %}
+
+    {% set buttonText = section.settings.buttonname ??
+    attribute(section.settings,'buttonname') ??
+    component.buttonname ??
+    attribute(component,'buttonname') ?? '' %}
+
+    {% set btnBg = section.settings.backbutton ??
+    attribute(section.settings,'backbutton') ??
+    component.backbutton ??
+    attribute(component,'backbutton') ?? '#004956' %}
+
+    {% set btnColor = section.settings.buttoncolor ??
+    attribute(section.settings,'buttoncolor') ??
+    component.buttoncolor ??
+    attribute(component,'buttoncolor') ?? '#ffffff' %}
+
+    {% set buttonUrl = buttonUrl|default('')|trim %}
+    {% set buttonText = buttonText|default('')|trim %}
 
     <div class="counter-wrap" data-countdown="{{ target }}" style="background: {{ itemBg }};">
 
@@ -56,7 +74,7 @@
             <div class="counter-msg" hidden></div>
 
             {% if buttonUrl and buttonText %}
-            <a href="{{ buttonUrl }}" class="counter-btn" style="background:{{ btnBg }}; color:{{ btnColor }};">
+            <a href="{{ buttonUrl }}" class="counter-btn" style="background:{{ btnBg }};color:{{ btnColor }};">
                 {{ buttonText }}
             </a>
             {% endif %}
