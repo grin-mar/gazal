@@ -17,7 +17,8 @@
     {% set buttonUrl = buttonUrl|default('')|trim %}
     {% set buttonText = buttonText|default('')|trim %}
 
-    <div class="counter-wrap s-card rounded-md" data-countdown="{{ target }}" style="background: {{ itemBg }};">
+    <div class="counter-wrap s-card rounded-md {{ imgSrc ? '' : 'no-image' }}" data-countdown="{{ target }}"
+        style="background: {{ itemBg }};">
 
         <div class="counter-left">
 
@@ -41,15 +42,11 @@
             </div>
 
             {% if mainText %}
-            <h3 class="counter-title" style="color: {{ mainColor }};">
-                {{ mainText }}
-            </h3>
+            <h3 class="counter-title" style="color: {{ mainColor }};">{{ mainText }}</h3>
             {% endif %}
 
             {% if subText %}
-            <p class="counter-sub" style="color: {{ subColor }};">
-                {{ subText }}
-            </p>
+            <p class="counter-sub" style="color: {{ subColor }};">{{ subText }}</p>
             {% endif %}
 
             <div class="counter-msg" hidden></div>
@@ -62,195 +59,219 @@
 
         </div>
 
+        {% if imgSrc %}
         <div class="counter-right">
-            {% if imgSrc %}
             <img class="counter-image" src="{{ imgSrc }}" alt="" loading="lazy" />
-            {% endif %}
         </div>
+        {% endif %}
 
     </div>
 
 </section>
+
 {% block stylecounter %}
 <style>
     .s-block--counter {
-    padding: 40px 0;
-}
-
-.s-block--counter .counter-wrap {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row-reverse;
-    overflow: hidden;
-}
-
-.s-block--counter .counter-right {
-    width: 423px;
-    flex: 0 0 423px;
-}
-
-.s-block--counter .counter-image {
-    width: 100%;
-    height: 100%;
-    min-height: 483px;
-    object-fit: cover;
-    display: block;
-}
-
-.s-block--counter .counter-left {
-    flex: 1;
-    padding: 48px 56px;
-    display: flex;
-    gap: 24px;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    align-items: flex-start;
-}
-
-.s-block--counter .counter-cells {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 36px;
-}
-
-.s-block--counter .cell {
-    width: 112px;
-    height: 132px;
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 15px;
-    display: grid;
-    place-items: center;
-}
-
-.counter-title {
-    font-size: 36px;
-    text-align: right;
-}
-
-.counter-sub {
-    font-size: 16px;
-    text-align: right;
-}
-
-/* 🔥 زرار مضبوط */
-.counter-btn {
-    width: fit-content;
-    min-width: 160px;
-    max-width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 10px 18px;
-    margin-top: 10px;
-
-    border-radius: 8px;
-
-    transition: 0.3s;
-}
-
-.counter-btn:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-}
-
-/* 📱 Mobile */
-@media (max-width: 767px) {
-
-    .s-block--counter .counter-wrap {
-        flex-direction: column-reverse;
-        padding: 16px;
+        padding: 40px 0;
     }
 
-    .s-block--counter .counter-left {
+    .counter-wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row-reverse;
+        overflow: hidden;
+    }
+
+    /* ✅ لما مفيش صورة */
+    .counter-wrap.no-image {
+        justify-content: center;
+    }
+
+    .counter-wrap.no-image .counter-left {
+        width: 100%;
         align-items: center;
-        padding: 28px 16px;
-    }
-
-    .counter-title,
-    .counter-sub {
         text-align: center;
     }
 
-    .counter-btn {
-        width: 100%;
-        max-width: 260px;
-        margin-inline: auto;
+    /* الصورة */
+    .counter-right {
+        width: 423px;
+        flex: 0 0 423px;
     }
-}
+
+    .counter-image {
+        width: 100%;
+        height: 100%;
+        min-height: 483px;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* النص */
+    .counter-left {
+        flex: 1;
+        padding: 48px 56px;
+        display: flex;
+        gap: 24px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .counter-cells {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-bottom: 36px;
+    }
+
+    .cell {
+        width: 112px;
+        height: 132px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 15px;
+        display: grid;
+        place-items: center;
+    }
+
+    /* النصوص */
+    .counter-title {
+        font-size: 36px;
+        text-align: right;
+    }
+
+    .counter-sub {
+        font-size: 16px;
+        text-align: right;
+    }
+
+    /* الزرار */
+    .counter-btn {
+        width: fit-content;
+        min-width: 160px;
+        max-width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 10px 18px;
+        margin-top: 10px;
+
+        border-radius: 8px;
+        transition: 0.3s;
+    }
+
+    .counter-btn:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+
+    /* 📱 Tablet */
+    @media (max-width: 992px) {
+        .cell {
+            width: 70px;
+            height: 90px;
+        }
+
+        .counter-title {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .counter-sub {
+            text-align: center;
+        }
+    }
+
+    /* 📱 Mobile */
+    @media (max-width: 767px) {
+
+        .counter-wrap {
+            flex-direction: column-reverse;
+            padding: 16px;
+        }
+
+        .counter-left {
+            align-items: center;
+            padding: 28px 16px;
+        }
+
+        .counter-right {
+            width: 100%;
+        }
+
+        .counter-image {
+            min-height: auto;
+            height: auto;
+        }
+
+        .counter-title,
+        .counter-sub {
+            text-align: center;
+        }
+
+        .counter-btn {
+            width: 100%;
+            max-width: 260px;
+            margin-inline: auto;
+        }
+    }
 </style>
-{% endblock %} {% block scriptcounter %}
+{% endblock %}
+
+{% block scriptcounter %}
 <script>
     (function () {
-        function pad2(n) {
-            return String(n).padStart(2, "0");
-        }
-        function normalizeDateString(s) {
-            if (!s) return "";
-            var str = String(s).trim();
-            if (/^\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}(:\d{2})?$/.test(str)) {
-                str = str.replace(/\s+/, "T");
-            }
-            return str;
-        }
+        function pad2(n) { return String(n).padStart(2, "0"); }
+
         function initCountdown(wrap) {
-            var targetStr = normalizeDateString(wrap.getAttribute("data-countdown"));
-            var msg = wrap.querySelector(".counter-msg");
+            var targetStr = wrap.getAttribute("data-countdown");
+            if (!targetStr) return;
+
+            var target = new Date(targetStr);
+            if (isNaN(target)) return;
+
             var dEl = wrap.querySelector(".js-days");
             var hEl = wrap.querySelector(".js-hours");
             var mEl = wrap.querySelector(".js-mins");
             var sEl = wrap.querySelector(".js-secs");
-            function showMsg(t) {
-                if (!msg) return;
-                msg.hidden = !t;
-                msg.textContent = t || "";
-            }
-            if (!targetStr) {
-                showMsg("تنبيه: تاريخ ووقت العدّ التنازلي غير متوفر");
-                return;
-            }
-            var target = new Date(targetStr);
-            if (isNaN(target.getTime())) {
-                showMsg("تنبيه: صيغة التاريخ غير صحيحة");
-                return;
-            }
+
             function tick() {
                 var now = new Date();
-                var diffMs = target.getTime() - now.getTime();
-                if (diffMs <= 0) {
-                    dEl.textContent = "00";
-                    hEl.textContent = "00";
-                    mEl.textContent = "00";
-                    sEl.textContent = "00";
-                    showMsg("انتهت المدة");
+                var diff = target - now;
+
+                if (diff <= 0) {
+                    dEl.textContent = hEl.textContent = mEl.textContent = sEl.textContent = "00";
                     clearInterval(timer);
                     return;
                 }
-                var totalSeconds = Math.floor(diffMs / 1000);
-                var days = Math.floor(totalSeconds / 86400);
-                var rem = totalSeconds % 86400;
-                var hours = Math.floor(rem / 3600);
-                rem %= 3600;
-                var mins = Math.floor(rem / 60);
-                var secs = rem % 60;
-                dEl.textContent = String(days);
+
+                var sec = Math.floor(diff / 1000);
+                var days = Math.floor(sec / 86400);
+                sec %= 86400;
+
+                var hours = Math.floor(sec / 3600);
+                sec %= 3600;
+
+                var mins = Math.floor(sec / 60);
+                var secs = sec % 60;
+
+                dEl.textContent = days;
                 hEl.textContent = pad2(hours);
                 mEl.textContent = pad2(mins);
                 sEl.textContent = pad2(secs);
-                showMsg("");
             }
+
             tick();
             var timer = setInterval(tick, 1000);
         }
+
         document.addEventListener("DOMContentLoaded", function () {
-            document
-                .querySelectorAll(".s-block--counter .counter-wrap[data-countdown]")
-                .forEach(initCountdown);
+            document.querySelectorAll(".counter-wrap[data-countdown]").forEach(initCountdown);
         });
+
     })();
 </script>
 {% endblock %}
@@ -259,3 +280,5 @@
 <h2 style="background:#d80b0b; padding:6px 12px; border-radius:6px; display:inline-block;">
     عرض خاص
 </h2>
+
+
