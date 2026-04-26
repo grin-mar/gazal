@@ -1250,6 +1250,122 @@
                     "required": true
                 },
                 {
+                    "id": "banner_item",
+                    "type": "collection",
+                    "format": "collection",
+                    "label": "بنرات",
+                    "description": null,
+                    "labelHTML": null,
+                    "item_label": null,
+                    "icon": "sicon-list-add",
+                    "fields": [
+                        {
+                            "id": "banner_item.banner_main",
+                            "type": "string",
+                            "format": "text",
+                            "label": "نص رئيسي",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": "1",
+                            "maxLength": "100"
+                        },
+                        {
+                            "id": "banner_item.banne_des",
+                            "type": "string",
+                            "format": "textarea",
+                            "label": "نص فرعي",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Your text here",
+                            "icon": "sicon-typography",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": "4",
+                            "maxLength": 255
+                        },
+                        {
+                            "id": "banner_item.banner_button",
+                            "type": "string",
+                            "format": "text",
+                            "label": "نص الزر",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "تسوق الآن",
+                            "icon": "sicon-format-text-alt",
+                            "value": null,
+                            "multilanguage": false,
+                            "required": false,
+                            "minLength": "1",
+                            "maxLength": 30
+                        },
+                        {
+                            "id": "banner_item.banner_url_but",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "رابط الزر",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-keyboard_arrow_down",
+                            "selected": [],
+                            "options": [
+                                {
+                                    "label": "أحدث المنتجات",
+                                    "value": "latest-products",
+                                    "key": "d2045b86-c0d2-4bde-bfe7-43ae5bd1eade"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "value": "offers",
+                                    "key": "59758f87-badc-4873-b468-6e3fe780f892"
+                                },
+                                {
+                                    "label": "الماركات",
+                                    "value": "brands",
+                                    "key": "f01f99ed-8ff3-414d-b9f2-710d97eccd47"
+                                }
+                            ],
+                            "source": "Manual",
+                            "multichoice": false,
+                            "searchable": false,
+                            "required": false,
+                            "value": []
+                        },
+                        {
+                            "id": "banner_item.banne_small",
+                            "type": "string",
+                            "format": "image",
+                            "label": "الشاشات الصغيرة",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": false
+                        },
+                        {
+                            "id": "banner_item.banner_mg_big",
+                            "type": "string",
+                            "format": "image",
+                            "label": "الشاشات الكبيرة",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": null,
+                            "required": true
+                        }
+                    ],
+                    "value": [],
+                    "minLength": 1,
+                    "maxLength": "10"
+                },
+                {
                     "id": "height1",
                     "type": "boolean",
                     "format": "switch",
@@ -1557,122 +1673,6 @@
                     "icon": "sicon-format-fill",
                     "value": "#ffffff",
                     "required": false
-                },
-                {
-                    "id": "banner_item",
-                    "type": "collection",
-                    "format": "collection",
-                    "label": "بنرات",
-                    "description": null,
-                    "labelHTML": null,
-                    "item_label": null,
-                    "icon": "sicon-list-add",
-                    "fields": [
-                        {
-                            "id": "banner_item.banner_main",
-                            "type": "string",
-                            "format": "text",
-                            "label": "نص رئيسي",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "Placeholder text ..",
-                            "icon": "sicon-format-text-alt",
-                            "value": null,
-                            "multilanguage": false,
-                            "required": false,
-                            "minLength": "1",
-                            "maxLength": "100"
-                        },
-                        {
-                            "id": "banner_item.banne_des",
-                            "type": "string",
-                            "format": "textarea",
-                            "label": "نص فرعي",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "Your text here",
-                            "icon": "sicon-typography",
-                            "value": null,
-                            "multilanguage": false,
-                            "required": false,
-                            "minLength": "4",
-                            "maxLength": 255
-                        },
-                        {
-                            "id": "banner_item.banner_button",
-                            "type": "string",
-                            "format": "text",
-                            "label": "نص الزر",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "تسوق الآن",
-                            "icon": "sicon-format-text-alt",
-                            "value": null,
-                            "multilanguage": false,
-                            "required": false,
-                            "minLength": "1",
-                            "maxLength": 30
-                        },
-                        {
-                            "id": "banner_item.banner_url_but",
-                            "type": "items",
-                            "format": "dropdown-list",
-                            "label": "رابط الزر",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-keyboard_arrow_down",
-                            "selected": [],
-                            "options": [
-                                {
-                                    "label": "أحدث المنتجات",
-                                    "value": "latest-products",
-                                    "key": "d2045b86-c0d2-4bde-bfe7-43ae5bd1eade"
-                                },
-                                {
-                                    "label": "التخفيضات",
-                                    "value": "offers",
-                                    "key": "59758f87-badc-4873-b468-6e3fe780f892"
-                                },
-                                {
-                                    "label": "الماركات",
-                                    "value": "brands",
-                                    "key": "f01f99ed-8ff3-414d-b9f2-710d97eccd47"
-                                }
-                            ],
-                            "source": "Manual",
-                            "multichoice": false,
-                            "searchable": false,
-                            "required": false,
-                            "value": []
-                        },
-                        {
-                            "id": "banner_item.banne_small",
-                            "type": "string",
-                            "format": "image",
-                            "label": "الشاشات الصغيرة",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "e.g. https://hostname.com/image.png",
-                            "icon": "sicon-image",
-                            "value": null,
-                            "required": false
-                        },
-                        {
-                            "id": "banner_item.banner_mg_big",
-                            "type": "string",
-                            "format": "image",
-                            "label": "الشاشات الكبيرة",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "e.g. https://hostname.com/image.png",
-                            "icon": "sicon-image",
-                            "value": null,
-                            "required": true
-                        }
-                    ],
-                    "value": [],
-                    "minLength": 1,
-                    "maxLength": "10"
                 }
             ]
         },
