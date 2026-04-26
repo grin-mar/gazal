@@ -1,18 +1,18 @@
-<section class="s-block s-block--counter" dir="rtl">
-    {% set target = (section.settings.counterdate ?? component.counterdate ?? '')
-    | default('') | trim %}
+<section class="s-block s-block--counter" dir="rtl"
+    style="background: {{ section.settings['item-bac']|default('#bdc5c7') }};">
 
-    {% set mainText = (section.settings.maintextcount ?? component.maintextcount ?? '')
-    | default('') | trim %}
+    {% set target = (section.settings.counterdate ?? component.counterdate ?? '')|default('')|trim %}
+    {% set mainText = (section.settings.maintextcount ?? component.maintextcount ?? '')|default('')|trim %}
+    {% set subText = (section.settings.subtextcount ?? component.subtextcount ?? '')|default('')|trim %}
+    {% set imgSrc = (section.settings.imagecount ?? component.imagecount ?? '')|default('')|trim %}
 
-    {% set subText = (section.settings.subtextcount ?? component.subtextcount ?? '')
-    | default('') | trim %}
-
-    {% set imgSrc = (section.settings.imagecount ?? component.imagecount ?? '')
-    | default('') | trim %}
+    {% set mainColor = section.settings['main-txt-color']|default('#7a0025') %}
+    {% set subColor = section.settings['sub-txt-color']|default('#000') %}
 
     <div class="counter-wrap" data-countdown="{{ target }}">
+
         <div class="counter-left">
+
             <div class="counter-cells">
                 <div class="cell">
                     <div class="num js-days">00</div>
@@ -33,41 +33,33 @@
             </div>
 
             {% if mainText %}
-            <h3 class="counter-title">{{ mainText }}</h3>
+            <h3 class="counter-title" style="color: {{ mainColor }};">
+                {{ mainText }}
+            </h3>
             {% endif %}
 
             {% if subText %}
-            <p class="counter-sub">{{ subText }}</p>
+            <p class="counter-sub" style="color: {{ subColor }};">
+                {{ subText }}
+            </p>
             {% endif %}
 
             <div class="counter-msg" hidden></div>
 
-            {% set buttonUrl = section.settings.buttonurl1 ??
-            attribute(section.settings,'buttonurl1') ??
-            section.settings.get('buttonurl1') ??
-            component.buttonurl1 ??
-            attribute(component,'buttonurl1') ??
+            {% set buttonUrl = section.settings.buttonurl1 ?? attribute(section.settings,'buttonurl1') ??
+            section.settings.get('buttonurl1') ?? component.buttonurl1 ?? attribute(component,'buttonurl1') ??
             component.get('buttonurl1') ?? '' %}
 
-            {% set buttonText = section.settings.buttonname ??
-            attribute(section.settings,'buttonname') ??
-            section.settings.get('buttonname') ??
-            component.buttonname ??
-            attribute(component,'buttonname') ??
+            {% set buttonText = section.settings.buttonname ?? attribute(section.settings,'buttonname') ??
+            section.settings.get('buttonname') ?? component.buttonname ?? attribute(component,'buttonname') ??
             component.get('buttonname') ?? '' %}
 
-            {% set btnBg = section.settings.backbutton ??
-            attribute(section.settings,'backbutton') ??
-            section.settings.get('backbutton') ??
-            component.backbutton ??
-            attribute(component,'backbutton') ??
+            {% set btnBg = section.settings.backbutton ?? attribute(section.settings,'backbutton') ??
+            section.settings.get('backbutton') ?? component.backbutton ?? attribute(component,'backbutton') ??
             component.get('backbutton') ?? '' %}
 
-            {% set btnColor = section.settings.buttoncolor ??
-            attribute(section.settings,'buttoncolor') ??
-            section.settings.get('buttoncolor') ??
-            component.buttoncolor ??
-            attribute(component,'buttoncolor') ??
+            {% set btnColor = section.settings.buttoncolor ?? attribute(section.settings,'buttoncolor') ??
+            section.settings.get('buttoncolor') ?? component.buttoncolor ?? attribute(component,'buttoncolor') ??
             component.get('buttoncolor') ?? '' %}
 
             {% set buttonUrl = buttonUrl|default('')|trim %}
@@ -76,11 +68,11 @@
             {% set btnColor = btnColor|default('#ffffff')|trim %}
 
             {% if buttonUrl and buttonText %}
-            <a href="{{ buttonUrl }}" class="counter-btn"
-                style="background:{{ btnBg }};border-radius:8px;border:1px solid rgba(255,255,255,0.15);color:{{ btnColor }};">
+            <a href="{{ buttonUrl }}" class="counter-btn" style="background:{{ btnBg }};color:{{ btnColor }};">
                 {{ buttonText }}
             </a>
             {% endif %}
+
         </div>
 
         <div class="counter-right">
@@ -88,6 +80,7 @@
             <img class="counter-image" src="{{ imgSrc }}" alt="" loading="lazy" />
             {% endif %}
         </div>
+
     </div>
 </section>
 {% block stylecounter %}
@@ -344,6 +337,3 @@
 </script>
 {% endblock %}
 
-<h2 style="background:#ffd54f; padding:6px 12px; border-radius:6px; display:inline-block;">
-    عرض خاص
-</h2>
