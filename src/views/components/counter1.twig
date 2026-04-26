@@ -1,24 +1,24 @@
 <section class="s-block s-block--counter" dir="rtl">
 
     {% set target = (section.settings['counter-date'] ?? component['counter-date'] ?? '')|default('')|trim %}
-    {% set main_text = (section.settings['main-text-count'] ?? component['main-text-count'] ?? '')|default('')|trim %}
-    {% set sub_text = (section.settings['sub-text-count'] ?? component['sub-text-count'] ?? '')|default('')|trim %}
-    {% set img_src = (section.settings['image-count'] ?? component['image-count'] ?? '')|default('')|trim %}
+    {% set main-text = (section.settings['main-text-count'] ?? component['main-text-count'] ?? '')|default('')|trim %}
+    {% set sub-text = (section.settings['sub-text-count'] ?? component['sub-text-count'] ?? '')|default('')|trim %}
+    {% set img-src = (section.settings['image-count'] ?? component['image-count'] ?? '')|default('')|trim %}
 
-    {% set item_bg = (section.settings['item-bac'] ?? attribute(component,'item-bac') ?? '#bdc5c7') %}
-    {% set main_color = (section.settings['main-txt-color'] ?? attribute(component,'main-txt-color') ?? '#000') %}
-    {% set sub_color = (section.settings['sub-txt-color'] ?? attribute(component,'sub-txt-color') ?? '#000') %}
+    {% set item-bg = (section.settings['item-bac'] ?? attribute(component,'item-bac') ?? '#bdc5c7') %}
+    {% set main-color = (section.settings['main-txt-color'] ?? attribute(component,'main-txt-color') ?? '#000') %}
+    {% set sub-color = (section.settings['sub-txt-color'] ?? attribute(component,'sub-txt-color') ?? '#000') %}
 
-    {% set button_url = section.settings['button-url1'] ?? attribute(component,'button-url1') ?? '' %}
-    {% set button_text = section.settings['button-name'] ?? attribute(component,'button-name') ?? '' %}
-    {% set btn_bg = section.settings['back-button'] ?? attribute(component,'back-button') ?? '#004956' %}
-    {% set btn_color = section.settings['button-color'] ?? attribute(component,'button-color') ?? '#ffffff' %}
+    {% set button-url = section.settings['button-url1'] ?? attribute(component,'button-url1') ?? '' %}
+    {% set button-text = section.settings['button-name'] ?? attribute(component,'button-name') ?? '' %}
+    {% set btn-bg = section.settings['back-button'] ?? attribute(component,'back-button') ?? '#004956' %}
+    {% set btn-color = section.settings['button-color'] ?? attribute(component,'button-color') ?? '#ffffff' %}
 
-    {% set button_url = button_url|default('')|trim %}
-    {% set button_text = button_text|default('')|trim %}
+    {% set button-url = button-url|default('')|trim %}
+    {% set button-text = button-text|default('')|trim %}
 
-    <div class="counter-wrap s-card rounded-md {{ img_src ? '' : 'no-image' }}" data-countdown="{{ target }}"
-        style="background: {{ item_bg }};">
+    <div class="counter-wrap s-card rounded-md {{ img-src ? '' : 'no-image' }}" data-countdown="{{ target }}"
+        style="background: {{ item-bg }};">
 
         <div class="counter-left">
 
@@ -41,27 +41,27 @@
                 </div>
             </div>
 
-            {% if main_text %}
-            <h3 class="counter-title" style="color: {{ main_color }};">{{ main_text }}</h3>
+            {% if main-text %}
+            <h3 class="counter-title" style="color: {{ main-color }};">{{ main-text }}</h3>
             {% endif %}
 
-            {% if sub_text %}
-            <p class="counter-sub" style="color: {{ sub_color }};">{{ sub_text }}</p>
+            {% if sub-text %}
+            <p class="counter-sub" style="color: {{sub-color}};">{{ sub-text }}</p>
             {% endif %}
 
             <div class="counter-msg" hidden></div>
 
-            {% if button_url and button_text %}
-            <a href="{{ button_url }}" class="counter-btn" style="background:{{ btn_bg }};color:{{ btn_color }};">
-                {{ button_text }}
+            {% if button-url and button-text %}
+            <a href="{{ button-url }}" class="counter-btn" style="background:{{ btn-bg }};color:{{ btn-color }};">
+                {{ button-text }}
             </a>
             {% endif %}
 
         </div>
 
-        {% if img_src %}
+        {% if img-src %}
         <div class="counter-right">
-            <img class="counter-image" src="{{ img_src }}" alt="" loading="lazy" />
+            <img class="counter-image" src="{{ img-src }}" alt="" loading="lazy" />
         </div>
         {% endif %}
 
