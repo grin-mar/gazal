@@ -1,5 +1,4 @@
-<section class="s-block s-block--default gaxal-slider {{ component.sec_width == 'full' ? 'is-full' : 'is-boxed' }}"
-  dir="rtl">
+<section class="s-block gaxal-slider {{ component.sec_width == 'full' ? 'is-full' : 'is-boxed' }}" dir="rtl">
 
   <salla-slider id="gaxal-main-slider" auto-play="{{ component.TIME1 > 0 ? 'true' : 'false' }}"
     interval="{{ component.TIME1 }}" pagination show-controls="false" dir="rtl">
@@ -18,7 +17,7 @@
           <img src="{{ img }}" class="gaxal-img" loading="lazy">
         </picture>
 
-        <div class="gaxal-overlay {{ component.text_pos }}">
+        <div class="gaxal-overlay flex {{ component.text_pos }}">
 
           <div class="gaxal-content {{ component.blur2 ? 'has-blur' : '' }}">
 
@@ -61,8 +60,143 @@
   </salla-slider>
 
 </section>
+{% block styleslider %}
+<style>
+.gaxal-slider.is-full{
+    width:100%;
+}
 
-  <h2 style="color: rgb(193, 20, 179);">ddddddww</h2>
+.gaxal-slider.is-boxed{
+    max-width:1200px;
+    margin:auto;
+    border-radius:16px;
+    overflow:hidden;
+}
 
+.gaxal-slide{
+    position:relative;
+}
 
-  <pre>{{ section.settings.banner_item|json_encode }}</pre>
+.gaxal-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    position:absolute;
+    inset:0;
+}
+
+.gaxal-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    padding:40px;
+}
+
+.gaxal-content{
+    max-width:500px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.gaxal-content.has-blur{
+    backdrop-filter:blur(5px);
+    background:var(--overlay-bg);
+    padding:20px;
+    border-radius:12px;
+}
+
+.gaxal-title{
+    font-size:var(--title-size);
+    color:var(--title-color);
+    font-weight:700;
+}
+
+.gaxal-desc{
+    font-size:var(--desc-size);
+    color:var(--desc-color);
+}
+
+.gaxal-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:220px;
+    height:48px;
+
+    background:var(--btn-bg);
+    color:var(--btn-color);
+    border-radius:10px;
+    font-weight:600;
+}
+
+#gaxalSlider .swiper-pagination{
+    right:30px;
+    bottom:20px;
+}
+
+#gaxalSlider .swiper-pagination-bullet{
+    background:#fff;
+    opacity:0.6;
+}
+
+#gaxalSlider .swiper-pagination-bullet-active{
+    opacity:1;
+}
+
+@media(max-width:768px){
+
+.gaxal-overlay{
+    padding:16px;
+}
+
+.gaxal-title{
+    font-size:var(--title-size-mobile);
+}
+
+.gaxal-desc{
+    font-size:var(--desc-size-mobile);
+}
+
+.gaxal-btn{
+    width:100%;
+    max-width:200px;
+}
+
+}
+</style>
+{% endblock %}
+
+{% block scriptslider%}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+      const slider = document.querySelector("#gaxalSlider");
+      if (!slider) return;
+
+      const swiper = slider.swiper;
+      if (!swiper) return;
+
+      /* effect */
+      const effect = slider.getAttribute("data-effect");
+
+      if (effect === "fade") {
+        swiper.params.effect = "fade";
+      }
+      else if (effect === "flip") {
+        swiper.params.effect = "flip";
+      }
+      else if (effect === "zoom") {
+        swiper.params.effect = "fade";
+      }
+      else {
+        swiper.params.effect = "slide";
+      }
+
+      swiper.update();
+
+    });
+  </script>
+  {% endblock %}
+  <h2 style="color: rgb(255, 200, 209);">ssssss</h2>
