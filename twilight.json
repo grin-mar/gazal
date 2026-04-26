@@ -1686,7 +1686,7 @@
             "path": "counter1",
             "fields": [
                 {
-                    "id": "item-bac",
+                    "id": "item_bac",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1698,7 +1698,7 @@
                     "required": false
                 },
                 {
-                    "id": "image-count",
+                    "id": "image_count",
                     "type": "string",
                     "format": "image",
                     "label": "الصورة",
@@ -1710,7 +1710,7 @@
                     "required": false
                 },
                 {
-                    "id": "main-text-count",
+                    "id": "main_text_count",
                     "type": "string",
                     "format": "text",
                     "label": "النص الاساسي",
@@ -1725,7 +1725,7 @@
                     "maxLength": 30
                 },
                 {
-                    "id": "sub-text-count",
+                    "id": "sub_text_count",
                     "type": "string",
                     "format": "textarea",
                     "label": "النص الفرعي",
@@ -1740,7 +1740,7 @@
                     "maxLength": 255
                 },
                 {
-                    "id": "back-button",
+                    "id": "back_button",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1752,7 +1752,7 @@
                     "required": false
                 },
                 {
-                    "id": "button-color",
+                    "id": "button_color",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1764,7 +1764,7 @@
                     "required": false
                 },
                 {
-                    "id": "button-name",
+                    "id": "button_name",
                     "type": "string",
                     "format": "text",
                     "label": "محتوي  الزر",
@@ -1779,7 +1779,7 @@
                     "maxLength": 30
                 },
                 {
-                    "id": "button-url1",
+                    "id": "button_url1",
                     "type": "string",
                     "format": "url",
                     "inputType": "url",
@@ -1794,7 +1794,7 @@
                     "maxLength": 30
                 },
                 {
-                    "id": "main-txt-color",
+                    "id": "main_txt_color",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1806,7 +1806,7 @@
                     "required": false
                 },
                 {
-                    "id": "sub-txt-color",
+                    "id": "sub_txt_color",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1818,7 +1818,7 @@
                     "required": false
                 },
                 {
-                    "id": "counter-date",
+                    "id": "counter_date",
                     "type": "string",
                     "format": "datetime",
                     "inputType": "datetime-local",
