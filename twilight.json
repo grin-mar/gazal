@@ -1083,17 +1083,17 @@
             "path": "text-banner",
             "fields": [
                 {
-                    "id": "text-banner",
+                    "id": "Txt_banne",
                     "type": "collection",
                     "format": "collection",
-                    "label": "text-banner",
+                    "label": "بنر نصي",
                     "description": "بنر نصي مع الوان لابراز العنصر",
                     "labelHTML": null,
                     "item_label": null,
                     "icon": "sicon-list-add",
                     "fields": [
                         {
-                            "id": "text-banner.main-text",
+                            "id": "Txt_banne.main_text",
                             "type": "string",
                             "format": "text",
                             "label": "النص الاساسي",
@@ -1108,7 +1108,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "text-banner.main-text-colourfull",
+                            "id": "Txt_banne.main_txt_color",
                             "type": "string",
                             "format": "text",
                             "label": "النص الاساسي ملون",
@@ -1123,7 +1123,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "text-banner.second-text",
+                            "id": "Txt_banne.sub_txt",
                             "type": "string",
                             "format": "text",
                             "label": "النص الفرعي",
@@ -1138,7 +1138,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "text-banner.main-color",
+                            "id": "Txt_banne.color_ma",
                             "type": "string",
                             "format": "color",
                             "inputType": "color",
@@ -1150,7 +1150,7 @@
                             "required": false
                         },
                         {
-                            "id": "text-banner.main-color-special",
+                            "id": "Txt_banne.color_ma_1",
                             "type": "string",
                             "format": "color",
                             "inputType": "color",
@@ -1162,7 +1162,7 @@
                             "required": false
                         },
                         {
-                            "id": "text-banner.second-color",
+                            "id": "Txt_banne.sec_1_color",
                             "type": "string",
                             "format": "color",
                             "inputType": "color",
@@ -1174,10 +1174,10 @@
                             "required": false
                         },
                         {
-                            "id": "text-banner.text-button",
+                            "id": "Txt_banne.code_coupon",
                             "type": "string",
                             "format": "text",
-                            "label": "محتوي الزر",
+                            "label": "كود الخصم",
                             "description": null,
                             "labelHTML": null,
                             "placeholder": "Placeholder text ..",
@@ -1185,22 +1185,7 @@
                             "value": null,
                             "multilanguage": false,
                             "required": false,
-                            "minLength": 6,
-                            "maxLength": 30
-                        },
-                        {
-                            "id": "text-banner.url",
-                            "type": "string",
-                            "format": "url",
-                            "inputType": "url",
-                            "label": "رابط المحتوي",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "e.g. https://salla.sa",
-                            "icon": "sicon-link",
-                            "value": null,
-                            "required": false,
-                            "minLength": "2",
+                            "minLength": "1",
                             "maxLength": 30
                         }
                     ],
