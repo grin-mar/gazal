@@ -1698,7 +1698,7 @@
                     "required": false
                 },
                 {
-                    "id": "imagecount",
+                    "id": "image-count",
                     "type": "string",
                     "format": "image",
                     "label": "الصورة",
@@ -1710,7 +1710,7 @@
                     "required": false
                 },
                 {
-                    "id": "maintextcount",
+                    "id": "main-text-count",
                     "type": "string",
                     "format": "text",
                     "label": "النص الاساسي",
@@ -1725,7 +1725,7 @@
                     "maxLength": 30
                 },
                 {
-                    "id": "subtextcount",
+                    "id": "sub-text-count",
                     "type": "string",
                     "format": "textarea",
                     "label": "النص الفرعي",
@@ -1740,7 +1740,7 @@
                     "maxLength": 255
                 },
                 {
-                    "id": "backbutton",
+                    "id": "back-button",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1752,7 +1752,7 @@
                     "required": false
                 },
                 {
-                    "id": "buttoncolor",
+                    "id": "button-color",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1764,7 +1764,7 @@
                     "required": false
                 },
                 {
-                    "id": "buttonname",
+                    "id": "button-name",
                     "type": "string",
                     "format": "text",
                     "label": "محتوي  الزر",
@@ -1779,7 +1779,7 @@
                     "maxLength": 30
                 },
                 {
-                    "id": "buttonurl1",
+                    "id": "button-url1",
                     "type": "string",
                     "format": "url",
                     "inputType": "url",
@@ -1818,7 +1818,7 @@
                     "required": false
                 },
                 {
-                    "id": "counterdate",
+                    "id": "counter-date",
                     "type": "string",
                     "format": "datetime",
                     "inputType": "datetime-local",
