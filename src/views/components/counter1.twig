@@ -1,14 +1,3 @@
-
-
-
-
-
-
-
-
-
-<h2 style="color: rgb(255, 200, 209);">ssssss</h2>
-
 <section class="s-block s-block--counter" dir="rtl">
 
     {% set target = (section.settings.counter_date ?? attribute(section.settings,'counter_date') ??
@@ -90,3 +79,200 @@
     </div>
 
 </section>
+
+{% block stylecounter %}
+<style>
+    .s-block--counter {
+        padding: 48px 0;
+    }
+
+    .counter-wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row-reverse;
+        overflow: hidden;
+        border-radius: 16px;
+    }
+
+    .counter-wrap.no-image {
+        justify-content: center;
+    }
+
+    .counter-wrap.no-image .counter-left {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .counter-right {
+        width: 420px;
+        flex: 0 0 420px;
+    }
+
+    .counter-image {
+        width: 100%;
+        height: 100%;
+        min-height: 460px;
+        object-fit: cover;
+    }
+
+    .counter-left {
+        flex: 1;
+        padding: 56px 64px;
+        display: flex;
+        gap: 28px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .counter-cells {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+    }
+
+    .cell {
+        width: 130px;
+        height: 150px;
+        border-radius: 18px;
+        display: grid;
+        place-items: center;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(6px);
+    }
+
+    .cell .num {
+        font-size: 48px;
+        font-weight: 800;
+        line-height: 1;
+    }
+
+    .cell .lbl {
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 8px;
+    }
+
+    .counter-title {
+        font-size: 40px;
+        font-weight: 700;
+        text-align: right;
+    }
+
+    .counter-sub {
+        font-size: 17px;
+        text-align: right;
+    }
+
+    .counter-btn {
+        min-width: 180px;
+        padding: 12px 22px;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+
+    .counter-btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.9;
+    }
+
+    @media (max-width: 992px) {
+        .cell {
+            width: 90px;
+            height: 100px;
+        }
+
+        .cell .num {
+            font-size: 30px;
+        }
+
+        .cell .lbl {
+            font-size: 14px;
+        }
+
+        .counter-title {
+            font-size: 26px;
+            text-align: center;
+        }
+
+        .counter-sub {
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .counter-wrap {
+            flex-direction: column-reverse;
+            padding: 16px;
+        }
+
+        .counter-left {
+            align-items: center;
+            padding: 28px 16px;
+        }
+
+        .counter-right {
+            width: 100%;
+        }
+
+        .counter-title,
+        .counter-sub {
+            text-align: center;
+        }
+
+        .cell {
+            width: 70px;
+            height: 80px;
+        }
+
+        .cell .num {
+            font-size: 24px;
+        }
+
+        .cell .lbl {
+            font-size: 13px;
+        }
+
+        .counter-btn {
+            width: 100%;
+            max-width: 260px;
+            margin-inline: auto;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block scriptcounter %}
+<script>
+    (function () {
+        function pad2(n) { return String(n).padStart(2, "0") }
+        function initCountdown(wrap) {
+            var targetStr = wrap.getAttribute("data-countdown"); if (!targetStr) return;
+            var target = new Date(targetStr); if (isNaN(target)) return;
+            var d = wrap.querySelector(".js-days"),
+                h = wrap.querySelector(".js-hours"),
+                m = wrap.querySelector(".js-mins"),
+                s = wrap.querySelector(".js-secs");
+            function tick() {
+                var now = new Date(), diff = target - now;
+                if (diff <= 0) { d.textContent = h.textContent = m.textContent = s.textContent = "00"; clearInterval(t); return; }
+                var sec = Math.floor(diff / 1000), days = Math.floor(sec / 86400); sec %= 86400;
+                var hours = Math.floor(sec / 3600); sec %= 3600;
+                var mins = Math.floor(sec / 60), secs = sec % 60;
+                d.textContent = days;
+                h.textContent = pad2(hours);
+                m.textContent = pad2(mins);
+                s.textContent = pad2(secs);
+            }
+            tick(); var t = setInterval(tick, 1000);
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".counter-wrap[data-countdown]").forEach(initCountdown);
+        });
+    })();
+</script>
+{% endblock %}
+
+<h2 style="color: rgb(255, 200, 209);">ssssss</h2>
