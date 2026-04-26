@@ -1675,6 +1675,16 @@
                     "maxLength": "10"
                 }
             ]
+        },
+        {
+            "key": "c8ae03ae-3d19-411e-9f4c-0c8ed67e3701",
+            "title": {
+                "en": "counter",
+                "ar": "العداد"
+            },
+            "icon": "sicon-store",
+            "path": "counter1",
+            "fields": []
         }
     ],
     "support_url": "https://example.com",
