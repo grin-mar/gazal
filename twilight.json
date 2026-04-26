@@ -1686,6 +1686,18 @@
             "path": "counter1",
             "fields": [
                 {
+                    "id": "item-bac",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "خلفية العنصر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#bdc5c7",
+                    "required": false
+                },
+                {
                     "id": "imagecount",
                     "type": "string",
                     "format": "image",
@@ -1696,6 +1708,21 @@
                     "icon": "sicon-image",
                     "value": null,
                     "required": false
+                },
+                {
+                    "id": "maintextcount",
+                    "type": "string",
+                    "format": "text",
+                    "label": "النص الاساسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": "1",
+                    "maxLength": 30
                 },
                 {
                     "id": "subtextcount",
@@ -1733,14 +1760,14 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-format-fill",
-                    "value": "#004956",
+                    "value": "#d9d9d9",
                     "required": false
                 },
                 {
-                    "id": "maintextcount",
+                    "id": "buttonname",
                     "type": "string",
                     "format": "text",
-                    "label": "نص العداد",
+                    "label": "محتوي  الزر",
                     "description": null,
                     "labelHTML": null,
                     "placeholder": "Placeholder text ..",
@@ -1749,21 +1776,6 @@
                     "multilanguage": false,
                     "required": false,
                     "minLength": "1",
-                    "maxLength": 30
-                },
-                {
-                    "id": "buttonname",
-                    "type": "string",
-                    "format": "text",
-                    "label": "عنوان الزر",
-                    "description": null,
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": null,
-                    "multilanguage": false,
-                    "required": false,
-                    "minLength": 6,
                     "maxLength": 30
                 },
                 {
