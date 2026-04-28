@@ -33,11 +33,9 @@
               {% if banner.banner_main %}
               <h3 class="home-slide__title"
                 style="color:{{ component.main_color }}; font-size:{{ component.pc_main_1 }}px;">
-
                 {% set words = banner.banner_main|split(' ') %}
                 {% set last = words|last %}
                 {% set rest = words|slice(0, words|length - 1)|join(' ') %}
-
                 {{ rest }}
                 <span style="color:{{ component.special_word }};">{{ last }}</span>
               </h3>
@@ -76,7 +74,6 @@
 
 {% block styleslider %}
 <style>
-
 .home-slider {
   position: relative;
   overflow: hidden;
@@ -93,42 +90,63 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  will-change: transform;
 }
 
+/* content */
 .home-slider__content {
   position: absolute;
   inset: 0;
   display: flex;
   padding: 0 40px;
-  z-index: 2;
   pointer-events: none;
 }
 
 .home-slide__text {
   max-width: 520px;
-  width: 100%;
+  margin: 30px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  word-break: break-word;
-  margin: 30px;
   pointer-events: auto;
 }
 
+/* blur */
 .home-slide__text.has-blur {
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   padding: 20px;
   border-radius: 14px;
 }
 
+/* animation keyframes */
+@keyframes fade-in-right {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* reset */
+.home-slide__title,
+.home-slide__body,
 .home-slide__btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 26px;
-  border-radius: 10px;
+  opacity: 0;
+}
+
+/* animation active */
+.swiper-slide-active .home-slide__title {
+  animation: fade-in-right 0.7s ease forwards;
+}
+
+.swiper-slide-active .home-slide__body {
+  animation: fade-in-right 0.7s ease 0.2s forwards;
+}
+
+.swiper-slide-active .home-slide__btn {
+  animation: fade-in-right 0.7s ease 0.4s forwards;
 }
 
 /* arrows */
@@ -138,28 +156,18 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0,0,0,0.3);
 }
 
 /* pagination */
-.home-slider #home-main-slider .swiper-pagination {
+.home-slider .swiper-pagination {
   position: absolute;
   right: 20px;
   bottom: 20px;
 }
-
-/* shapes */
-{% set shape = component.shkl_aalamat_altnql|default('circle') %}
-
-{% if shape == 'square' %}
-.swiper-pagination-bullet { border-radius:4px; }
-{% elseif shape == 'line' %}
-.swiper-pagination-bullet { width:32px;height:4px; }
-{% else %}
-.swiper-pagination-bullet { border-radius:999px; }
-{% endif %}
 </style>
 {% endblock %}
+
 
 
 {% block scriptslider %}
@@ -177,14 +185,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const swiper = el.swiper;
 
-    /* 🎬 نوع الحركة */
+    /* 🎬 effect */
     let raw = "{{ component.move1|lower }}";
     let effect = 'slide';
 
-    if (raw.includes('fade') || raw.includes('تلاشي')) effect = 'fade';
+    if (raw.includes('fade')) effect = 'fade';
     else if (raw.includes('flip')) effect = 'flip';
-    else if (raw.includes('cube')) effect = 'cube';
-    else if (raw.includes('cover')) effect = 'coverflow';
+    else if (raw.includes('zoom')) effect = 'fade'; // fallback
+    else effect = 'slide';
 
     swiper.params.effect = effect;
 
@@ -192,12 +200,9 @@ document.addEventListener("DOMContentLoaded", function () {
       swiper.params.fadeEffect = { crossFade: true };
     }
 
-    /* ⏱️ السرعة */
+    /* ⏱️ speed */
     let delay = Number({{ component.TIME1|default(0) }});
-
-    if(delay > 0 && delay < 100){
-      delay *= 1000; // تحويل من ثواني لملي
-    }
+    if(delay > 0 && delay < 100) delay *= 1000;
 
     if(delay > 0){
       swiper.params.autoplay = {
@@ -207,16 +212,10 @@ document.addEventListener("DOMContentLoaded", function () {
       swiper.autoplay.start();
     }
 
-    /* navigation fix */
-    swiper.navigation.init();
-    swiper.navigation.update();
-
     swiper.params.speed = 700;
-
     swiper.update();
   }
 
   init();
 });
 </script>
-{% endblock %}
