@@ -68,195 +68,90 @@
 </section>
 
 
+
+
+
 {% block styleslider %}
 <style>
-  .home-slider {
-    position: relative;
-    overflow: hidden;
-  }
 
-  .home-slide {
-    position: relative;
+.home-slider {
+  position: relative;
+  overflow: hidden;
+}
 
-      {
-      % if component.height1 %
-    }
+.home-slide {
+  position: relative;
+}
 
-    height: auto;
+{% if component.height1 %}
+.home-slide {
+  height: auto;
+}
+{% else %}
+.home-slide {
+  min-height: 650px;
+}
+{% endif %}
 
-      {
-      % else %
-    }
+.home-slide__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    min-height: 650px;
+.home-slider__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  padding: 0 40px;
+  z-index: 2;
+}
 
-      {
-      % endif %
-    }
-  }
+.home-slide__text {
+  max-width: 520px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  word-break: break-word;
+}
 
-  .home-slide__img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+.home-slide__text.has-blur {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 20px;
+  border-radius: 12px;
+}
 
-  .home-slider__content {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    padding: 0 40px;
-    z-index: 2;
-  }
+.home-slide__title {
+  font-weight: 600;
+  line-height: 1.3;
+}
 
-  .home-slide__text {
-    max-width: 520px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    word-break: break-word;
-  }
+.home-slide__body {
+  line-height: 1.6;
+}
 
-  .home-slide__text.has-blur {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 20px;
-    border-radius: 12px;
-  }
+.home-slide__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 26px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-weight: 600;
+  transition: 0.3s;
+}
 
-  .home-slide__title {
-    font-weight: 600;
-    line-height: 1.3;
-  }
+.home-slide__btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
 
-  .home-slide__body {
-    line-height: 1.6;
-  }
-
-  .home-slide__btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 26px;
-    border-radius: 10px;
-    margin-top: 10px;
-    font-weight: 600;
-    transition: 0.3s;
-  }
-
-  .home-slide__btn:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
-  }
-
-  /* pagination */
-  .home-slider #home-main-slider .swiper-pagination {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    display: flex;
-    gap: 8px;
-  }
-
-  .home-slider #home-main-slider .swiper-pagination-bullet {
-    background: #fff;
-    opacity: 0.6;
-    transition: .2s;
-  }
-
-  .home-slider #home-main-slider .swiper-pagination-bullet-active {
-    opacity: 1;
-  }
-
-  /* shapes */
-    {
-    % if component.shkl_aalamat_altnql=='square' %
-  }
-
-  .home-slider #home-main-slider .swiper-pagination-bullet {
-    width: 12px;
-    height: 12px;
-    border-radius: 4px;
-  }
-
-    {
-    % elseif component.shkl_aalamat_altnql=='line' %
-  }
-
-  .home-slider #home-main-slider .swiper-pagination-bullet {
-    width: 32px;
-    height: 4px;
-    border-radius: 4px;
-  }
-
-    {
-    % else %
-  }
-
-  .home-slider #home-main-slider .swiper-pagination-bullet {
-    width: 12px;
-    height: 12px;
-    border-radius: 999px;
-  }
-
-    {
-    % endif %
-  }
-
-  @media(max-width:768px) {
-
-    .home-slide {
-        {
-        % if component.height1 %
-      }
-
-      height: auto;
-
-        {
-        % else %
-      }
-
-      min-height: 320px;
-
-        {
-        % endif %
-      }
-    }
-
-    .home-slider__content {
-      padding: 0 16px;
-    }
-
-    .home-slide__title {
-      font-size: {
-          {
-          component.mob_main
-        }
-      }
-
-      px;
-    }
-
-    .home-slide__body {
-      font-size: {
-          {
-          component.mob_des
-        }
-      }
-
-      px;
-    }
-
-    .home-slide__btn {
-      padding: 8px 14px;
-      font-size: 14px;
-    }
-
-  }
-  .home-slider #home-main-slider .swiper-pagination {
+/* pagination */
+.home-slider #home-main-slider .swiper-pagination {
   position: absolute;
   right: 20px;
   bottom: 20px;
@@ -274,7 +169,7 @@
   opacity: 1;
 }
 
-/* shapes fix */
+/* shapes */
 {% set shape = component.shkl_aalamat_altnql|default('circle') %}
 
 {% if shape == 'square' %}
@@ -297,55 +192,93 @@
 }
 {% endif %}
 
+/* mobile */
+@media(max-width:768px) {
+
+  {% if component.height1 %}
+  .home-slide {
+    height: auto;
+  }
+  {% else %}
+  .home-slide {
+    min-height: 320px;
+  }
+  {% endif %}
+
+  .home-slider__content {
+    padding: 0 16px;
+  }
+
+  .home-slide__title {
+    font-size: {{ component.mob_main }}px;
+  }
+
+  .home-slide__body {
+    font-size: {{ component.mob_des }}px;
+  }
+
+  .home-slide__btn {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+}
+/* ====== base fix ====== */
+.home-slide__img {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* ====== zoom (kenburns) ====== */
+.slider-zoom .swiper-slide-active .home-slide__img {
+  animation: kenburns-top 6s ease-out both;
+}
+
+/* ====== flip ====== */
+.slider-flip .swiper-slide {
+  perspective: 1000px;
+}
+
+.slider-flip .swiper-slide-active {
+  animation: flip-in-ver-right 0.8s ease both;
+}
+
+/* ====== slide ====== */
+.slider-slide .swiper-slide-active {
+  animation: slide-in-right 0.6s ease both;
+}
+
+/* ====== reset animation (مهم جدا) ====== */
+.swiper-slide {
+  animation: none;
+}
+
+.swiper-slide-active {
+  animation-fill-mode: both;
+}
+.slider-zoom .swiper-slide-active .home-slide__img {
+  animation: kenburns-top 6s ease-out both;
+}
+
+.slider-flip .swiper-slide-active {
+  animation: flip-in-ver-right 0.8s ease both;
+}
+
+.slider-slide .swiper-slide-active {
+  animation: slide-in-right 0.6s ease both;
+}
 </style>
 {% endblock %}
 
-
 {% block scriptslider %}
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-
-    const slider = document.querySelector('#home-main-slider');
-    if (!slider) return;
-
-    function init() {
-
-      if (!slider.swiper) {
-        setTimeout(init, 200);
-        return;
-      }
-
-      const swiper = slider.swiper;
-
-      let effect = "{{ component.move1|default('slide')|lower }}";
-      if (effect === 'zoom') effect = 'fade';
-
-      swiper.params.effect = effect;
-
-      const delay = Number({{ component.TIME1 |default(0) }});
-
-  if (delay > 0) {
-    swiper.params.autoplay = {
-      delay: delay,
-      disableOnInteraction: false
-    };
-    swiper.autoplay.start();
-  } else {
-    swiper.autoplay.stop();
-  }
-
-  swiper.update();
-  }
-
-  init();
-
-});
 document.addEventListener("DOMContentLoaded", function () {
 
   const el = document.querySelector('#home-main-slider');
   if (!el) return;
 
   function init() {
+
     if (!el.swiper) {
       setTimeout(init, 200);
       return;
@@ -353,28 +286,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const swiper = el.swiper;
 
-    /* effect mapping */
-    let effect = "{{ component.move1|default('slide')|lower }}";
+    /* ===== autoplay ===== */
+    const delay = Number({{ component.TIME1|default(3000) }});
 
-    if (effect === 'fade' || effect === 'flip') {
-      swiper.params.effect = effect;
-    } else {
-      swiper.params.effect = 'slide';
+    if (delay > 0) {
+      swiper.params.autoplay = {
+        delay: delay,
+        disableOnInteraction: false
+      };
+
+      if (swiper.autoplay && swiper.autoplay.start) {
+        swiper.autoplay.start();
+      }
     }
 
-    /* لازم إعادة تهيئة */
+    /* ===== animation type ===== */
+    const type = "{{ component.move1|default('slide')|lower }}";
+
+    el.classList.remove('slider-zoom','slider-flip','slider-slide');
+
+    if (type === 'zoom') {
+      el.classList.add('slider-zoom');
+    } 
+    else if (type === 'flip') {
+      el.classList.add('slider-flip');
+    } 
+    else {
+      el.classList.add('slider-slide');
+    }
+
+    /* ===== fix drag bug ===== */
+    swiper.on('touchEnd', () => {
+      swiper.allowTouchMove = true;
+    });
+
     swiper.update();
-
-    /* إجبار إعادة البناء لو لسه مش مطبق */
-    if (swiper.destroy && swiper.init) {
-      swiper.destroy(true, true);
-      swiper.init();
-    }
   }
 
   init();
-});
 
+});
 </script>
 {% endblock %}
 
