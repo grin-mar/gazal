@@ -1,10 +1,13 @@
-<section class="s-block s-block--default home-slider {{ component.sec_width == 'full' ? 's-block--full-bg' : '' }}"
-  dir="rtl">
+<section class="s-block s-block--default home-slider {{ component.sec_width == 'full' ? 's-block--full-bg' : '' }}" dir="rtl">
 
   <div class="{{ component.sec_width == 'Boxed' ? 'container' : '' }}">
 
-    <salla-slider id="home-main-slider" auto-play="{{ component.TIME1 > 0 ? 'true' : 'false' }}"
-      interval="{{ component.TIME1 }}" pagination type="carousel" dir="rtl" show-controls="false">
+    <salla-slider
+      id="home-main-slider"
+      pagination
+      type="carousel"
+      dir="rtl"
+      show-controls="false">
 
       <div slot="items">
 
@@ -22,8 +25,10 @@
 
           <div class="home-slider__content flex {{ component.text_pos }}">
 
-            <div class="home-slide__text {{ component.blur2 ? 'has-blur' : '' }}" {% if component.blur2 %}
-              style="background: rgba(0,0,0,0.3);" {% endif %}>
+            <div class="home-slide__text {{ component.blur2 ? 'has-blur' : '' }}"
+              {% if component.blur2 %}
+              style="background: rgba(0,0,0,0.35);"
+              {% endif %}>
 
               {% if banner.banner_main %}
               <h3 class="home-slide__title"
@@ -39,13 +44,15 @@
               {% endif %}
 
               {% if banner.banne_des %}
-              <p class="home-slide__body" style="color:{{ component.des_color }}; font-size:{{ component.pc_des }}px;">
+              <p class="home-slide__body"
+                style="color:{{ component.des_color }}; font-size:{{ component.pc_des }}px;">
                 {{ banner.banne_des }}
               </p>
               {% endif %}
 
               {% if banner.banner_button %}
-              <a href="{% if banner.banner_url_but == 'latest-products' %}/products?sort=latest{% elseif banner.banner_url_but == 'offers' %}/sale{% elseif banner.banner_url_but == 'brands' %}/brands{% else %}#{% endif %}"
+              <a
+                href="{% if banner.banner_url_but == 'latest-products' %}/products?sort=latest{% elseif banner.banner_url_but == 'offers' %}/sale{% elseif banner.banner_url_but == 'brands' %}/brands{% else %}#{% endif %}"
                 class="home-slide__btn"
                 style="background:{{ component.burton_back }}; color:{{ component.button_color }};">
                 {{ banner.banner_button }}
@@ -68,9 +75,6 @@
 </section>
 
 
-
-
-
 {% block styleslider %}
 <style>
 
@@ -81,17 +85,8 @@
 
 .home-slide {
   position: relative;
-}
-
-{% if component.height1 %}
-.home-slide {
-  height: auto;
-}
-{% else %}
-.home-slide {
   min-height: 650px;
 }
-{% endif %}
 
 .home-slide__img {
   position: absolute;
@@ -116,17 +111,18 @@
   flex-direction: column;
   gap: 16px;
   word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .home-slide__text.has-blur {
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 
 .home-slide__title {
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.3;
 }
 
@@ -151,6 +147,7 @@
 }
 
 /* pagination */
+
 .home-slider #home-main-slider .swiper-pagination {
   position: absolute;
   right: 20px;
@@ -161,15 +158,16 @@
 
 .home-slider #home-main-slider .swiper-pagination-bullet {
   background: #fff;
-  opacity: 0.5;
-  transition: all .3s ease;
+  opacity: 0.6;
+  transition: all .2s ease;
 }
 
 .home-slider #home-main-slider .swiper-pagination-bullet-active {
   opacity: 1;
 }
 
-/* shapes */
+/* shape control */
+
 {% set shape = component.shkl_aalamat_altnql|default('circle') %}
 
 {% if shape == 'square' %}
@@ -180,9 +178,9 @@
 }
 {% elseif shape == 'line' %}
 .home-slider #home-main-slider .swiper-pagination-bullet {
-  width: 30px;
+  width: 32px;
   height: 4px;
-  border-radius: 3px;
+  border-radius: 4px;
 }
 {% else %}
 .home-slider #home-main-slider .swiper-pagination-bullet {
@@ -192,103 +190,58 @@
 }
 {% endif %}
 
-/* mobile */
-@media(max-width:768px) {
+@media (max-width:768px){
 
-  {% if component.height1 %}
-  .home-slide {
-    height: auto;
-  }
-  {% else %}
-  .home-slide {
-    min-height: 320px;
-  }
-  {% endif %}
-
-  .home-slider__content {
-    padding: 0 16px;
-  }
-
-  .home-slide__title {
-    font-size: {{ component.mob_main }}px;
-  }
-
-  .home-slide__body {
-    font-size: {{ component.mob_des }}px;
-  }
-
-  .home-slide__btn {
-    padding: 8px 14px;
-    font-size: 14px;
-  }
-
-}
-/* ====== base fix ====== */
-.home-slide__img {
-  will-change: transform;
-  backface-visibility: hidden;
+.home-slide {
+  min-height: 320px;
 }
 
-/* ====== zoom (kenburns) ====== */
-.slider-zoom .swiper-slide-active .home-slide__img {
-  animation: kenburns-top 6s ease-out both;
+.home-slider__content {
+  padding: 0 16px;
 }
 
-/* ====== flip ====== */
-.slider-flip .swiper-slide {
-  perspective: 1000px;
+.home-slide__title {
+  font-size: {{ component.mob_main }}px;
 }
 
-.slider-flip .swiper-slide-active {
-  animation: flip-in-ver-right 0.8s ease both;
+.home-slide__body {
+  font-size: {{ component.mob_des }}px;
 }
 
-/* ====== slide ====== */
-.slider-slide .swiper-slide-active {
-  animation: slide-in-right 0.6s ease both;
+.home-slide__btn {
+  padding: 8px 14px;
+  font-size: 14px;
 }
 
-/* ====== reset animation (مهم جدا) ====== */
-.swiper-slide {
-  animation: none;
 }
 
-.swiper-slide-active {
-  animation-fill-mode: both;
-}
-.slider-zoom .swiper-slide-active .home-slide__img {
-  animation: kenburns-top 6s ease-out both;
-}
-
-.slider-flip .swiper-slide-active {
-  animation: flip-in-ver-right 0.8s ease both;
-}
-
-.slider-slide .swiper-slide-active {
-  animation: slide-in-right 0.6s ease both;
-}
 </style>
 {% endblock %}
+
 
 {% block scriptslider %}
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  const el = document.querySelector('#home-main-slider');
-  if (!el) return;
+  const sliderEl = document.querySelector('#home-main-slider');
+  if (!sliderEl) return;
 
   function init() {
-
-    if (!el.swiper) {
+    if (!sliderEl.swiper) {
       setTimeout(init, 200);
       return;
     }
 
-    const swiper = el.swiper;
+    const swiper = sliderEl.swiper;
 
-    /* ===== autoplay ===== */
-    const raw = Number({{ component.TIME1|default(50) }});
-const delay = Math.max(1000, raw * 100);
+    /* effect */
+    let effect = "{{ component.move1|default('slide')|lower }}";
+    if (effect === 'zoom') effect = 'fade';
+
+    swiper.params.effect = effect;
+
+    /* autoplay speed */
+    const delay = Number({{ component.TIME1|default(0) }});
 
     if (delay > 0) {
       swiper.params.autoplay = {
@@ -299,27 +252,13 @@ const delay = Math.max(1000, raw * 100);
       if (swiper.autoplay && swiper.autoplay.start) {
         swiper.autoplay.start();
       }
+    } else {
+      swiper.params.autoplay = false;
+
+      if (swiper.autoplay && swiper.autoplay.stop) {
+        swiper.autoplay.stop();
+      }
     }
-
-    /* ===== animation type ===== */
-    const type = "{{ component.move1|default('slide')|lower }}";
-
-    el.classList.remove('slider-zoom','slider-flip','slider-slide');
-
-    if (type === 'zoom') {
-      el.classList.add('slider-zoom');
-    } 
-    else if (type === 'flip') {
-      el.classList.add('slider-flip');
-    } 
-    else {
-      el.classList.add('slider-slide');
-    }
-
-    /* ===== fix drag bug ===== */
-    swiper.on('touchEnd', () => {
-      swiper.allowTouchMove = true;
-    });
 
     swiper.update();
   }
@@ -328,7 +267,7 @@ const delay = Math.max(1000, raw * 100);
 
 });
 </script>
-{% endblock %}
+{% endblock %} 
 
 <h1>
 يييييييييييييي
