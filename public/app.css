@@ -1207,14 +1207,14 @@ input:where([type='file']):focus {
 .min-h-\[34px\] {
     min-height: 34px;
 }
+.min-h-\[500px\] {
+    min-height: 500px;
+}
 .min-h-full {
     min-height: 100%;
 }
 .min-h-screen {
     min-height: 100vh;
-}
-.min-h-\[500px\] {
-    min-height: 500px;
 }
 .\!w-36 {
     width: 9rem !important;
