@@ -4,6 +4,8 @@
 
     <salla-slider
       id="home-main-slider"
+      auto-play="{{ component.TIME1 > 0 ? 'true' : 'false' }}"
+      interval="{{ component.TIME1 * 1000 }}"
       pagination
       type="carousel"
       dir="rtl"
@@ -12,7 +14,6 @@
       <div slot="items">
 
         {% for banner in component.banner_item %}
-
         {% set img = banner.banner_mg_big %}
         {% set mob = banner.banne_small ? banner.banne_small : img %}
 
@@ -27,30 +28,21 @@
 
             <div class="home-slide__text {{ component.blur2 ? 'has-blur' : '' }}"
               {% if component.blur2 %}
-              style="background: rgba(0,0,0,0.35);"
+              style="background: rgba(0,0,0,0.3);"
               {% endif %}>
 
-              {% if banner.banner_main %}
               <h3 class="home-slide__title"
                 style="color:{{ component.main_color }}; font-size:{{ component.pc_main_1 }}px;">
-                {% set words = banner.banner_main|split(' ') %}
-                {% set last = words|last %}
-                {% set rest = words|slice(0, words|length - 1)|join(' ') %}
-                {{ rest }}
-                <span style="color:{{ component.special_word }};">{{ last }}</span>
+                {{ banner.banner_main }}
               </h3>
-              {% endif %}
 
-              {% if banner.banne_des %}
               <p class="home-slide__body"
                 style="color:{{ component.des_color }}; font-size:{{ component.pc_des }}px;">
                 {{ banner.banne_des }}
               </p>
-              {% endif %}
 
               {% if banner.banner_button %}
-              <a
-                href="{% if banner.banner_url_but == 'latest-products' %}/products?sort=latest{% elseif banner.banner_url_but == 'offers' %}/sale{% elseif banner.banner_url_but == 'brands' %}/brands{% else %}#{% endif %}"
+              <a href="#"
                 class="home-slide__btn"
                 style="background:{{ component.burton_back }}; color:{{ component.button_color }};">
                 {{ banner.banner_button }}
@@ -62,11 +54,9 @@
           </div>
 
         </div>
-
         {% endfor %}
 
       </div>
-
     </salla-slider>
 
   </div>
@@ -74,11 +64,6 @@
 
 {% block styleslider %}
 <style>
-.home-slider {
-  position: relative;
-  overflow: hidden;
-}
-
 .home-slide {
   position: relative;
   min-height: 650px;
@@ -111,19 +96,19 @@
 }
 
 /* blur */
-.home-slide__text.has-blur {
-  backdrop-filter: blur(10px);
+.has-blur {
+  backdrop-filter: blur(8px);
   padding: 20px;
-  border-radius: 14px;
+  border-radius: 12px;
 }
 
-/* animation keyframes */
-@keyframes fade-in-right {
-  0% {
-    transform: translateX(50px);
+/* 🔥 fade animation */
+@keyframes fadeMove {
+  from {
+    transform: translateX(40px);
     opacity: 0;
   }
-  100% {
+  to {
     transform: translateX(0);
     opacity: 1;
   }
@@ -136,34 +121,24 @@
   opacity: 0;
 }
 
-/* animation active */
+/* apply animation */
 .swiper-slide-active .home-slide__title {
-  animation: fade-in-right 0.7s ease forwards;
+  animation: fadeMove 0.6s ease forwards;
 }
 
 .swiper-slide-active .home-slide__body {
-  animation: fade-in-right 0.7s ease 0.2s forwards;
+  animation: fadeMove 0.6s ease 0.2s forwards;
 }
 
 .swiper-slide-active .home-slide__btn {
-  animation: fade-in-right 0.7s ease 0.4s forwards;
+  animation: fadeMove 0.6s ease 0.4s forwards;
 }
 
 /* arrows */
-.home-slider .swiper-button-next,
-.home-slider .swiper-button-prev {
+.swiper-button-next,
+.swiper-button-prev {
   color: #fff;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.3);
-}
 
-/* pagination */
-.home-slider .swiper-pagination {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
 }
 </style>
 {% endblock %}
@@ -173,7 +148,6 @@
 {% block scriptslider %}
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-
   const el = document.querySelector('#home-main-slider');
   if (!el) return;
 
@@ -185,37 +159,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const swiper = el.swiper;
 
-    /* 🎬 effect */
-    let raw = "{{ component.move1|lower }}";
-    let effect = 'slide';
-
-    if (raw.includes('fade')) effect = 'fade';
-    else if (raw.includes('flip')) effect = 'flip';
-    else if (raw.includes('zoom')) effect = 'fade'; // fallback
-    else effect = 'slide';
-
-    swiper.params.effect = effect;
+    let effect = "{{ component.move1|lower }}";
 
     if(effect === 'fade'){
+      swiper.params.effect = 'fade';
       swiper.params.fadeEffect = { crossFade: true };
     }
 
-    /* ⏱️ speed */
-    let delay = Number({{ component.TIME1|default(0) }});
-    if(delay > 0 && delay < 100) delay *= 1000;
-
-    if(delay > 0){
-      swiper.params.autoplay = {
-        delay: delay,
-        disableOnInteraction: false
-      };
-      swiper.autoplay.start();
-    }
-
-    swiper.params.speed = 700;
     swiper.update();
   }
 
   init();
 });
 </script>
+{% endblock %}
