@@ -1245,7 +1245,7 @@
                     "icon": "sicon-list-add",
                     "fields": [
                         {
-                            "id": "banner_main",
+                            "id": "banner_item.banner_main",
                             "type": "string",
                             "format": "text",
                             "label": "نص رئيسي",
@@ -1260,7 +1260,7 @@
                             "maxLength": "100"
                         },
                         {
-                            "id": "banne_des",
+                            "id": "banner_item.banne_des",
                             "type": "string",
                             "format": "textarea",
                             "label": "نص فرعي",
@@ -1275,7 +1275,7 @@
                             "maxLength": 255
                         },
                         {
-                            "id": "banner_button",
+                            "id": "banner_item.banner_button",
                             "type": "string",
                             "format": "text",
                             "label": "نص الزر",
@@ -1290,7 +1290,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "banner_url_but",
+                            "id": "banner_item.banner_url_but",
                             "type": "items",
                             "format": "dropdown-list",
                             "label": "رابط الزر",
@@ -1322,7 +1322,7 @@
                             "value": []
                         },
                         {
-                            "id": "banne_small",
+                            "id": "banner_item.banne_small",
                             "type": "string",
                             "format": "image",
                             "label": "الشاشات الصغيرة",
@@ -1334,7 +1334,7 @@
                             "required": false
                         },
                         {
-                            "id": "banner_mg_big",
+                            "id": "banner_item.banner_mg_big",
                             "type": "string",
                             "format": "image",
                             "label": "الشاشات الكبيرة",
@@ -1482,33 +1482,32 @@
                     "required": false
                 },
                 {
-                    "id": "slide_pag",
+                    "id": "shkl_aalamat_altnql",
                     "type": "items",
-                    "format": "checkbox-list",
+                    "format": "radio-list",
                     "label": "شكل علامات التنقل",
                     "description": null,
                     "labelHTML": null,
-                    "icon": "sicon-list-check",
+                    "icon": "sicon-list",
                     "selected": [],
                     "options": [
                         {
                             "label": "دائرة",
                             "value": "cricle",
-                            "key": "713de641-2c95-48ca-bf36-d1a6400fc045"
+                            "key": "57b8d245-9ecb-436f-80b3-9462408e6262"
                         },
                         {
                             "label": "خطي",
                             "value": "line",
-                            "key": "4ee77e37-a21c-41a6-b7e0-60839dcbd22c"
+                            "key": "6d3989df-cda7-4d54-83b3-7b687dbc227e"
                         },
                         {
                             "label": "مربع",
                             "value": "square",
-                            "key": "b7fc68aa-b10f-420e-b20d-e73b2deef47d"
+                            "key": "e93315ba-5646-417d-b4e8-1fde796ad364"
                         }
                     ],
                     "source": "Manual",
-                    "multichoice": false,
                     "required": false
                 },
                 {
