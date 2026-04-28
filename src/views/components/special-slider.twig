@@ -5,7 +5,7 @@
     <salla-slider
       id="home-main-slider"
       auto-play="{{ component.TIME1 > 0 ? 'true' : 'false' }}"
-      interval="{{ component.TIME1 * 1000 }}"
+      interval="{{ component.TIME1 > 0 and component.TIME1 < 100 ? component.TIME1 * 1000 : component.TIME1 }}"
       pagination
       type="carousel"
       dir="rtl"
@@ -28,18 +28,22 @@
 
             <div class="home-slide__text {{ component.blur2 ? 'has-blur' : '' }}"
               {% if component.blur2 %}
-              style="background: rgba(0,0,0,0.3);"
+              style="background: rgba(0,0,0,0.35);"
               {% endif %}>
 
+              {% if banner.banner_main %}
               <h3 class="home-slide__title"
                 style="color:{{ component.main_color }}; font-size:{{ component.pc_main_1 }}px;">
                 {{ banner.banner_main }}
               </h3>
+              {% endif %}
 
+              {% if banner.banne_des %}
               <p class="home-slide__body"
                 style="color:{{ component.des_color }}; font-size:{{ component.pc_des }}px;">
                 {{ banner.banne_des }}
               </p>
+              {% endif %}
 
               {% if banner.banner_button %}
               <a href="#"
@@ -64,6 +68,15 @@
 
 {% block styleslider %}
 <style>
+
+
+
+
+.home-slider {
+  position: relative;
+  overflow: hidden;
+}
+
 .home-slide {
   position: relative;
   min-height: 650px;
@@ -86,68 +99,72 @@
   pointer-events: none;
 }
 
+/* 💣 بوكس مرن */
 .home-slide__text {
-  max-width: 520px;
+  max-width: 90%;
+  width: fit-content;
+  min-width: 280px;
   margin: 30px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   pointer-events: auto;
 }
 
 /* blur */
 .has-blur {
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 
-/* 🔥 fade animation */
-@keyframes fadeMove {
-  from {
-    transform: translateX(40px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+/* text fix */
+.home-slide__title {
+  line-height: 1.4;
+  word-break: break-word;
 }
 
-/* reset */
-.home-slide__title,
-.home-slide__body,
-.home-slide__btn {
-  opacity: 0;
-}
-
-/* apply animation */
-.swiper-slide-active .home-slide__title {
-  animation: fadeMove 0.6s ease forwards;
-}
-
-.swiper-slide-active .home-slide__body {
-  animation: fadeMove 0.6s ease 0.2s forwards;
-}
-
-.swiper-slide-active .home-slide__btn {
-  animation: fadeMove 0.6s ease 0.4s forwards;
+.home-slide__body {
+  line-height: 1.6;
+  word-break: break-word;
 }
 
 /* arrows */
-.swiper-button-next,
-.swiper-button-prev {
+.home-slider .swiper-button-next,
+.home-slider .swiper-button-prev {
   color: #fff;
-
+  background: rgba(0,0,0,0.3);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
+
+/* responsive */
+@media (max-width:768px){
+  .home-slide {
+    min-height: 320px;
+  }
+
+  .home-slider__content {
+    padding: 0 16px;
+  }
+
+  .home-slide__text {
+    margin: 12px;
+  }
+}
+
+
+
 </style>
 {% endblock %}
-
 
 
 {% block scriptslider %}
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+
   const el = document.querySelector('#home-main-slider');
   if (!el) return;
 
@@ -159,12 +176,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const swiper = el.swiper;
 
-    let effect = "{{ component.move1|lower }}";
+    /* 🎬 الحركة من العميل */
+    let raw = "{{ component.move1|lower }}";
+    let effect = 'slide';
+
+    if (raw.includes('fade')) effect = 'fade';
+    else if (raw.includes('flip')) effect = 'flip';
+    else if (raw.includes('cube')) effect = 'cube';
+    else if (raw.includes('cover')) effect = 'coverflow';
+
+    swiper.params.effect = effect;
 
     if(effect === 'fade'){
-      swiper.params.effect = 'fade';
       swiper.params.fadeEffect = { crossFade: true };
     }
+
+    /* ⏱️ الوقت */
+    let delay = Number({{ component.TIME1|default(0) }});
+
+    if(delay > 0 && delay < 100){
+      delay *= 1000;
+    }
+
+    if(delay > 0){
+      swiper.params.autoplay = {
+        delay: delay,
+        disableOnInteraction: false
+      };
+
+      if(swiper.autoplay) swiper.autoplay.start();
+    }
+
+    swiper.params.speed = 700;
+    swiper.params.allowTouchMove = true;
 
     swiper.update();
   }
