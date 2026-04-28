@@ -1,153 +1,221 @@
-{# 
-| Variable      | Type                   | Description                                                                 |
-|---------------|------------------------|-----------------------------------------------------------------------------|
-| component     | object                 | Contains merchant settings for fields from twilight.json `component` section|
-| position      | int                    | Sorting number start from zero                                               |
-#}
+<section class="s-block s-block--default home-slider {{ component.sec_width == 'full' ? 's-block--full-bg' : '' }}" dir="rtl">
 
-<section class="s-block s-block--default home-slider {{ component.sec_width == 'full' ? 's-block--full-bg' : '' }}" dir="rtl" id="slider-{{ position }}">
   <div class="{{ component.sec_width == 'Boxed' ? 'container' : '' }}">
+
     <salla-slider
-      id="main-slider-{{ position }}"
+      id="home-main-slider"
       pagination
       type="carousel"
       dir="rtl"
-      show-controls="false"
-      class="rounded-{{ component.sec_width == 'Boxed' ? '2xl' : 'none' }} overflow-hidden">
+      show-controls="true">
 
       <div slot="items">
+
         {% for banner in component.banner_item %}
-          {% set img = banner.banner_mg_big %}
-          {% set mob = banner.banne_small ?: img %}
 
-          <div class="swiper-slide home-slide {{ component.height1 ? 'h-auto' : 'min-h-[500px] md:min-h-[650px]' }}">
-            {# الخلفية #}
-            <picture>
-              <source media="(max-width:768px)" srcset="{{ mob }}">
-              <img src="{{ img }}" class="home-slide__img" alt="{{ banner.banner_main }}">
-            </picture>
+        {% set img = banner.banner_mg_big %}
+        {% set mob = banner.banne_small ? banner.banne_small : img %}
 
-            {# المحتوى #}
-            <div class="home-slider__content flex {{ component.text_pos ?: 'items-center justify-center text-center' }}">
-              <div class="home-slide__text {{ component.blur2 ? 'has-blur' : '' }}"
-                   style="{% if component.blur2 %} background: rgba(0,0,0,0.3); {% endif %} background-color: {{ not component.blur2 ? component.background22 : '' }};">
+        <div class="swiper-slide home-slide">
 
-                {% if banner.banner_main %}
-                  <h3 class="home-slide__title"
-                      style="color:{{ component.main_color }}; font-size:{{ component.pc_main_1 }}px;">
-                    
-                    {% set words = banner.banner_main|split(' ') %}
-                    {% if words|length > 1 %}
-                      {% set last = words|last %}
-                      {% set rest = words|slice(0, words|length - 1)|join(' ') %}
-                      {{ rest }} <span style="color:{{ component.special_word }};">{{ last }}</span>
-                    {% else %}
-                      {{ banner.banner_main }}
-                    {% endif %}
-                  </h3>
-                {% endif %}
+          <picture>
+            <source media="(max-width:768px)" srcset="{{ mob }}">
+            <img src="{{ img }}" class="home-slide__img">
+          </picture>
 
-                {% if banner.banne_des %}
-                  <p class="home-slide__body"
-                     style="color:{{ component.des_color }}; font-size:{{ component.pc_des }}px;">
-                    {{ banner.banne_des }}
-                  </p>
-                {% endif %}
+          <div class="home-slider__content flex {{ component.text_pos }}">
 
-                {% if banner.banner_button %}
-                  <a href="{{ banner.banner_url_but == 'latest-products' ? '/products?sort=latest' : (banner.banner_url_but == 'offers' ? '/sale' : (banner.banner_url_but == 'brands' ? '/brands' : '#')) }}"
-                     class="home-slide__btn"
-                     style="background:{{ component.burton_back }}; color:{{ component.button_color }};">
-                    {{ banner.banner_button }}
-                  </a>
-                {% endif %}
-              </div>
+            <div class="home-slide__text {{ component.blur2 ? 'has-blur' : '' }}"
+              {% if component.blur2 %}
+              style="background: rgba(0,0,0,0.35);"
+              {% endif %}>
+
+              {% if banner.banner_main %}
+              <h3 class="home-slide__title"
+                style="color:{{ component.main_color }}; font-size:{{ component.pc_main_1 }}px;">
+
+                {% set words = banner.banner_main|split(' ') %}
+                {% set last = words|last %}
+                {% set rest = words|slice(0, words|length - 1)|join(' ') %}
+
+                {{ rest }}
+                <span style="color:{{ component.special_word }};">{{ last }}</span>
+              </h3>
+              {% endif %}
+
+              {% if banner.banne_des %}
+              <p class="home-slide__body"
+                style="color:{{ component.des_color }}; font-size:{{ component.pc_des }}px;">
+                {{ banner.banne_des }}
+              </p>
+              {% endif %}
+
+              {% if banner.banner_button %}
+              <a
+                href="{% if banner.banner_url_but == 'latest-products' %}/products?sort=latest{% elseif banner.banner_url_but == 'offers' %}/sale{% elseif banner.banner_url_but == 'brands' %}/brands{% else %}#{% endif %}"
+                class="home-slide__btn"
+                style="background:{{ component.burton_back }}; color:{{ component.button_color }};">
+                {{ banner.banner_button }}
+              </a>
+              {% endif %}
+
             </div>
+
           </div>
+
+        </div>
+
         {% endfor %}
+
       </div>
+
     </salla-slider>
+
   </div>
 </section>
 
-{% block styles %}
+{% block styleslider %}
 <style>
-#slider-{{ position }} .home-slider { position: relative; }
-#slider-{{ position }} .home-slide { position: relative; width: 100%; display: flex; }
-#slider-{{ position }} .home-slide__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
-#slider-{{ position }} .home-slider__content { position: absolute; inset: 0; z-index: 2; padding: 40px; }
 
-#slider-{{ position }} .home-slide__text {
-  max-width: 550px;
-  padding: 30px;
-  border-radius: 18px;
+.home-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-slide {
+  position: relative;
+  min-height: 650px;
+}
+
+.home-slide__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.home-slider__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  padding: 0 40px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.home-slide__text {
+  max-width: 520px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 16px;
+  word-break: break-word;
+  margin: 30px;
+  pointer-events: auto;
 }
 
-#slider-{{ position }} .home-slide__text.has-blur {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.1);
+.home-slide__text.has-blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 14px;
 }
 
-#slider-{{ position }} .home-slide__btn {
-  align-self: flex-start;
-  padding: 12px 30px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 0.3s ease;
+.home-slide__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 26px;
+  border-radius: 10px;
 }
-#slider-{{ position }} .justify-center .home-slide__btn { align-self: center; }
-#slider-{{ position }} .justify-end .home-slide__btn { align-self: flex-end; }
 
-/* Pagination Shape Control */
-{% set shape = component.shkl_aalamat_altnql|default('cricle') %}
-#slider-{{ position }} .swiper-pagination-bullet {
-  background: {{ component.main_color }} !important;
-  opacity: 0.4;
-  {% if shape == 'square' %} border-radius: 2px; width: 12px; height: 12px;
-  {% elseif shape == 'line' %} border-radius: 4px; width: 30px; height: 5px;
-  {% else %} border-radius: 50%; width: 10px; height: 10px; {% endif %}
+/* arrows */
+.home-slider .swiper-button-next,
+.home-slider .swiper-button-prev {
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.35);
 }
-#slider-{{ position }} .swiper-pagination-bullet-active { opacity: 1; transform: scale(1.1); }
 
-@media (max-width:768px) {
-  #slider-{{ position }} .home-slide { min-height: 400px; }
-  #slider-{{ position }} .home-slide__title { font-size: {{ component.mob_main }}px !important; }
-  #slider-{{ position }} .home-slide__body { font-size: {{ component.mob_des }}px !important; }
-  #slider-{{ position }} .home-slider__content { padding: 20px; }
+/* pagination */
+.home-slider #home-main-slider .swiper-pagination {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
 }
+
+/* shapes */
+{% set shape = component.shkl_aalamat_altnql|default('circle') %}
+
+{% if shape == 'square' %}
+.swiper-pagination-bullet { border-radius:4px; }
+{% elseif shape == 'line' %}
+.swiper-pagination-bullet { width:32px;height:4px; }
+{% else %}
+.swiper-pagination-bullet { border-radius:999px; }
+{% endif %}
 </style>
 {% endblock %}
 
-{% block scripts %}
+
+{% block scriptslider %}
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const sliderEl = document.querySelector('#main-slider-{{ position }}');
-  if (!sliderEl) return;
 
-  const init = () => {
-    const swiper = sliderEl.swiper;
-    if (!swiper) { setTimeout(init, 250); return; }
+  const el = document.querySelector('#home-main-slider');
+  if (!el) return;
 
-    // Effect
-    let effect = "{{ component.move1|default('slide')|lower }}";
-    if (effect === 'zoom' || effect === 'flip') {
-       swiper.params.effect = (effect === 'zoom') ? 'fade' : 'flip';
+  function init(){
+    if (!el.swiper){
+      setTimeout(init, 200);
+      return;
     }
 
-    // Autoplay
-    const delay = Number({{ component.TIME1|default(0) }});
-    if (delay > 500) { // سلة تحتاج على الأقل 500ms للـ autoplay
-      swiper.params.autoplay = { delay: delay, disableOnInteraction: false };
+    const swiper = el.swiper;
+
+    /* 🎬 نوع الحركة */
+    let raw = "{{ component.move1|lower }}";
+    let effect = 'slide';
+
+    if (raw.includes('fade') || raw.includes('تلاشي')) effect = 'fade';
+    else if (raw.includes('flip')) effect = 'flip';
+    else if (raw.includes('cube')) effect = 'cube';
+    else if (raw.includes('cover')) effect = 'coverflow';
+
+    swiper.params.effect = effect;
+
+    if(effect === 'fade'){
+      swiper.params.fadeEffect = { crossFade: true };
+    }
+
+    /* ⏱️ السرعة */
+    let delay = Number({{ component.TIME1|default(0) }});
+
+    if(delay > 0 && delay < 100){
+      delay *= 1000; // تحويل من ثواني لملي
+    }
+
+    if(delay > 0){
+      swiper.params.autoplay = {
+        delay: delay,
+        disableOnInteraction: false
+      };
       swiper.autoplay.start();
-    } else {
-      swiper.autoplay.stop();
     }
+
+    /* navigation fix */
+    swiper.navigation.init();
+    swiper.navigation.update();
+
+    swiper.params.speed = 700;
+
     swiper.update();
-  };
+  }
+
   init();
 });
 </script>
