@@ -152,7 +152,7 @@
     opacity: 0.9;
   }
 
-  /* pagination shapes */
+  /* pagination */
   .home-slider #home-main-slider .swiper-pagination {
     position: absolute;
     right: 20px;
@@ -164,12 +164,14 @@
   .home-slider #home-main-slider .swiper-pagination-bullet {
     background: #fff;
     opacity: 0.6;
+    transition: .2s;
   }
 
   .home-slider #home-main-slider .swiper-pagination-bullet-active {
     opacity: 1;
   }
 
+  /* shapes */
     {
     % if component.shkl_aalamat_altnql=='square' %
   }
@@ -185,7 +187,7 @@
   }
 
   .home-slider #home-main-slider .swiper-pagination-bullet {
-    width: 30px;
+    width: 32px;
     height: 4px;
     border-radius: 4px;
   }
@@ -204,7 +206,7 @@
     % endif %
   }
 
-  @media (max-width:768px) {
+  @media(max-width:768px) {
 
     .home-slide {
         {
@@ -266,22 +268,36 @@
     if (!slider) return;
 
     function init() {
+
       if (!slider.swiper) {
         setTimeout(init, 200);
         return;
       }
 
       const swiper = slider.swiper;
-      let effect = "{{ component.move1|lower }}";
 
+      let effect = "{{ component.move1|default('slide')|lower }}";
       if (effect === 'zoom') effect = 'fade';
 
       swiper.params.effect = effect;
-      swiper.update();
-    }
 
-    init();
+      const delay = Number({{ component.TIME1 |default(0) }});
 
-  });
+  if (delay > 0) {
+    swiper.params.autoplay = {
+      delay: delay,
+      disableOnInteraction: false
+    };
+    swiper.autoplay.start();
+  } else {
+    swiper.autoplay.stop();
+  }
+
+  swiper.update();
+  }
+
+  init();
+
+});
 </script>
 {% endblock %}
