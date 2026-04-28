@@ -287,7 +287,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const swiper = el.swiper;
 
     /* ===== autoplay ===== */
-    const delay = Number({{ component.TIME1|default(3000) }});
+    const raw = Number({{ component.TIME1|default(50) }});
+const delay = Math.max(1000, raw * 100);
 
     if (delay > 0) {
       swiper.params.autoplay = {
@@ -330,5 +331,5 @@ document.addEventListener("DOMContentLoaded", function () {
 {% endblock %}
 
 <h1>
-بببببببببببببببببببب
+يييييييييييييي
 </h1>
