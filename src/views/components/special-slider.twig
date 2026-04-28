@@ -71,8 +71,7 @@
 
 {% block styleslider %}
 <style>
-  
-#gaxal-main-slider .swiper-slide {
+  #gaxal-main-slider .swiper-slide {
   position: relative;
   overflow: hidden;
 }
@@ -126,31 +125,19 @@
 .premium-title {
   font-weight: 800;
   line-height: 1.25;
-  letter-spacing: -0.5px;
 }
 
 .premium-desc {
   line-height: 1.7;
-  opacity: 0.9;
 }
 
 .premium-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   height: 48px;
   padding: 0 28px;
-
   border-radius: 999px;
-  font-weight: 600;
-
-  transition: all 0.3s ease;
-}
-
-.premium-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
 }
 
 #gaxal-main-slider .swiper-pagination {
@@ -164,78 +151,68 @@
 #gaxal-main-slider .swiper-pagination-bullet {
   background: #fff;
   opacity: 0.5;
-  transition: all 0.3s ease;
 }
 
 #gaxal-main-slider .swiper-pagination-bullet-active {
   opacity: 1;
-  transform: scale(1.2);
 }
-
-{% if component.slide_pag == 'square' %}
-#gaxal-main-slider .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  border-radius: 4px;
-}
-{% elseif component.slide_pag == 'line' %}
-#gaxal-main-slider .swiper-pagination-bullet {
-  width: 32px;
-  height: 4px;
-  border-radius: 4px;
-}
-{% else %}
-#gaxal-main-slider .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
-}
-{% endif %}
 
 </style>
 
 {% endblock %}
 
-{% block scriptslider%}
+{% block scriptslider %}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
 
-      const sliderEl = document.querySelector("#gaxal-main-slider");
-      if (!sliderEl) return;
+    const sliderEl = document.querySelector("#gaxal-main-slider");
+    if (!sliderEl) return;
 
-      const init = () => {
-        if (!sliderEl.swiper) return;
+    function initSlider() {
 
-        const swiper = sliderEl.swiper;
+      if (!sliderEl.swiper) {
+        setTimeout(initSlider, 200);
+        return;
+      }
 
-        const effect = "{{ component.move1|lower }}";
+      const swiper = sliderEl.swiper;
 
-        if (effect === "fade") {
-          swiper.params.effect = "fade";
-        } else if (effect === "flip") {
-          swiper.params.effect = "flip";
-        } else if (effect === "zoom") {
-          swiper.params.effect = "fade";
-        } else {
-          swiper.params.effect = "slide";
-        }
-
-        if ({{ component.TIME1 |default (0) }
-      } > 0) {
-      swiper.params.autoplay = {
-        delay: {{ component.TIME1 }
-    },
-    disableOnInteraction: false,
-      };
+      const effect = "{{ component.move1|lower }}";
+      const speed = {{ component.TIME1|default (0)
     }
-
-    swiper.update();
   };
 
-    setTimeout(init, 300);
+  if (effect === "fade") {
+    swiper.params.effect = "fade";
+  } else if (effect === "flip") {
+    swiper.params.effect = "flip";
+  } else if (effect === "zoom") {
+    swiper.params.effect = "fade";
+  } else {
+    swiper.params.effect = "slide";
+  }
+
+  if (speed > 0) {
+    swiper.params.autoplay = {
+      delay: speed,
+      disableOnInteraction: false
+    };
+  } else {
+    swiper.params.autoplay = false;
+  }
+
+  swiper.update();
+  }
+
+  initSlider();
 
 });
 </script>
-  {% endblock %}
+{% endblock %}
+   
+
+
+  <h2 style="color: rgb(122, 0, 20);">ييثثث</h2>
+
+
   
-  <h2 style="color: rgb(122, 0, 20);">ssssss</h2>
