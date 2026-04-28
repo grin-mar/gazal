@@ -256,6 +256,47 @@
     }
 
   }
+  .home-slider #home-main-slider .swiper-pagination {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  gap: 8px;
+}
+
+.home-slider #home-main-slider .swiper-pagination-bullet {
+  background: #fff;
+  opacity: 0.5;
+  transition: all .3s ease;
+}
+
+.home-slider #home-main-slider .swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+/* shapes fix */
+{% set shape = component.shkl_aalamat_altnql|default('circle') %}
+
+{% if shape == 'square' %}
+.home-slider #home-main-slider .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+}
+{% elseif shape == 'line' %}
+.home-slider #home-main-slider .swiper-pagination-bullet {
+  width: 30px;
+  height: 4px;
+  border-radius: 3px;
+}
+{% else %}
+.home-slider #home-main-slider .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+}
+{% endif %}
+
 </style>
 {% endblock %}
 
@@ -299,9 +340,44 @@
   init();
 
 });
+document.addEventListener("DOMContentLoaded", function () {
+
+  const el = document.querySelector('#home-main-slider');
+  if (!el) return;
+
+  function init() {
+    if (!el.swiper) {
+      setTimeout(init, 200);
+      return;
+    }
+
+    const swiper = el.swiper;
+
+    /* effect mapping */
+    let effect = "{{ component.move1|default('slide')|lower }}";
+
+    if (effect === 'fade' || effect === 'flip') {
+      swiper.params.effect = effect;
+    } else {
+      swiper.params.effect = 'slide';
+    }
+
+    /* لازم إعادة تهيئة */
+    swiper.update();
+
+    /* إجبار إعادة البناء لو لسه مش مطبق */
+    if (swiper.destroy && swiper.init) {
+      swiper.destroy(true, true);
+      swiper.init();
+    }
+  }
+
+  init();
+});
+
 </script>
 {% endblock %}
 
 <h1>
-dlkkimiosmk
+بببببببببببببببببببب
 </h1>
