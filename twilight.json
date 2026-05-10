@@ -1363,48 +1363,6 @@
                     "required": false
                 },
                 {
-                    "id": "move1",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "نوع حركة التنقل",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-keyboard_arrow_down",
-                    "selected": [
-                        {
-                            "label": "انزلاق Slide",
-                            "value": "slide",
-                            "key": "68251f88-5c70-4fc7-a954-6e02ec8c6617"
-                        }
-                    ],
-                    "options": [
-                        {
-                            "label": "قلب Flip",
-                            "value": "flip",
-                            "key": "5f4fc685-6306-4aa0-9e48-45e91c865936"
-                        },
-                        {
-                            "label": "تكبير Zoom",
-                            "value": "zoom",
-                            "key": "7b75eca2-906f-476d-8679-0b65c7d92038"
-                        },
-                        {
-                            "label": "تلاشي Fade",
-                            "value": "fade",
-                            "key": "b704160e-45a7-48a2-bb69-fb78977b1e66"
-                        },
-                        {
-                            "label": "انزلاق Slide",
-                            "value": "slide",
-                            "key": "68251f88-5c70-4fc7-a954-6e02ec8c6617"
-                        }
-                    ],
-                    "source": "Manual",
-                    "multichoice": false,
-                    "searchable": false,
-                    "required": true
-                },
-                {
                     "id": "TIME1",
                     "type": "number",
                     "format": "float",
