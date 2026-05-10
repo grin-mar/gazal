@@ -1290,41 +1290,30 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "banner_item.banner_url_but",
+                            "id": "banner_item.rabt_zr",
                             "type": "items",
-                            "label": "رابط الزر",
-                            "icon": "sicon-link",
-                            "required": false,
-                            "format": "variable-list",
-                            "searchable": true,
-                            "source": "custom",
-                            "sources": [
-                                {
-                                    "label": "منتج",
-                                    "key": "products",
-                                    "value": "products"
-                                },
+                            "format": "dropdown-list",
+                            "label": "رابط زر",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-keyboard_arrow_down",
+                            "selected": [],
+                            "options": [
                                 {
                                     "label": "تصنيف",
-                                    "key": "categories",
-                                    "value": "categories"
+                                    "value": "categories",
+                                    "key": "041258a3-aece-49bd-9e23-cf560d38d625"
                                 },
                                 {
-                                    "label": "ماركة",
-                                    "key": "brands",
-                                    "value": "brands"
-                                },
-                                {
-                                    "label": "صفحة",
-                                    "key": "pages",
-                                    "value": "pages"
-                                },
-                                {
-                                    "label": "رابط خارجي",
-                                    "key": "custom",
-                                    "value": "custom"
+                                    "label": "منتج",
+                                    "value": "products",
+                                    "key": "71e010b7-d700-4001-8e55-3827d78ae835"
                                 }
-                            ]
+                            ],
+                            "source": "Manual",
+                            "multichoice": false,
+                            "searchable": true,
+                            "required": false
                         },
                         {
                             "id": "banner_item.banne_small",
