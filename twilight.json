@@ -1349,6 +1349,16 @@
                     "required": false
                 }
             ]
+        },
+        {
+            "key": "bcf76ad0-b8fb-4451-8c5e-0df1da99fd4c",
+            "title": {
+                "en": "slider gazal",
+                "ar": "بنر متحرك جزل"
+            },
+            "icon": "sicon-store",
+            "path": "slider-gazal",
+            "fields": []
         }
     ],
     "support_url": "https://example.com",
