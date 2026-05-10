@@ -1209,7 +1209,7 @@
                     "type": "items",
                     "format": "radio-list",
                     "label": "تخطيط العنصر",
-                    "description": "شكل عرض العنصر",
+                    "description": "شكل عرض العنصر 11",
                     "labelHTML": null,
                     "icon": "sicon-list",
                     "selected": [
