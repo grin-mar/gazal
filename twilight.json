@@ -1783,75 +1783,7 @@
                     "required": false
                 }
             ]
-        },
-    {
-    "key": "a324ddd3-99b2-4c23-887f-5e4e7c631434",
-
-    "title": {
-        "en": "neeeeee",
-        "ar": "neeeeee"
-    },
-
-    "icon": "sicon-store",
-
-    "path": "neeeeee",
-
-    "fields": [
-
-        {
-            "id": "url",
-
-            "type": "items",
-
-            "label": "الرابط",
-
-            "icon": "sicon-link",
-
-            "required": false,
-
-            "format": "variable-list",
-
-            "searchable": true,
-
-            "source": "custom",
-
-            "sources": [
-
-                {
-                    "label": "منتج",
-                    "key": "products",
-                    "value": "products"
-                },
-
-                {
-                    "label": "تصنيف",
-                    "key": "categories",
-                    "value": "categories"
-                },
-
-                {
-                    "label": "ماركة",
-                    "key": "brands",
-                    "value": "brands"
-                },
-
-                {
-                    "label": "صفحة",
-                    "key": "pages",
-                    "value": "pages"
-                },
-
-                {
-                    "label": "رابط خارجي",
-                    "key": "custom",
-                    "value": "custom"
-                }
-
-            ]
         }
-
-    ]
-}
     ],
     "support_url": "https://example.com",
     "description": {
