@@ -1784,32 +1784,104 @@
                 }
             ]
         },
+{
+    "key": "7601a9c2-516a-47fb-87ad-ca9a14891c6c",
+    "title": {
+        "en": "ببب",
+        "ar": "ففف"
+    },
+    "icon": "sicon-store",
+    "path": "special-slider",
+
+    "fields": [
+
         {
-            "key": "7601a9c2-516a-47fb-87ad-ca9a14891c6c",
-            "title": {
-                "en": "ببب",
-                "ar": "ففف"
-            },
-            "icon": "sicon-store",
-            "path": "special-slider",
-            "fields": [
+            "type": "items",
+            "icon": "sicon-link",
+            "label": "الرابط",
+
+            "id": "test_link",
+
+            "required": false,
+
+            "format": "dropdown-list",
+
+            "searchable": true,
+
+         
+            "sources": [
+
                 {
-                    "id": "dropdown_list",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "Dropdown List",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
-                    "options": [],
-                    "source": "Manual",
-                    "multichoice": true,
-                    "searchable": true,
-                    "required": false
+                    "label": "منتج",
+                    "key": "products",
+                    "value": "products"
+                },
+
+                {
+                    "label": "تصنيف",
+                    "key": "categories",
+                    "value": "categories"
+                },
+
+                {
+                    "label": "ماركة تجارية",
+                    "key": "brands",
+                    "value": "brands"
+                },
+
+                {
+                    "label": "صفحة تعريفية",
+                    "key": "pages",
+                    "value": "pages"
+                },
+
+                {
+                    "label": "مقالة",
+                    "key": "blog_articles",
+                    "value": "blog_articles"
+                },
+
+                {
+                    "label": "أحدث المنتجات",
+                    "key": "latest-products",
+                    "value": "latest-products"
+                },
+
+                {
+                    "label": "تصنيف ضمن المدونة",
+                    "key": "blog_categories",
+                    "value": "blog_categories"
+                },
+
+                {
+                    "label": "التخفيضات",
+                    "key": "offers_link",
+                    "value": "offers_link"
+                },
+
+                {
+                    "label": "الماركات التجارية",
+                    "key": "brands_link",
+                    "value": "brands_link"
+                },
+
+                {
+                    "label": "المدونة",
+                    "key": "blog_link",
+                    "value": "blog_link"
+                },
+
+                {
+                    "label": "رابط خارجي",
+                    "key": "custom",
+                    "value": "custom"
                 }
+
             ]
         }
+
+    ]
+}
     ],
     "support_url": "https://example.com",
     "description": {
