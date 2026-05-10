@@ -1793,22 +1793,58 @@
             "icon": "sicon-store",
             "path": "neeeeee",
             "fields": [
-                {
-                    "id": "url",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "url",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-keyboard_arrow_down",
-                    "selected": [],
-                    "options": [],
-                    "source": "Manual",
-                    "multichoice": false,
-                    "searchable": true,
-                    "required": true
-                }
-            ]
+    {
+    "id": "url",
+
+    "type": "items",
+
+    "label": "الرابط",
+
+    "icon": "sicon-link",
+
+    "required": false,
+
+    "format": "variable-list",
+
+    "searchable": true,
+
+    "source": "custom",
+
+    "sources": [
+
+        {
+            "label": "منتج",
+            "key": "products",
+            "value": "products"
+        },
+
+        {
+            "label": "تصنيف",
+            "key": "categories",
+            "value": "categories"
+        },
+
+        {
+            "label": "ماركة",
+            "key": "brands",
+            "value": "brands"
+        },
+
+        {
+            "label": "صفحة",
+            "key": "pages",
+            "value": "pages"
+        },
+
+        {
+            "label": "رابط خارجي",
+            "key": "custom",
+            "value": "custom"
+        }
+
+    ]
+
+            
         }
     ],
     "support_url": "https://example.com",
