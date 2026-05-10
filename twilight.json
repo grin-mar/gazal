@@ -1784,68 +1784,74 @@
                 }
             ]
         },
-        {
-            "key": "a324ddd3-99b2-4c23-887f-5e4e7c631434",
-            "title": {
-                "en": "neeeeee",
-                "ar": "neeeeee"
-            },
-            "icon": "sicon-store",
-            "path": "neeeeee",
-            "fields": [
     {
-    "id": "url",
+    "key": "a324ddd3-99b2-4c23-887f-5e4e7c631434",
 
-    "type": "items",
+    "title": {
+        "en": "neeeeee",
+        "ar": "neeeeee"
+    },
 
-    "label": "الرابط",
+    "icon": "sicon-store",
 
-    "icon": "sicon-link",
+    "path": "neeeeee",
 
-    "required": false,
-
-    "format": "dropdown-list",
-
-    "searchable": true,
-
-    "source": "custom",
-
-    "sources": [
+    "fields": [
 
         {
-            "label": "منتج",
-            "key": "products",
-            "value": "products"
-        },
+            "id": "url",
 
-        {
-            "label": "تصنيف",
-            "key": "categories",
-            "value": "categories"
-        },
+            "type": "items",
 
-        {
-            "label": "ماركة",
-            "key": "brands",
-            "value": "brands"
-        },
+            "label": "الرابط",
 
-        {
-            "label": "صفحة",
-            "key": "pages",
-            "value": "pages"
-        },
+            "icon": "sicon-link",
 
-        {
-            "label": "رابط خارجي",
-            "key": "custom",
-            "value": "custom"
+            "required": false,
+
+            "format": "variable-list",
+
+            "searchable": true,
+
+            "source": "custom",
+
+            "sources": [
+
+                {
+                    "label": "منتج",
+                    "key": "products",
+                    "value": "products"
+                },
+
+                {
+                    "label": "تصنيف",
+                    "key": "categories",
+                    "value": "categories"
+                },
+
+                {
+                    "label": "ماركة",
+                    "key": "brands",
+                    "value": "brands"
+                },
+
+                {
+                    "label": "صفحة",
+                    "key": "pages",
+                    "value": "pages"
+                },
+
+                {
+                    "label": "رابط خارجي",
+                    "key": "custom",
+                    "value": "custom"
+                }
+
+            ]
         }
 
     ]
-
-            
-        }
+}
     ],
     "support_url": "https://example.com",
     "description": {
