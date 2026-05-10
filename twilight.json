@@ -1289,43 +1289,43 @@
                             "minLength": "1",
                             "maxLength": 30
                         },
-                {
-    "id": "banner_item.banner_url_but",
-    "type": "items",
-    "label": "رابط الزر",
-    "icon": "sicon-link",
-    "required": false,
-    "format": "variable-list",
-    "searchable": true,
-    "source": "custom",
-    "sources": [
-        {
-            "label": "منتج",
-            "key": "products",
-            "value": "products"
-        },
-        {
-            "label": "تصنيف",
-            "key": "categories",
-            "value": "categories"
-        },
-        {
-            "label": "ماركة",
-            "key": "brands",
-            "value": "brands"
-        },
-        {
-            "label": "صفحة",
-            "key": "pages",
-            "value": "pages"
-        },
-        {
-            "label": "رابط خارجي",
-            "key": "custom",
-            "value": "custom"
-        }
-    ]
-},
+                        {
+                            "id": "banner_item.banner_url_but",
+                            "type": "items",
+                            "label": "رابط الزر",
+                            "icon": "sicon-link",
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        },
                         {
                             "id": "banner_item.banne_small",
                             "type": "string",
@@ -1783,6 +1783,16 @@
                     "required": false
                 }
             ]
+        },
+        {
+            "key": "7601a9c2-516a-47fb-87ad-ca9a14891c6c",
+            "title": {
+                "en": "ببب",
+                "ar": "ففف"
+            },
+            "icon": "sicon-store",
+            "path": "special-slider",
+            "fields": []
         }
     ],
     "support_url": "https://example.com",
