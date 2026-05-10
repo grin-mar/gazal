@@ -1664,43 +1664,6 @@
                     "value": "#ffffff",
                     "required": false
                 }
-          {
-  "type": "items",
-  "icon": "sicon-link",
-  "label": "الرابط",
-  "id": "banner_url",
-  "required": false,
-  "format": "variable-list",
-  "searchable": true,
-  "source": "custom",
-  "sources": [
-    {
-      "label": "منتج",
-      "key": "products",
-      "value": "products"
-    },
-    {
-      "label": "تصنيف",
-      "key": "categories",
-      "value": "categories"
-    },
-    {
-      "label": "ماركة",
-      "key": "brands",
-      "value": "brands"
-    },
-    {
-      "label": "صفحة",
-      "key": "pages",
-      "value": "pages"
-    },
-    {
-      "label": "رابط خارجي",
-      "key": "custom",
-      "value": "custom"
-    }
-  ]
-}
             ]
         },
         {
