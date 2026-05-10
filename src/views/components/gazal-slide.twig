@@ -14,7 +14,6 @@
       <div slot="items">
 
         {% for banner in component.banner_item %}
-
         {% set img = banner.banner_mg_big %}
         {% set mob = banner.banne_small ? banner.banne_small : img %}
 
@@ -27,37 +26,29 @@
 
           <div class="home-slider__content flex {{ component.text_pos }}">
 
-            <div
-              class="home-slide__text {{ component.blur2 ? 'has-blur' : '' }}"
+            <div class="home-slide__text {{ component.blur2 ? 'has-blur' : '' }}"
               {% if component.blur2 %}
               style="background: rgba(0,0,0,0.35);"
-              {% endif %}
-            >
+              {% endif %}>
 
               {% if banner.banner_main %}
-              <h3
-                class="home-slide__title"
-                style="color:{{ component.main_color }}; font-size:{{ component.pc_main_1 }}px;"
-              >
+              <h3 class="home-slide__title"
+                style="color:{{ component.main_color }}; font-size:{{ component.pc_main_1 }}px;">
                 {{ banner.banner_main }}
               </h3>
               {% endif %}
 
               {% if banner.banne_des %}
-              <p
-                class="home-slide__body"
-                style="color:{{ component.des_color }}; font-size:{{ component.pc_des }}px;"
-              >
+              <p class="home-slide__body"
+                style="color:{{ component.des_color }}; font-size:{{ component.pc_des }}px;">
                 {{ banner.banne_des }}
               </p>
               {% endif %}
 
               {% if banner.banner_button %}
-              <a
-                href="{{ banner.rabt_zr }}"
+              <a href="#"
                 class="home-slide__btn"
-                style="background:{{ component.burton_back }}; color:{{ component.button_color }};"
-              >
+                style="background:{{ component.burton_back }}; color:{{ component.button_color }};">
                 {{ banner.banner_button }}
               </a>
               {% endif %}
@@ -67,202 +58,161 @@
           </div>
 
         </div>
-
         {% endfor %}
 
       </div>
-
     </salla-slider>
 
   </div>
-
 </section>
 
 {% block styleslider %}
 <style>
 
-.home-slider{
-  position:relative;
-  overflow:hidden;
+
+
+
+.home-slider {
+  position: relative;
+  overflow: hidden;
 }
 
-.home-slide{
-  position:relative;
-  min-height:650px;
+.home-slide {
+  position: relative;
+  min-height: 650px;
 }
 
-.home-slide__img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
+.home-slide__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.home-slider__content{
-  position:absolute;
-  inset:0;
-  display:flex;
-  padding:40px;
-  pointer-events:none;
+/* content */
+.home-slider__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  padding: 0 40px;
+  pointer-events: none;
 }
 
-.home-slide__text{
-  width:fit-content;
-  max-width:700px;
-  min-width:280px;
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-  pointer-events:auto;
-  margin:20px;
+/* 💣 بوكس مرن */
+.home-slide__text {
+  max-width: 90%;
+  width: fit-content;
+  min-width: 280px;
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  pointer-events: auto;
 }
 
-.has-blur{
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  padding:24px;
-  border-radius:16px;
+/* blur */
+.has-blur {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 20px;
+  border-radius: 14px;
 }
 
-.home-slide__title{
-  line-height:1.4;
-  word-break:break-word;
-  font-weight:700;
+/* text fix */
+.home-slide__title {
+  line-height: 1.4;
+  word-break: break-word;
 }
 
-.home-slide__body{
-  line-height:1.7;
-  word-break:break-word;
+.home-slide__body {
+  line-height: 1.6;
+  word-break: break-word;
 }
 
-.home-slide__btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:fit-content;
-  min-width:160px;
-  height:48px;
-  padding:0 24px;
-  border-radius:10px;
-  text-decoration:none;
-  transition:.3s;
-}
-
-.home-slide__btn:hover{
-  opacity:.9;
-  transform:translateY(-2px);
-}
-
+/* arrows */
 .home-slider .swiper-button-next,
-.home-slider .swiper-button-prev{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  background:rgba(0,0,0,.35);
-  color:#fff;
+.home-slider .swiper-button-prev {
+  color: #fff;
+  background: rgba(0,0,0,0.3);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
-.home-slider .swiper-button-next:after,
-.home-slider .swiper-button-prev:after{
-  font-size:16px;
+/* responsive */
+@media (max-width:768px){
+  .home-slide {
+    min-height: 320px;
+  }
+
+  .home-slider__content {
+    padding: 0 16px;
+  }
+
+  .home-slide__text {
+    margin: 12px;
+  }
 }
 
-.home-slider .swiper-pagination{
-  bottom:20px !important;
-}
 
-.home-slider .swiper-pagination-bullet{
-  width:12px;
-  height:12px;
-  opacity:1;
-  background:#fff;
-}
-
-.home-slider .swiper-pagination-bullet-active{
-  width:32px;
-  border-radius:999px;
-}
-
-@media(max-width:768px){
-
-  .home-slide{
-    min-height:320px;
-  }
-
-  .home-slider__content{
-    padding:14px;
-  }
-
-  .home-slide__text{
-    max-width:100%;
-    min-width:unset;
-    margin:0;
-  }
-
-  .has-blur{
-    padding:16px;
-  }
-
-  .home-slide__title{
-    font-size:{{ component.mob_main }}px !important;
-  }
-
-  .home-slide__body{
-    font-size:{{ component.mob_des }}px !important;
-  }
-
-}
 
 </style>
 {% endblock %}
 
+
 {% block scriptslider %}
 <script>
+document.addEventListener("DOMContentLoaded", function () {
 
-document.addEventListener('DOMContentLoaded', function(){
+  const el = document.querySelector('#home-main-slider');
+  if (!el) return;
 
-  const slider = document.querySelector('#home-main-slider');
-
-  if(!slider) return;
-
-  const initSlider = () => {
-
-    if(!slider.swiper){
-      setTimeout(initSlider, 200);
+  function init(){
+    if (!el.swiper){
+      setTimeout(init, 200);
       return;
     }
 
-    const swiper = slider.swiper;
+    const swiper = el.swiper;
+
+    /* 🎬 الحركة من العميل */
+    let raw = "{{ component.move1|lower }}";
+    let effect = 'slide';
+
+    if (raw.includes('fade')) effect = 'fade';
+    else if (raw.includes('flip')) effect = 'flip';
+    else if (raw.includes('cube')) effect = 'cube';
+    else if (raw.includes('cover')) effect = 'coverflow';
+
+    swiper.params.effect = effect;
+
+    if(effect === 'fade'){
+      swiper.params.fadeEffect = { crossFade: true };
+    }
 
     let delay = Number({{ component.TIME1|default(0) }});
 
     if(delay > 0 && delay < 100){
-      delay = delay * 1000;
+      delay *= 1000;
     }
 
     if(delay > 0){
-
       swiper.params.autoplay = {
         delay: delay,
-        disableOnInteraction:false
+        disableOnInteraction: false
       };
 
-      if(swiper.autoplay){
-        swiper.autoplay.start();
-      }
-
+      if(swiper.autoplay) swiper.autoplay.start();
     }
 
+    swiper.params.speed = 700;
+    swiper.params.allowTouchMove = true;
+
     swiper.update();
+  }
 
-  };
-
-  initSlider();
-
+  init();
 });
-
 </script>
 {% endblock %}
-<h1>
-dddd</h1>
