@@ -1289,38 +1289,43 @@
                             "minLength": "1",
                             "maxLength": 30
                         },
-                        {
-                            "id": "banner_item.banner_url_but",
-                            "type": "items",
-                            "format": "dropdown-list",
-                            "label": "رابط الزر",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-keyboard_arrow_down",
-                            "selected": [],
-                            "options": [
-                                {
-                                    "label": "أحدث المنتجات",
-                                    "value": "latest-products",
-                                    "key": "d2045b86-c0d2-4bde-bfe7-43ae5bd1eade"
-                                },
-                                {
-                                    "label": "التخفيضات",
-                                    "value": "offers",
-                                    "key": "59758f87-badc-4873-b468-6e3fe780f892"
-                                },
-                                {
-                                    "label": "الماركات",
-                                    "value": "brands",
-                                    "key": "f01f99ed-8ff3-414d-b9f2-710d97eccd47"
-                                }
-                            ],
-                            "source": "Manual",
-                            "multichoice": false,
-                            "searchable": false,
-                            "required": false,
-                            "value": []
-                        },
+                   {
+  "id": "banner_item.banner_url_but",
+  "type": "items",
+  "label": "رابط الزر",
+  "icon": "sicon-link",
+  "required": false,
+  "format": "variable-list",
+  "searchable": true,
+  "source": "custom",
+  "sources": [
+    {
+      "label": "منتج",
+      "key": "products",
+      "value": "products"
+    },
+    {
+      "label": "تصنيف",
+      "key": "categories",
+      "value": "categories"
+    },
+    {
+      "label": "ماركة",
+      "key": "brands",
+      "value": "brands"
+    },
+    {
+      "label": "صفحة",
+      "key": "pages",
+      "value": "pages"
+    },
+    {
+      "label": "رابط خارجي",
+      "key": "custom",
+      "value": "custom"
+    }
+  ]
+},
                         {
                             "id": "banner_item.banne_small",
                             "type": "string",
