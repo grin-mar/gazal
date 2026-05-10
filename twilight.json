@@ -1202,7 +1202,7 @@
                 "ar": "بنر متحرك جزل"
             },
             "icon": "sicon-store",
-            "path": "special-slider",
+            "path": "gazal-slide",
             "fields": [
                 {
                     "id": "sec_width",
