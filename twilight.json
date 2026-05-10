@@ -1209,7 +1209,7 @@
                     "type": "items",
                     "format": "radio-list",
                     "label": "تخطيط العنصر",
-                    "description": "شكل عرض العنصر 11",
+                    "description": "شكل عرض العنصر",
                     "labelHTML": null,
                     "icon": "sicon-list",
                     "selected": [
@@ -1290,7 +1290,7 @@
                             "maxLength": 30
                         },
                         {
-                            "id": "banner_item.rabt_zr",
+                            "id": "banner_item.button",
                             "type": "items",
                             "format": "dropdown-list",
                             "label": "رابط زر",
@@ -1298,18 +1298,7 @@
                             "labelHTML": null,
                             "icon": "sicon-keyboard_arrow_down",
                             "selected": [],
-                            "options": [
-                                {
-                                    "label": "تصنيف",
-                                    "value": "categories",
-                                    "key": "041258a3-aece-49bd-9e23-cf560d38d625"
-                                },
-                                {
-                                    "label": "منتج",
-                                    "value": "products",
-                                    "key": "71e010b7-d700-4001-8e55-3827d78ae835"
-                                }
-                            ],
+                            "options": [],
                             "source": "Manual",
                             "multichoice": false,
                             "searchable": true,
