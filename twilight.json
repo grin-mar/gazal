@@ -1786,18 +1786,23 @@
         },
 {
     "key": "7601a9c2-516a-47fb-87ad-ca9a14891c6c",
+
     "title": {
         "en": "ببب",
         "ar": "ففف"
     },
+
     "icon": "sicon-store",
+
     "path": "special-slider",
 
     "fields": [
 
         {
             "type": "items",
+
             "icon": "sicon-link",
+
             "label": "الرابط",
 
             "id": "test_link",
@@ -1808,7 +1813,8 @@
 
             "searchable": true,
 
-         
+            "source": "custom",
+
             "sources": [
 
                 {
