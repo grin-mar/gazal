@@ -1,257 +1,272 @@
 <section class="s-block s-block--counter" dir="rtl">
 
-    {% set target = (section.settings.counter_date ?? attribute(section.settings,'counter_date') ??
+	{% set target = (section.settings.counter_date ?? attribute(section.settings,'counter_date') ??
     component.counter_date ?? attribute(component,'counter_date') ?? '')|default('')|trim %}
-    {% set mainText = (section.settings.main_text_count ?? attribute(section.settings,'main_text_count') ??
+	{% set mainText = (section.settings.main_text_count ?? attribute(section.settings,'main_text_count') ??
     component.main_text_count ?? attribute(component,'main_text_count') ?? '')|default('')|trim %}
-    {% set subText = (section.settings.sub_text_count ?? attribute(section.settings,'sub_text_count') ??
+	{% set subText = (section.settings.sub_text_count ?? attribute(section.settings,'sub_text_count') ??
     component.sub_text_count ?? attribute(component,'sub_text_count') ?? '')|default('')|trim %}
-    {% set imgSrc = (section.settings.image_count ?? attribute(section.settings,'image_count') ?? component.image_count
+	{% set imgSrc = (section.settings.image_count ?? attribute(section.settings,'image_count') ?? component.image_count
     ?? attribute(component,'image_count') ?? '')|default('')|trim %}
 
-    {% set itemBg = section.settings.item_bac ?? attribute(section.settings,'item_bac') ?? component.item_bac ??
+	{% set itemBg = section.settings.item_bac ?? attribute(section.settings,'item_bac') ?? component.item_bac ??
     attribute(component,'item_bac') ?? '#bdc5c7' %}
-    {% set mainColor = section.settings.main_txt_color ?? attribute(section.settings,'main_txt_color') ??
+	{% set mainColor = section.settings.main_txt_color ?? attribute(section.settings,'main_txt_color') ??
     component.main_txt_color ?? attribute(component,'main_txt_color') ?? '#000' %}
-    {% set subColor = section.settings.sub_txt_color ?? attribute(section.settings,'sub_txt_color') ??
+	{% set subColor = section.settings.sub_txt_color ?? attribute(section.settings,'sub_txt_color') ??
     component.sub_txt_color ?? attribute(component,'sub_txt_color') ?? '#000' %}
 
-    {% set buttonUrl = section.settings.button_url1 ?? attribute(section.settings,'button_url1') ??
+	{% set buttonUrl = section.settings.button_url1 ?? attribute(section.settings,'button_url1') ??
     component.button_url1 ?? attribute(component,'button_url1') ?? '' %}
-    {% set buttonText = section.settings.button_name ?? attribute(section.settings,'button_name') ??
+	{% set buttonText = section.settings.button_name ?? attribute(section.settings,'button_name') ??
     component.button_name ?? attribute(component,'button_name') ?? '' %}
-    {% set btnBg = section.settings.back_button ?? attribute(section.settings,'back_button') ?? component.back_button ??
+	{% set btnBg = section.settings.back_button ?? attribute(section.settings,'back_button') ?? component.back_button ??
     attribute(component,'back_button') ?? '#004956' %}
-    {% set btnColor = section.settings.button_color ?? attribute(section.settings,'button_color') ??
+	{% set btnColor = section.settings.button_color ?? attribute(section.settings,'button_color') ??
     component.button_color ?? attribute(component,'button_color') ?? '#ffffff' %}
 
-    {% set buttonUrl = buttonUrl|default('')|trim %}
-    {% set buttonText = buttonText|default('')|trim %}
+	{% set buttonUrl = buttonUrl|default('')|trim %}
+	{% set buttonText = buttonText|default('')|trim %}
 
-    <div class="counter-wrap s-card rounded-md {{ imgSrc ? '' : 'no-image' }}" data-countdown="{{ target }}"
-        style="background: {{ itemBg }};">
+	<div class="counter-wrap s-card rounded-md {{ imgSrc ? '' : 'no-image' }}" data-countdown="{{ target }}" style="background: {{ itemBg }};">
 
-        <div class="counter-left">
+		<div class="counter-left">
 
-            <div class="counter-cells">
-                <div class="cell">
-                    <div class="num js-days">00</div>
-                    <div class="lbl">أيام</div>
-                </div>
-                <div class="cell">
-                    <div class="num js-hours">00</div>
-                    <div class="lbl">ساعات</div>
-                </div>
-                <div class="cell">
-                    <div class="num js-mins">00</div>
-                    <div class="lbl">دقائق</div>
-                </div>
-                <div class="cell">
-                    <div class="num js-secs">00</div>
-                    <div class="lbl">ثواني</div>
-                </div>
-            </div>
+			<div class="counter-cells">
+				<div class="cell">
+					<div class="num js-days">00</div>
+					<div class="lbl">أيام</div>
+				</div>
+				<div class="cell">
+					<div class="num js-hours">00</div>
+					<div class="lbl">ساعات</div>
+				</div>
+				<div class="cell">
+					<div class="num js-mins">00</div>
+					<div class="lbl">دقائق</div>
+				</div>
+				<div class="cell">
+					<div class="num js-secs">00</div>
+					<div class="lbl">ثواني</div>
+				</div>
+			</div>
 
-            {% if mainText %}
-            <h3 class="counter-title" style="color: {{ mainColor }};">{{ mainText }}</h3>
-            {% endif %}
+			{% if mainText %}
+				<h3 class="counter-title" style="color: {{ mainColor }};">{{ mainText }}</h3>
+			{% endif %}
 
-            {% if subText %}
-            <p class="counter-sub" style="color: {{ subColor }};">{{ subText }}</p>
-            {% endif %}
+			{% if subText %}
+				<p class="counter-sub" style="color: {{ subColor}};">{{ subText }}</p>
+			{% endif %}
 
-            <div class="counter-msg" hidden></div>
+			<div class="counter-msg" hidden></div>
 
-            {% if buttonUrl and buttonText %}
-            <a href="{{ buttonUrl }}" class="counter-btn" style="background:{{ btnBg }};color:{{ btnColor }};">
-                {{ buttonText }}
-            </a>
-            {% endif %}
+			{% if buttonUrl and buttonText %}
+				<a href="{{ buttonUrl }}" class="counter-btn" style="background:{{ btnBg }};color:{{ btnColor }};">
+					{{ buttonText }}
+				</a>
+			{% endif %}
 
-        </div>
+		</div>
 
-        {% if imgSrc %}
-        <div class="counter-right">
-            <img class="counter-image" src="{{ imgSrc }}" alt="" loading="lazy" />
-        </div>
-        {% endif %}
+		{% if imgSrc %}
+			<div class="counter-right">
+				<img class="counter-image" src="{{ imgSrc }}" alt="" loading="lazy"/>
+			</div>
+		{% endif %}
 
-    </div>
+	</div>
 
 </section>
 
 {% block stylecounter %}
-<style>
-.s-block--counter {
-    padding: 60px 0;
-}
+	<style>
+		.s-block--counter {
+			padding: 60px 0;
+		}
 
-.counter-wrap {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row-reverse;
-    overflow: hidden;
-    border-radius: 18px;
-}
+		.counter-wrap {
+			max-width: 1100px;
+			margin: 0 auto;
+			display: flex;
+			flex-direction: row-reverse;
+			overflow: hidden;
+			border-radius: 18px;
+		}
 
-.counter-wrap.no-image {
-    justify-content: center;
-}
+		.counter-wrap.no-image {
+			justify-content: center;
+		}
 
-.counter-left {
-    flex: 1;
-    padding: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 28px;
-}
+		.counter-left {
+			flex: 1;
+			padding: 60px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			gap: 28px;
+		}
 
-.counter-cells {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
+		.counter-cells {
+			display: flex;
+			gap: 20px;
+			justify-content: center;
+		}
 
-.cell {
-    width: 110px;
-    height: 130px;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgba(255,255,255,0.2);
-}
+		.cell {
+			width: 110px;
+			height: 130px;
+			border-radius: 16px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			background: rgba(255, 255, 255, 0.2);
+		}
 
-.cell .num {
-    font-size: 44px;
-    font-weight: 800;
-    line-height: 1;
-}
+		.cell .num {
+			font-size: 44px;
+			font-weight: 800;
+			line-height: 1;
+		}
 
-.cell .lbl {
-    font-size: 16px;
-    font-weight: 600;
-    margin-top: 6px;
-}
+		.cell .lbl {
+			font-size: 16px;
+			font-weight: 600;
+			margin-top: 6px;
+		}
 
-.counter-title {
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 1.4;
-}
+		.counter-title {
+			font-size: 36px;
+			font-weight: 700;
+			line-height: 1.4;
+		}
 
-.counter-sub {
-    font-size: 16px;
-    max-width: 500px;
-    line-height: 1.6;
-}
+		.counter-sub {
+			font-size: 16px;
+			max-width: 500px;
+			line-height: 1.6;
+		}
 
-.counter-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+		.counter-btn {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 
-    width: 260px;
-    height: 50px;
+			width: 260px;
+			height: 50px;
 
-    border-radius: 12px;
-    font-size: 15px;
-    font-weight: 600;
+			border-radius: 12px;
+			font-size: 15px;
+			font-weight: 600;
 
-    text-align: center;
-}
+			text-align: center;
+		}
 
-.counter-right {
-    width: 400px;
-}
+		.counter-right {
+			width: 400px;
+		}
 
-.counter-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+		.counter-image {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
 
-@media (max-width: 767px) {
+		@media(max-width: 767px) {
 
-    .counter-wrap {
-        flex-direction: column-reverse;
-        padding: 16px;
-    }
+			.counter-wrap {
+				flex-direction: column-reverse;
+				padding: 16px;
+			}
 
-    .counter-left {
-        padding: 30px 16px;
-    }
+			.counter-left {
+				padding: 30px 16px;
+			}
 
-    .counter-cells {
-        gap: 10px;
-    }
+			.counter-cells {
+				gap: 10px;
+			}
 
-    .cell {
-        width: 65px;
-        height: 75px;
-    }
+			.cell {
+				width: 65px;
+				height: 75px;
+			}
 
-    .cell .num {
-        font-size: 22px;
-    }
+			.cell .num {
+				font-size: 22px;
+			}
 
-    .cell .lbl {
-        font-size: 12px;
-    }
+			.cell .lbl {
+				font-size: 12px;
+			}
 
-    .counter-title {
-        font-size: 22px;
-    }
+			.counter-title {
+				font-size: 22px;
+			}
 
-    .counter-sub {
-        font-size: 14px;
-    }
+			.counter-sub {
+				font-size: 14px;
+			}
 
-    .counter-btn {
-        width: 100%;
-        max-width: 240px;
-    }
+			.counter-btn {
+				width: 100%;
+				max-width: 240px;
+			}
 
-    .counter-right {
-        width: 100%;
-    }
-}
-
-</style>
+			.counter-right {
+				width: 100%;
+			}
+		}
+	</style>
 {% endblock %}
 
 {% block scriptcounter %}
-<script>
-    (function () {
-        function pad2(n) { return String(n).padStart(2, "0") }
-        function initCountdown(wrap) {
-            var targetStr = wrap.getAttribute("data-countdown"); if (!targetStr) return;
-            var target = new Date(targetStr); if (isNaN(target)) return;
-            var d = wrap.querySelector(".js-days"),
-                h = wrap.querySelector(".js-hours"),
-                m = wrap.querySelector(".js-mins"),
-                s = wrap.querySelector(".js-secs");
-            function tick() {
-                var now = new Date(), diff = target - now;
-                if (diff <= 0) { d.textContent = h.textContent = m.textContent = s.textContent = "00"; clearInterval(t); return; }
-                var sec = Math.floor(diff / 1000), days = Math.floor(sec / 86400); sec %= 86400;
-                var hours = Math.floor(sec / 3600); sec %= 3600;
-                var mins = Math.floor(sec / 60), secs = sec % 60;
-                d.textContent = days;
-                h.textContent = pad2(hours);
-                m.textContent = pad2(mins);
-                s.textContent = pad2(secs);
-            }
-            tick(); var t = setInterval(tick, 1000);
-        }
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll(".counter-wrap[data-countdown]").forEach(initCountdown);
-        });
-    })();
-</script>
-{% endblock %}
+	<script>
+		(function () {
+function pad2(n) {
+return String(n).padStart(2, "0")
+}
+function initCountdown(wrap) {
+var targetStr = wrap.getAttribute("data-countdown");
+if (! targetStr) 
+return;
 
+var target = new Date(targetStr);
+if (isNaN(target)) 
+return;
+
+var d = wrap.querySelector(".js-days"),
+h = wrap.querySelector(".js-hours"),
+m = wrap.querySelector(".js-mins"),
+s = wrap.querySelector(".js-secs");
+function tick() {
+var now = new Date(),
+diff = target - now;
+if (diff <= 0) {
+d.textContent = h.textContent = m.textContent = s.textContent = "00";
+clearInterval(t);
+return;
+}
+var sec = Math.floor(diff / 1000),
+days = Math.floor(sec / 86400);
+sec %= 86400;
+var hours = Math.floor(sec / 3600);
+sec %= 3600;
+var mins = Math.floor(sec / 60),
+secs = sec % 60;
+d.textContent = days;
+h.textContent = pad2(hours);
+m.textContent = pad2(mins);
+s.textContent = pad2(secs);
+}
+tick();
+var t = setInterval(tick, 1000);
+}
+document.addEventListener("DOMContentLoaded", function () {
+document.querySelectorAll(".counter-wrap[data-countdown]").forEach(initCountdown);
+});
+})();
+	</script>
+{% endblock %}
