@@ -1792,7 +1792,23 @@
             },
             "icon": "sicon-store",
             "path": "neeeeee",
-            "fields": []
+            "fields": [
+                {
+                    "id": "url",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "url",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "options": [],
+                    "source": "Manual",
+                    "multichoice": false,
+                    "searchable": true,
+                    "required": true
+                }
+            ]
         }
     ],
     "support_url": "https://example.com",
