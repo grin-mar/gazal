@@ -1783,6 +1783,16 @@
                     "required": false
                 }
             ]
+        },
+        {
+            "key": "a324ddd3-99b2-4c23-887f-5e4e7c631434",
+            "title": {
+                "en": "neeeeee",
+                "ar": "neeeeee"
+            },
+            "icon": "sicon-store",
+            "path": "neeeeee",
+            "fields": []
         }
     ],
     "support_url": "https://example.com",
