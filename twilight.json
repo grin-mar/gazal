@@ -1824,6 +1824,16 @@
                     "required": false
                 }
             ]
+        },
+        {
+            "key": "51642919-00b3-4f0b-881d-c3d19d2e9b82",
+            "title": {
+                "en": "Video Gazel",
+                "ar": "فيديو جزل"
+            },
+            "icon": "sicon-store",
+            "path": "video_gazel",
+            "fields": []
         }
     ],
     "support_url": "https://example.com",
