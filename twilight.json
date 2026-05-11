@@ -1833,7 +1833,35 @@
             },
             "icon": "sicon-store",
             "path": "video_gazel",
-            "fields": []
+            "fields": [
+                {
+                    "id": "urlvi_d",
+                    "type": "string",
+                    "format": "url",
+                    "inputType": "url",
+                    "label": "رابط الفيديو",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": null,
+                    "icon": "sicon-link",
+                    "value": "رابط الفيديو الخاص بك",
+                    "required": true,
+                    "minLength": "1",
+                    "maxLength": 30
+                },
+                {
+                    "id": "vid_mage",
+                    "type": "string",
+                    "format": "image",
+                    "label": "صوره الفيديو",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://hostname.com/image.png",
+                    "icon": "sicon-image",
+                    "value": "صوره الفيديو الافتراضية قبل البدء",
+                    "required": false
+                }
+            ]
         }
     ],
     "support_url": "https://example.com",
