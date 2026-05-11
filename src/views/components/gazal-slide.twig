@@ -1,4 +1,4 @@
-{% set el_slide = component['gazal-slide'] %}
+{% set el_slide = component %}
 
 <section class="s-block s-block--default home-slider {{ el_slide.sec_width == 'full' ? 's-block--full-bg' : '' }}" dir="rtl">
 
@@ -7,7 +7,7 @@
     <salla-slider
       id="home-main-slider"
       auto-play="{{ el_slide.TIME1 > 0 ? 'true' : 'false' }}"
-      interval="{{ el_slide.TIME1 * 1000 }}"
+      interval="{{ el_slide.TIME1 > 0 and el_slide.TIME1 < 100 ? el_slide.TIME1 * 1000 : el_slide.TIME1 }}"
       pagination
       type="fullwidth"
       dir="rtl"
@@ -15,11 +15,7 @@
       slider-config='{
         "speed":700,
         "loop":true,
-        "allowTouchMove":true,
-        "autoplay":{
-          "delay":{{ el_slide.TIME1 * 1000 }},
-          "disableOnInteraction":false
-        }
+        "allowTouchMove":true
       }'>
 
       <div slot="items">
@@ -36,12 +32,12 @@
             <img src="{{ img }}" class="home-slide__img">
           </picture>
 
-          <div class="home-slider__content flex {{ banner.text_pos ? banner.text_pos : el_slide.text_pos }}">
+          <div class="home-slider__content flex {{ banner.text_pos }}">
 
             <div
               class="home-slide__text {{ el_slide.blur2 ? 'has-blur' : '' }}"
               {% if el_slide.blur2 %}
-              style="background:{{ el_slide.background22 }}80;"
+              style="background: {{ el_slide.background22 }}80;"
               {% endif %}
             >
 
@@ -120,12 +116,6 @@
   position:relative;
   min-height:650px;
 }
-
-{% if el_slide.height1 %}
-.home-slide{
-  min-height:auto;
-}
-{% endif %}
 
 .home-slide__img{
   position:absolute;
@@ -225,7 +215,7 @@
 
 .home-slider .swiper-pagination-bullet-active{
   opacity:1;
-  transform:scale(1.1);
+  transform:scale(1.12);
 }
 
 {% if el_slide.shkl_aalamat_altnql == 'line' %}
@@ -281,12 +271,6 @@
     min-height:340px;
   }
 
-  {% if el_slide.height1 %}
-  .home-slide{
-    min-height:auto;
-  }
-  {% endif %}
-
   .home-slider__content{
     padding:16px;
   }
@@ -335,22 +319,18 @@ document.addEventListener('DOMContentLoaded', function(){
 
     const swiper = slider.swiper;
 
-    swiper.params.speed = 700;
+    let delay = Number({{ el_slide.TIME1|default(5) }});
 
-    let delay = Number({{ el_slide.TIME1|default(5) }}) * 1000;
-
-    if(delay > 0){
-
-      swiper.params.autoplay = {
-        delay: delay,
-        disableOnInteraction:false
-      };
-
-      if(swiper.autoplay){
-        swiper.autoplay.start();
-      }
-
+    if(delay > 0 && delay < 100){
+      delay = delay * 1000;
     }
+
+    swiper.params.autoplay = {
+      delay: delay,
+      disableOnInteraction:false
+    };
+
+    swiper.autoplay.start();
 
     swiper.update();
   }
@@ -361,3 +341,5 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
+<h2>
+lfmrolr</h2>
