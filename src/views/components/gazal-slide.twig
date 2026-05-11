@@ -1,19 +1,5 @@
-<a href="{{ banner.url }}">
-  كلمة عادية
-</a>
+<section class="s-block s-block--default home-slider {{ component.sec_width == 'full' ? 's-block--full-bg' : '' }}" dir="rtl">
 
-<a href="{{ component.url }}">
-  كل222 مة عادية
-</a>
-<a href="{{component.gazal-slide.url}}">
-  كلمة عادية
-</a>
-<a href="{{component.banner_item.but_url}}">
-  كلمة 33333
-</a>
-<a href="{{component.gazal-slide.banner_item.but_url}}">
-  كلمة 4444
-</a>
-<a href="{{ gazal-slide.banner_item.but_url|json_encode }}">
-  كلمة 444584
-</a>
+	<div class="{{ component.sec_width == 'Boxed' ? 'container' : '' }}">
+
+		<salla-slider id="home-main-slider" auto-play="{{ component.TIME1 > 0 ? 'true' : 'false' }}"
