@@ -1,4 +1,5 @@
-{% set el_slide = component['gazal-slide'] %}
+
+{% set el_slide = component %}
 
 <section class="s-block s-block--default home-slider {{ el_slide.sec_width == 'full' ? 's-block--full-bg' : '' }}" dir="rtl">
 
@@ -36,12 +37,12 @@
             <img src="{{ img }}" class="home-slide__img">
           </picture>
 
-          <div class="home-slider__content flex {{ banner.text_pos }}">
+          <div class="home-slider__content flex {{ banner.text_pos ? banner.text_pos : 'items-center justify-center text-center' }}">
 
             <div
               class="home-slide__text {{ el_slide.blur2 ? 'has-blur' : '' }}"
               {% if el_slide.blur2 %}
-              style="background:{{ el_slide.background22 }}80;"
+              style="background: {{ el_slide.background22 }}80;"
               {% endif %}
             >
 
@@ -121,12 +122,6 @@
   min-height:650px;
 }
 
-{% if el_slide.height1 %}
-.home-slide{
-  min-height:auto;
-}
-{% endif %}
-
 .home-slide__img{
   position:absolute;
   inset:0;
@@ -160,19 +155,20 @@
 .has-blur{
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,0.08);
 }
 
 .home-slide__title{
-  margin:0;
+  font-weight:700;
   line-height:1.4;
   word-break:break-word;
+  margin:0;
 }
 
 .home-slide__body{
-  margin:0;
   line-height:1.8;
   word-break:break-word;
+  margin:0;
 }
 
 .home-slide__btn{
@@ -184,7 +180,7 @@
   padding:14px 28px;
   border-radius:12px;
   text-decoration:none;
-  transition:.3s ease;
+  transition:0.3s ease;
   font-weight:600;
 }
 
@@ -193,16 +189,15 @@
   opacity:.9;
 }
 
-/* arrows */
-
 .home-slider .swiper-button-next,
 .home-slider .swiper-button-prev{
   width:46px;
   height:46px;
   border-radius:50%;
   background:rgba(0,0,0,.35);
-  color:#fff;
   backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  color:#fff;
 }
 
 .home-slider .swiper-button-next:after,
@@ -210,8 +205,6 @@
   font-size:16px;
   font-weight:700;
 }
-
-/* pagination */
 
 .home-slider .swiper-pagination{
   bottom:24px !important;
@@ -252,8 +245,6 @@
 
 {% endif %}
 
-/* animation */
-
 .swiper-slide-active .home-slide__title{
   animation:fadeRight .8s ease both;
 }
@@ -277,7 +268,6 @@
     transform:translateX(0);
     opacity:1;
   }
-
 }
 
 @media(max-width:768px){
@@ -291,8 +281,8 @@
   }
 
   .home-slide__text{
-    max-width:100%;
     min-width:auto;
+    max-width:100%;
     padding:18px;
     margin:10px;
   }
@@ -308,6 +298,7 @@
   .home-slide__btn{
     width:100%;
     min-width:unset;
+    padding:12px 18px;
   }
 
 }
@@ -333,10 +324,10 @@ document.addEventListener('DOMContentLoaded', function(){
 
     const swiper = slider.swiper;
 
-    swiper.params.speed = 700;
+    const delay = Number({{ el_slide.TIME1|default(5) }}) * 1000;
 
     swiper.params.autoplay = {
-      delay: Number({{ el_slide.TIME1|default(5) }}) * 1000,
+      delay: delay,
       disableOnInteraction:false
     };
 
@@ -354,5 +345,17 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
 <h2>
-lfmroببlr</h2>
+يييي</h2>
