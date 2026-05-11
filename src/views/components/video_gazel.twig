@@ -1,0 +1,295 @@
+{% set video_gaz = component %}
+
+
+<section class="s-block s-block--video mt-16 {{ video_gaz.sec_width == 'full' ? 'video-fullwidth s-block--full-bg' : '' }} {{ video_gaz['txt_class'] }}">
+  <div class="container video-fullwidth__container {{ video_gaz.sec_width == 'Boxed' ? 'container' : '' }}">
+    <div
+      class="videoWrapper"
+      data-video-url="{{ video_gaz.urlvi_d|default('')|trim }}"
+      data-poster-url="{{ video_gaz.vid_mage|default('')|trim }}"
+    >
+      <video
+        class="bg-video"
+        playsinline
+        muted
+        loop
+        preload="metadata"
+        poster="{{ video_gaz.vid_mage|default('')|trim }}"
+        controlslist="nodownload noplaybackrate"
+      ></video>
+
+      <button type="button" class="video-toggle" aria-label="تشغيل الفيديو">
+        <span class="icon icon-play" aria-hidden="true"></span>
+      </button>
+
+      <div class="video-msg" hidden></div>
+    </div>
+  </div>
+</section>
+
+{% block stylevideo %}
+<style>
+  .video-fullwidth {
+    width: 100vw;
+    max-width: 100%;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+  .video-fullwidth__container {
+    max-width: none !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 16/9;
+  border-radius: 16px;
+}
+  .bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .video-toggle {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 74px;
+    height: 74px;
+    border-radius: 999px;
+    border: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    z-index: 2;
+    backdrop-filter: blur(2px);
+    touch-action: manipulation;
+  }
+  .video-toggle:hover {
+    background: rgba(0, 0, 0, 0.55);
+  }
+  .icon-play {
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 18px solid #fff;
+    margin-left: 3px;
+  }
+  .icon-pause {
+    width: 18px;
+    height: 18px;
+    position: relative;
+  }
+  .icon-pause:before,
+  .icon-pause:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 6px;
+    height: 18px;
+    background: #fff;
+    border-radius: 2px;
+  }
+  .icon-pause:before {
+    left: 0;
+  }
+  .icon-pause:after {
+    right: 0;
+  }
+  .videoWrapper.is-playing .video-toggle {
+    opacity: 0.15;
+  }
+  .video-msg {
+    position: absolute;
+    inset: auto 12px 12px 12px;
+    z-index: 3;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: 13px;
+    direction: rtl;
+    text-align: right;
+  }
+
+  @media (max-width: 767px) {
+    .videoWrapper {
+      height: 752px;
+      aspect-ratio: auto;
+    }
+  }
+  @media (max-width: 767px) {
+
+  .videoWrapper{
+    height: 420px;
+    aspect-ratio:auto;
+  }
+
+}
+</style>
+{% endblock %} {% block scriptvideo %}
+<script>
+  (function () {
+    function initVideoBlock(wrapper) {
+      var video = wrapper.querySelector(".bg-video");
+      var btn = wrapper.querySelector(".video-toggle");
+      var msg = wrapper.querySelector(".video-msg");
+      if (!video || !btn) return;
+
+      var url = (wrapper.getAttribute("data-video-url") || "").trim();
+      var poster = (wrapper.getAttribute("data-poster-url") || "").trim();
+
+      var isPlayPending = false;
+      var lastTap = 0;
+
+      function showMsg(text) {
+        if (!msg) return;
+        msg.hidden = !text;
+        msg.textContent = text || "";
+      }
+
+      function toggleIcon(isPlaying) {
+        var icon = btn.querySelector(".icon");
+        if (!icon) return;
+        icon.className = "icon " + (isPlaying ? "icon-pause" : "icon-play");
+      }
+
+      function setState(isPlaying) {
+        toggleIcon(isPlaying);
+        wrapper.classList.toggle("is-playing", isPlaying);
+        btn.setAttribute(
+          "aria-label",
+          isPlaying ? "إيقاف تشغيل الفيديو" : "تشغيل الفيديو"
+        );
+      }
+
+      video.muted = true;
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      video.playsInline = true;
+      video.preload = "metadata";
+
+      if (poster) video.poster = poster;
+
+      if (!url) {
+        showMsg("⚠️ رابط الفيديو غير مُدخل في إعدادات القسم.");
+        btn.disabled = true;
+        btn.style.display = "none";
+        return;
+      }
+
+      video.src = url;
+
+      setState(false);
+      showMsg("");
+
+      function tryPlay() {
+        if (isPlayPending) return;
+        isPlayPending = true;
+        btn.disabled = true;
+        showMsg("");
+
+        try {
+          if (video.readyState === 0) video.load();
+          video.muted = true;
+
+          var p = video.play();
+          if (p && typeof p.then === "function") {
+            p.then(function () {
+              if (video.poster) video.removeAttribute("poster");
+              setState(true);
+              showMsg("");
+            })
+              .catch(function (e) {
+                setState(false);
+                if (e && e.name === "NotAllowedError") {
+                  showMsg("التشغيل اتمنع تلقائيًا. اضغط زر التشغيل مرة أخرى.");
+                } else {
+                  showMsg(
+                    "تعذّر تشغيل الفيديو. غالبًا رابط الاستضافة يمنع التحميل من خارج موقعه أو يرسل نوع ملف غير صحيح."
+                  );
+                }
+                console.log("Video play error:", e);
+              })
+              .finally(function () {
+                isPlayPending = false;
+                btn.disabled = false;
+              });
+          } else {
+            if (video.poster) video.removeAttribute("poster");
+            setState(true);
+            isPlayPending = false;
+            btn.disabled = false;
+          }
+        } catch (e) {
+          setState(false);
+          showMsg("تعذّر تشغيل الفيديو. غالبًا مشكلة استضافة/رابط.");
+          console.log("Video play error:", e);
+          isPlayPending = false;
+          btn.disabled = false;
+        }
+      }
+
+      function safePause() {
+        if (isPlayPending) return;
+        video.pause();
+        setState(false);
+      }
+
+      function onToggle(ev) {
+        if (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+        }
+        var now = Date.now();
+        if (now - lastTap < 350) return;
+        lastTap = now;
+
+        if (video.paused) tryPlay();
+        else safePause();
+      }
+
+      btn.addEventListener("click", onToggle, { passive: false });
+      btn.addEventListener("touchend", onToggle, { passive: false });
+
+      video.addEventListener("play", function () {
+        if (video.poster) video.removeAttribute("poster");
+        setState(true);
+        showMsg("");
+      });
+
+      video.addEventListener("pause", function () {
+        if (!isPlayPending) setState(false);
+      });
+
+      video.addEventListener("error", function () {
+        var err = video.error;
+        var code = err ? err.code : "";
+        var hint = "";
+        if (code === 2) hint = " (403/404 أو السيرفر لا يدعم range)";
+        if (code === 3) hint = " (ترميز غير مدعوم: جرّب H.264)";
+        if (code === 4)
+          hint = " (الاستضافة بترجع نوع ملف غلط/تمنع hotlink/CSP)";
+        setState(false);
+        showMsg("حدث خطأ أثناء تحميل الفيديو. رمز: " + code + hint);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var blocks = document.querySelectorAll(".videoWrapper");
+      for (var i = 0; i < blocks.length; i++) initVideoBlock(blocks[i]);
+    });
+  })();
+</script>
+{% endblock %}

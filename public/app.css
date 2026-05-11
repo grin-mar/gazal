@@ -2095,8 +2095,17 @@ input:where([type='file']):focus {
 .outline {
     outline-style: solid;
 }
+.blur {
+    --tw-blur: blur(8px);
+    filter: blur(8px) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
 .filter {
     filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.backdrop-filter {
+    -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+    backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 .transition {
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
@@ -9869,6 +9878,23 @@ input[type=radio].sr-only:checked ~ div.s-loyalty-prize-item-check {
     color: rgba(209, 213, 219, 1);
     color: rgba(209, 213, 219, var(--tw-text-opacity, 1));
 }
+.s-loyalty-program-no-content .\!icon {
+    margin-bottom: 1rem;
+    display: flex;
+    height: 8rem;
+    width: 8rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    --tw-bg-opacity: 1;
+    background-color: rgba(243, 244, 246, 1);
+    background-color: rgba(243, 244, 246, var(--tw-bg-opacity, 1));
+    font-size: 3rem;
+    line-height: 1;
+    --tw-text-opacity: 1;
+    color: rgba(209, 213, 219, 1);
+    color: rgba(209, 213, 219, var(--tw-text-opacity, 1));
+}
 .s-loyalty-program-no-content p {
     margin-bottom: 1rem;
     font-size: 1rem;
@@ -13901,6 +13927,23 @@ input[type=radio].s-order-totals-card-heading:checked ~ div.absolute {
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
 }
 .s-orders-no-content .icon {
+    margin-bottom: 1rem;
+    display: flex;
+    height: 8rem;
+    width: 8rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    --tw-bg-opacity: 1;
+    background-color: rgba(243, 244, 246, 1);
+    background-color: rgba(243, 244, 246, var(--tw-bg-opacity, 1));
+    font-size: 3rem;
+    line-height: 1;
+    --tw-text-opacity: 1;
+    color: rgba(209, 213, 219, 1);
+    color: rgba(209, 213, 219, var(--tw-text-opacity, 1));
+}
+.s-orders-no-content .\!icon {
     margin-bottom: 1rem;
     display: flex;
     height: 8rem;
@@ -21107,6 +21150,23 @@ input[type=radio].sr-only:checked ~ div.s-verify-back {
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
 }
 .s-wallet-no-content .icon {
+    margin-bottom: 1rem;
+    display: flex;
+    height: 8rem;
+    width: 8rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    --tw-bg-opacity: 1;
+    background-color: rgba(243, 244, 246, 1);
+    background-color: rgba(243, 244, 246, var(--tw-bg-opacity, 1));
+    font-size: 3rem;
+    line-height: 1;
+    --tw-text-opacity: 1;
+    color: rgba(209, 213, 219, 1);
+    color: rgba(209, 213, 219, var(--tw-text-opacity, 1));
+}
+.s-wallet-no-content .\!icon {
     margin-bottom: 1rem;
     display: flex;
     height: 8rem;
