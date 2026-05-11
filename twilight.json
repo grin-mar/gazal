@@ -1835,6 +1835,36 @@
             "path": "video_gazel",
             "fields": [
                 {
+                    "id": "sec_width",
+                    "type": "items",
+                    "format": "radio-list",
+                    "label": "تخطيط العنصر",
+                    "description": "شكل عرض العنصر",
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "عرض كامل الشاشة",
+                            "value": "full",
+                            "key": "3e239597-c0e8-4b66-9ca4-12529c2122d8"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "داخل إطار (Boxed)",
+                            "value": "Boxed",
+                            "key": "ff7883ef-9637-4b2e-a04e-6ad2c4e8de99"
+                        },
+                        {
+                            "label": "عرض كامل الشاشة",
+                            "value": "full",
+                            "key": "3e239597-c0e8-4b66-9ca4-12529c2122d8"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
                     "id": "urlvi_d",
                     "type": "string",
                     "format": "url",
@@ -1860,6 +1890,21 @@
                     "icon": "sicon-image",
                     "value": "صوره الفيديو الافتراضية قبل البدء",
                     "required": false
+                },
+                {
+                    "id": "klas_mmez",
+                    "type": "string",
+                    "format": "text",
+                    "label": "كلاس مميز",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "css-class",
+                    "icon": "sicon-format-text-alt",
+                    "value": "عنصر css لتمييز العنصر",
+                    "multilanguage": false,
+                    "required": false,
+                    "minLength": "1",
+                    "maxLength": 30
                 }
             ]
         }
