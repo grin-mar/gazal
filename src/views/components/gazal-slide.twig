@@ -1,6 +1,8 @@
 {% set el_slide = component %}
+   
 
-<section class="s-block s-block--default home-slider {{ el_slide.sec_width == 'full' ? 's-block--full-bg' : '' }}"  dir="rtl">
+
+<section class="s-block s-block--default home-slider {{ el_slide.sec_width == 'full' ? 's-block--full-bg' : '' }} {{ el_slide['txt_class '] }} "  dir="rtl">
 
   <div class="{{ el_slide.sec_width == 'Boxed' ? 'container' : '' }}">
 
@@ -13,14 +15,17 @@
       dir="rtl"
       show-controls="true"
       slider-config='{
-        "speed":700,
-        "loop":true,
-        "allowTouchMove":true
-      }'>
+  "speed":700,
+  "loop":true,
+  "allowTouchMove":true,
+  "autoplay":{
+    "delay":{{ el_slide.TIME1 * 1000 }},
+    "disableOnInteraction":false
+  }
+}'>
 
       <div slot="items">
-
-        {% for banner in el_slide.banner_item %}
+     {% for banner in el_slide.banner_item %}
 
         {% set img = banner.banner_mg_big %}
         {% set mob = banner.banne_small ? banner.banne_small : img %}
@@ -208,10 +213,18 @@
 .home-slider .swiper-pagination-bullet{
   width:12px;
   height:12px;
-  opacity:1;
   background:#fff;
+  opacity:.3;
+  transition:.3s ease;
 }
 
+
+.home-slider .swiper-pagination-bullet-active{
+  opacity:1;
+  transform:scale(1.25);
+  background:{{ el_slide.main_color }};
+  box-shadow:0 0 0 4px rgba(255,255,255,.15);
+}
 {% if el_slide.shkl_aalamat_altnql == 'line' %}
 
 .home-slider .swiper-pagination-bullet{
@@ -291,7 +304,14 @@
   }
 
 }
+.home-slider,
+.home-slider .swiper{
+  overflow:hidden !important;
+}
 
+.home-slider .swiper-wrapper{
+  overflow:visible !important;
+}
 </style>
 {% endblock %}
 
@@ -307,24 +327,11 @@ document.addEventListener('DOMContentLoaded', function(){
   function initSlider(){
 
     if(!slider.swiper){
-      setTimeout(initSlider,200);
+      setTimeout(initSlider, 200);
       return;
     }
 
     const swiper = slider.swiper;
-
-    let delay = Number({{ el_slide.TIME1|default(5) }});
-
-    if(delay > 0 && delay < 100){
-      delay = delay * 1000;
-    }
-
-    swiper.params.autoplay = {
-      delay: delay,
-      disableOnInteraction:false
-    };
-
-    swiper.autoplay.start();
 
     swiper.update();
   }
@@ -336,4 +343,4 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 {% endblock %}
 <h2>
-lfmrolr</h2>
+lfmrolrdddddddddddddddddddddddddd</h2>
