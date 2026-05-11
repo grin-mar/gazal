@@ -6,18 +6,16 @@
 
   <div class="{{ el_slide.sec_width == 'Boxed' ? 'container' : '' }}">
 
-    <salla-slider
-      id="home-main-slider"
-        class="home-slider__salla"
-      auto-play="{{ el_slide.TIME1 > 0 ? 'true' : 'false' }}"
-      interval="{{ el_slide.TIME1 > 0 and el_slide.TIME1 < 100 ? el_slide.TIME1 * 1000 : el_slide.TIME1 }}"
-      pagination
-      type="fullwidth"
-      dir="rtl"
-      show-controls="true"
-slider-config='{"speed":700,"loop":true,"allowTouchMove":true,"autoplay":{"delay":{{ el_slide.TIME1 * 1000 }},"disableOnInteraction":false}}'
+<salla-slider
+  id="home-main-slider"
+  class="home-slider__salla"
+  auto-play
+  interval="{{ el_slide.TIME1 * 1000 }}"
+  pagination
+  type="fullwidth"
+  dir="rtl"
+  show-controls="true"
 >
-
       <div slot="items">
      {% for banner in el_slide.banner_item %}
 
