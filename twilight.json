@@ -1654,7 +1654,7 @@
                     "required": false
                 },
                 {
-                    "id": "txt-clas",
+                    "id": "txt_class",
                     "type": "string",
                     "format": "text",
                     "label": "كلاس مميز",
