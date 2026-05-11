@@ -1892,7 +1892,7 @@
                     "required": false
                 },
                 {
-                    "id": "klas_mmez",
+                    "id": "txt_class",
                     "type": "string",
                     "format": "text",
                     "label": "كلاس مميز",
