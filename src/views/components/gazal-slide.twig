@@ -1,4 +1,3 @@
-
 {% set el_slide = component %}
 
 <section class="s-block s-block--default home-slider {{ el_slide.sec_width == 'full' ? 's-block--full-bg' : '' }}" dir="rtl">
@@ -8,7 +7,7 @@
     <salla-slider
       id="home-main-slider"
       auto-play="{{ el_slide.TIME1 > 0 ? 'true' : 'false' }}"
-      interval="{{ el_slide.TIME1 * 1000 }}"
+      interval="{{ el_slide.TIME1 > 0 and el_slide.TIME1 < 100 ? el_slide.TIME1 * 1000 : el_slide.TIME1 }}"
       pagination
       type="fullwidth"
       dir="rtl"
@@ -16,11 +15,7 @@
       slider-config='{
         "speed":700,
         "loop":true,
-        "allowTouchMove":true,
-        "autoplay":{
-          "delay":{{ el_slide.TIME1 * 1000 }},
-          "disableOnInteraction":false
-        }
+        "allowTouchMove":true
       }'>
 
       <div slot="items">
@@ -37,7 +32,7 @@
             <img src="{{ img }}" class="home-slide__img">
           </picture>
 
-          <div class="home-slider__content flex {{ banner.text_pos ? banner.text_pos : 'items-center justify-center text-center' }}">
+          <div class="home-slider__content flex {{ banner.text_pos }}">
 
             <div
               class="home-slide__text {{ el_slide.blur2 ? 'has-blur' : '' }}"
@@ -213,14 +208,8 @@
 .home-slider .swiper-pagination-bullet{
   width:12px;
   height:12px;
-  background:#fff;
-  opacity:.35;
-  transition:.3s ease;
-}
-
-.home-slider .swiper-pagination-bullet-active{
   opacity:1;
-  transform:scale(1.12);
+  background:#fff;
 }
 
 {% if el_slide.shkl_aalamat_altnql == 'line' %}
@@ -324,17 +313,18 @@ document.addEventListener('DOMContentLoaded', function(){
 
     const swiper = slider.swiper;
 
-    const delay = Number({{ el_slide.TIME1|default(5) }}) * 1000;
+    let delay = Number({{ el_slide.TIME1|default(5) }});
+
+    if(delay > 0 && delay < 100){
+      delay = delay * 1000;
+    }
 
     swiper.params.autoplay = {
       delay: delay,
       disableOnInteraction:false
     };
 
-    if(swiper.autoplay){
-      swiper.autoplay.stop();
-      swiper.autoplay.start();
-    }
+    swiper.autoplay.start();
 
     swiper.update();
   }
@@ -345,17 +335,5 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
 <h2>
-يييي</h2>
+lfmrolrSSSS</h2>
