@@ -23,7 +23,7 @@
         {% for banner in el_slide.banner_item %}
 
         {% set img = banner.banner_mg_big %}
-
+        
         {% set mob = banner.banne_small ? banner.banne_small : img %}
 
         <div class="swiper-slide home-slide">
@@ -33,7 +33,7 @@
             <img src="{{ img }}" class="home-slide__img">
           </picture>
 
-          <div class="home-slider__content flex {{ banner.text_pos }}">
+          <div class="home-slider__content flex {{ el_slide.text_pos }}">
 
             <div
               class="home-slide__text {{ el_slide.blur2 ? 'has-blur' : '' }}"
@@ -336,4 +336,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
-<h2>dddddddddddddddddd</h2>
+<h2>ggggggggggggggggggggggggggggggggggggggggg</h2>
