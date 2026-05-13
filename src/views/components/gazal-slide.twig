@@ -1,14 +1,13 @@
 {% set el_slide = component %}
 
-<section class="s-block s-block--default home-slider {{ el_slide.sec_width == 'full' ? 's-block--full-bg' : '' }} {{ el_slide['txt_class'] }}" dir="rtl">
+<section class="s-block s-block--default home-slider {{ el_slide.sec_width == 'full' ? 's-block--full-bg' : '' }} {{el_slide[txt_class]}}" dir="rtl">
 
   <div class="{{ el_slide.sec_width == 'Boxed' ? 'container' : '' }}">
 
     <salla-slider
       id="home-main-slider"
-      class="home-slider__salla"
-      auto-play
-      interval="{{ el_slide.TIME1 * 1000 }}"
+      auto-play="{{ el_slide.TIME1 > 0 ? 'true' : 'false' }}"
+      interval="{{ el_slide.TIME1 > 0 and el_slide.TIME1 < 100 ? el_slide.TIME1 * 1000 : el_slide.TIME1 }}"
       pagination
       type="fullwidth"
       dir="rtl"
@@ -33,7 +32,7 @@
             <img src="{{ img }}" class="home-slide__img">
           </picture>
 
-          <div class="home-slider__content flex {{ banner.text_pos }}">
+          <div class="home-slider__content flex {{ banner.text_pos.value }}">
 
             <div
               class="home-slide__text {{ el_slide.blur2 ? 'has-blur' : '' }}"
@@ -113,23 +112,10 @@
   overflow:hidden;
 }
 
-.home-slider,
-.home-slider .swiper,
-.home-slider .swiper-wrapper{
-  direction:rtl;
-  overflow:hidden;
-}
-
 .home-slide{
   position:relative;
   min-height:650px;
 }
-
-{% if el_slide.height1 %}
-.home-slide{
-  min-height:auto;
-}
-{% endif %}
 
 .home-slide__img{
   position:absolute;
@@ -189,7 +175,7 @@
   padding:14px 28px;
   border-radius:12px;
   text-decoration:none;
-  transition:.3s ease;
+  transition:0.3s ease;
   font-weight:600;
 }
 
@@ -222,15 +208,8 @@
 .home-slider .swiper-pagination-bullet{
   width:12px;
   height:12px;
-  background:#fff;
-  opacity:.35;
-  transition:.3s ease;
-}
-
-.home-slider .swiper-pagination-bullet-active{
   opacity:1;
-  transform:scale(1.2);
-  background:{{ el_slide.main_color }};
+  background:#fff;
 }
 
 {% if el_slide.shkl_aalamat_altnql == 'line' %}
@@ -332,7 +311,22 @@ document.addEventListener('DOMContentLoaded', function(){
       return;
     }
 
-    slider.swiper.update();
+    const swiper = slider.swiper;
+
+    let delay = Number({{ el_slide.TIME1|default(5) }});
+
+    if(delay > 0 && delay < 100){
+      delay = delay * 1000;
+    }
+
+    swiper.params.autoplay = {
+      delay: delay,
+      disableOnInteraction:false
+    };
+
+    swiper.autoplay.start();
+
+    swiper.update();
   }
 
   initSlider();
@@ -341,3 +335,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
+<h2>lfmrolr</h2>
