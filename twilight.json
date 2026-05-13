@@ -1375,78 +1375,78 @@
                             "icon": "sicon-image",
                             "value": null,
                             "required": false
+                        },
+                        {
+                            "id": "banner_item.text_pos",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "موقع ومحاذاة النصوص",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-keyboard_arrow_down",
+                            "selected": [
+                                {
+                                    "label": "وسط-وسط",
+                                    "value": "items-center justify-center text-center",
+                                    "key": "747368bd-4b95-46b3-950e-c21daf6023ce"
+                                }
+                            ],
+                            "options": [
+                                {
+                                    "label": "وسط-وسط",
+                                    "value": "items-center justify-center text-center",
+                                    "key": "747368bd-4b95-46b3-950e-c21daf6023ce"
+                                },
+                                {
+                                    "label": "وسط-يمين",
+                                    "value": "items-center justify-start text-right",
+                                    "key": "1084774d-218d-46f8-a5f9-e3214b202be3"
+                                },
+                                {
+                                    "label": "وسط-يسار",
+                                    "value": "items-center justify-end text-left",
+                                    "key": "9d405b1d-cebd-4152-938f-6f4ea49a6392"
+                                },
+                                {
+                                    "label": "اعلي-يمين",
+                                    "value": "items-start justify-start text-right",
+                                    "key": "d95f131d-654d-48a3-9cc8-ac2dbca4f77a"
+                                },
+                                {
+                                    "label": "اعلي-وسط",
+                                    "value": "items-start justify-center text-center",
+                                    "key": "63d9ad5d-1316-4ca3-abd0-9a3f2c2e4551"
+                                },
+                                {
+                                    "label": "اعلي-يسار",
+                                    "value": "items-start justify-end text-left",
+                                    "key": "7b571c52-90e8-493e-8ca8-f64233fc0cb7"
+                                },
+                                {
+                                    "label": "اسفل-يمين",
+                                    "value": "items-end justify-start text-right",
+                                    "key": "56111f5b-f559-4345-8680-ed906ce52a81"
+                                },
+                                {
+                                    "label": "اسفل-وسط",
+                                    "value": "items-end justify-center text-center",
+                                    "key": "0fb86ffd-18e8-44af-a7ab-d05a95d587ad"
+                                },
+                                {
+                                    "label": "اسفل-يسار",
+                                    "value": "items-end justify-end text-left",
+                                    "key": "2dc35d5d-3e05-479b-9615-b101325d0f3f"
+                                }
+                            ],
+                            "source": "Manual",
+                            "multichoice": false,
+                            "searchable": false,
+                            "required": false
                         }
                     ],
                     "value": [],
                     "minLength": 1,
                     "maxLength": "10"
-                },
-                {
-                    "id": "banner_item.text_pos",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "موقع ومحاذاة النصوص",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-keyboard_arrow_down",
-                    "selected": [
-                        {
-                            "label": "وسط-وسط",
-                            "value": "items-center justify-center text-center",
-                            "key": "747368bd-4b95-46b3-950e-c21daf6023ce"
-                        }
-                    ],
-                    "options": [
-                        {
-                            "label": "وسط-وسط",
-                            "value": "items-center justify-center text-center",
-                            "key": "747368bd-4b95-46b3-950e-c21daf6023ce"
-                        },
-                        {
-                            "label": "وسط-يمين",
-                            "value": "items-center justify-start text-right",
-                            "key": "1084774d-218d-46f8-a5f9-e3214b202be3"
-                        },
-                        {
-                            "label": "وسط-يسار",
-                            "value": "items-center justify-end text-left",
-                            "key": "9d405b1d-cebd-4152-938f-6f4ea49a6392"
-                        },
-                        {
-                            "label": "اعلي-يمين",
-                            "value": "items-start justify-start text-right",
-                            "key": "d95f131d-654d-48a3-9cc8-ac2dbca4f77a"
-                        },
-                        {
-                            "label": "اعلي-وسط",
-                            "value": "items-start justify-center text-center",
-                            "key": "63d9ad5d-1316-4ca3-abd0-9a3f2c2e4551"
-                        },
-                        {
-                            "label": "اعلي-يسار",
-                            "value": "items-start justify-end text-left",
-                            "key": "7b571c52-90e8-493e-8ca8-f64233fc0cb7"
-                        },
-                        {
-                            "label": "اسفل-يمين",
-                            "value": "items-end justify-start text-right",
-                            "key": "56111f5b-f559-4345-8680-ed906ce52a81"
-                        },
-                        {
-                            "label": "اسفل-وسط",
-                            "value": "items-end justify-center text-center",
-                            "key": "0fb86ffd-18e8-44af-a7ab-d05a95d587ad"
-                        },
-                        {
-                            "label": "اسفل-يسار",
-                            "value": "items-end justify-end text-left",
-                            "key": "2dc35d5d-3e05-479b-9615-b101325d0f3f"
-                        }
-                    ],
-                    "source": "Manual",
-                    "multichoice": false,
-                    "searchable": false,
-                    "required": false
                 },
                 {
                     "id": "height1",
