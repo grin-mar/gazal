@@ -1,6 +1,6 @@
 {% set el_slide = component %}
 
-<section class="s-block s-block--default home-slider {{ el_slide.sec_width == 'full' ? 's-block--full-bg' : '' }} {{el_slide['txt_class']}}" dir="rtl">
+<section class="s-block s-block--default home-slider {{ el_slide.sec_width == 'full' ? 's-block--full-bg' : '' }}" dir="rtl">
 
   <div class="{{ el_slide.sec_width == 'Boxed' ? 'container' : '' }}">
 
@@ -27,16 +27,13 @@
 
         <div class="swiper-slide home-slide">
 
-         <a
-                href="{{ banner.but_url }}" >
-                  <picture>
+          <picture>
             <source media="(max-width:768px)" srcset="{{ mob }}">
             <img src="{{ img }}" class="home-slide__img">
           </picture>
 
-          </a>
-
           <div class="home-slider__content flex {{ el_slide.text_pos }}">
+
             <div
               class="home-slide__text {{ el_slide.blur2 ? 'has-blur' : '' }}"
               {% if el_slide.blur2 %}
@@ -338,4 +335,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
-<h2>ششششششششششششش</h2>
+<h2>lfmrolr</h2>
