@@ -27,12 +27,16 @@
 
         <div class="swiper-slide home-slide">
 
-          <picture>
+         <a
+                href="{{ banner.but_url }}" >
+                  <picture>
             <source media="(max-width:768px)" srcset="{{ mob }}">
             <img src="{{ img }}" class="home-slide__img">
           </picture>
 
-          <div class="home-slider__content flex {{ banner.text_pos['value']  }}">
+          </a>
+
+          <div class="home-slider__content flex {{ el_slide.text_pos }}">
 
             <div
               class="home-slide__text {{ el_slide.blur2 ? 'has-blur' : '' }}"
@@ -335,4 +339,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
-<h2>يىهاثخهتثlهتهخحfmrolr</h2>
+<h2>lfmrolr</h2>
