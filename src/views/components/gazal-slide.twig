@@ -1,6 +1,6 @@
 {% set el_slide = component %}
 
-<section class="s-block s-block--default home-slider {{ el_slide.sec_width == 'full' ? 's-block--full-bg' : '' }} {{el_slide[txt_class]}}" dir="rtl">
+<section class="s-block s-block--default home-slider {{ el_slide.sec_width == 'full' ? 's-block--full-bg' : '' }} {{el_slide['txt_class']}}" dir="rtl">
 
   <div class="{{ el_slide.sec_width == 'Boxed' ? 'container' : '' }}">
 
@@ -311,23 +311,7 @@ document.addEventListener('DOMContentLoaded', function(){
       return;
     }
 
-    const swiper = slider.swiper;
 
-    let delay = Number({{ el_slide.TIME1|default(5) }});
-
-    if(delay > 0 && delay < 100){
-      delay = delay * 1000;
-    }
-
-    swiper.params.autoplay = {
-      delay: delay,
-      disableOnInteraction:false
-    };
-
-    swiper.autoplay.start();
-
-    swiper.update();
-  }
 
   initSlider();
 
@@ -335,4 +319,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
-<h2>lfmrolr</h2>
+<h2>lييييييييييييfmrolr</h2>
