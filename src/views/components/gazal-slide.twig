@@ -32,7 +32,8 @@
             <img src="{{ img }}" class="home-slide__img">
           </picture>
 
-<div class="home-slider__content flex {{ banner['banner_item.text_pos'].selected[0].value ?: 'items-center justify-center text-center' }}">{# <div class="home-slider__content flex {{ banner.text_pos.selected[0].value }}"> #}
+<div class="home-slider__content flex {{el_slide.text_pos}}">
+{# <div class="home-slider__content flex {{ banner.text_pos.selected[0].value }}"> #}
             <div
               class="home-slide__text {{ el_slide.blur2 ? 'has-blur' : '' }}"
               {% if el_slide.blur2 %}
@@ -334,7 +335,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
-
-<h2>يييييي</h2>
-
-<pre>{{ dump(banner) }}</pre>
+<h2>ييييييييييييييييييييييي</h2>
