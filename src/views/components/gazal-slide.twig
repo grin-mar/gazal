@@ -32,7 +32,7 @@
             <img src="{{ img }}" class="home-slide__img">
           </picture>
 
-          <div class="home-slider__content flex {{ banner.text_pos.value }}">
+          <div class="home-slider__content flex {{ el_slide.text_pos }}">
 
             <div
               class="home-slide__text {{ el_slide.blur2 ? 'has-blur' : '' }}"
@@ -298,7 +298,7 @@
 {% block scriptslider %}
 <script>
 
-{# document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function(){
 
   const slider = document.querySelector('#home-main-slider');
 
@@ -311,13 +311,29 @@
       return;
     }
 
+    const swiper = slider.swiper;
 
+    let delay = Number({{ el_slide.TIME1|default(5) }});
+
+    if(delay > 0 && delay < 100){
+      delay = delay * 1000;
+    }
+
+    swiper.params.autoplay = {
+      delay: delay,
+      disableOnInteraction:false
+    };
+
+    swiper.autoplay.start();
+
+    swiper.update();
+  }
 
   initSlider();
 
-}); #}
+});
 
 </script>
 {% endblock %}
-<h2>lييييييييييييfmrolr</h2>
-<pre>{{ dump(banner.text_pos) }}</pre>
+<h2>
+lfmrolr</h2>
