@@ -31,7 +31,10 @@
 
             <picture>
               <source media="(max-width:768px)" srcset="{{ mob }}">
-              <img src="{{ img }}" class="home-slide__img">
+              <img src="{{ img }}" class="home-slide__img"  loading="{{ loop.first ? 'eager' : 'lazy' }}"
+  fetchpriority="{{ loop.first ? 'high' : 'low' }}"
+  decoding="async"
+  draggable="false">
             </picture>
 
             <div class="home-slider__content flex {{ el_slide.text_pos.selected[0].value ?: 'items-center justify-center text-center' }}">
@@ -346,3 +349,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
+سسسسسسسسسسسسسسسسس
