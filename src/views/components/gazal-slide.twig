@@ -2,7 +2,7 @@
 {% set slider_id = 'home-main-slider-' ~ position %}
 {% set nav_shape = el_slide.shkl_aalamat_altnql.selected[0].value|default('cricle') %}
 
-<section class="s-block s-block--default home-slider {{ el_slide.sec_width.selected[0].value == 'full' ? 's-block--full-bg' : '' }} {{ el_slide.txt_class }}" dir="rtl">
+<section class="s-block s-block--default home-slider {{ el_slide.sec_width.selected[0].value == 'full' ? 's-block--full-bg' : '' }} {{ el_slide.txt_class }}">
 
   <div class="{{ el_slide.sec_width.selected[0].value == 'Boxed' ? 'container' : '' }}">
 
@@ -11,7 +11,6 @@
       auto-play
       pagination
       type="fullwidth"
-      dir="rtl"
       show-controls="true"
 
       slider-config="{{ {
@@ -382,3 +381,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
+يييييييييييييييييي
