@@ -5,7 +5,7 @@
   <div class="{{ el_slide.sec_width.selected[0].value == 'Boxed' ? 'container' : '' }}">
 
     <salla-slider
-      id="home-main-slider"
+id="home-main-slider-{{ position }}"
       auto-play
       interval="{{ el_slide.TIME1 * 1000 }}"
       pagination
@@ -25,7 +25,7 @@
         {% set img = banner.banner_mg_big %}
         {% set mob = banner.banne_small ? banner.banne_small : img %}
 
-        <div class="swiper-slide home-slide">
+<div class="swiper-slide home-slide" id="slide-{{ position }}-{{ loop.index }}">
 
           <a href="{{ banner.but_url }}" class="home-slide__link">
 
@@ -329,8 +329,7 @@
 
 document.addEventListener('DOMContentLoaded', function(){
 
-  const slider = document.querySelector('#home-main-slider');
-
+const slider = document.querySelector('#home-main-slider-{{ position }}');
   if(!slider) return;
 
   function initSlider(){
@@ -349,4 +348,5 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
-سسسسسسسسسسسسسسسسس
+
+ءءءءءءءءءءءءءء
