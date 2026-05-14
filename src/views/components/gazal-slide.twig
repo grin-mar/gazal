@@ -1,40 +1,70 @@
 {% set el_slide = component %}
+{% set slider_id = 'home-main-slider-' ~ position %}
+{% set nav_shape = el_slide.shkl_aalamat_altnql.selected[0].value|default('cricle') %}
 
 <section class="s-block s-block--default home-slider {{ el_slide.sec_width.selected[0].value == 'full' ? 's-block--full-bg' : '' }} {{ el_slide.txt_class }}" dir="rtl">
 
   <div class="{{ el_slide.sec_width.selected[0].value == 'Boxed' ? 'container' : '' }}">
 
     <salla-slider
-id="home-main-slider-{{ position }}"
+      id="{{ slider_id }}"
       auto-play
-      interval="{{ el_slide.TIME1 * 1000 }}"
       pagination
       type="fullwidth"
       dir="rtl"
       show-controls="true"
-      slider-config='{
-        "speed":700,
-        "loop":true,
-        "allowTouchMove":true
-      }'>
+
+      slider-config="{{ {
+
+        loop: true,
+        speed: 700,
+        allowTouchMove: true,
+
+        autoplay: {
+          delay: ((el_slide.TIME1 ?: 5) * 1000)|round,
+          disableOnInteraction: false
+        },
+
+        navigation: {
+          nextEl: '#' ~ slider_id ~ ' .swiper-button-next',
+          prevEl: '#' ~ slider_id ~ ' .swiper-button-prev'
+        },
+
+        pagination: {
+          el: '#' ~ slider_id ~ ' .swiper-pagination',
+          clickable: true
+        }
+
+      }|json_encode|e('html_attr') }}"
+    >
 
       <div slot="items">
 
         {% for banner in el_slide.banner_item %}
 
         {% set img = banner.banner_mg_big %}
-        {% set mob = banner.banne_small ? banner.banne_small : img %}
+        {% set mob = banner.banne_small ?: banner.banner_mg_big %}
 
-<div class="swiper-slide home-slide" id="slide-{{ position }}-{{ loop.index }}">
+        <div class="swiper-slide home-slide" id="slide-{{ position }}-{{ loop.index }}">
 
           <a href="{{ banner.but_url }}" class="home-slide__link">
 
             <picture>
-              <source media="(max-width:768px)" srcset="{{ mob }}">
-              <img src="{{ img }}" class="home-slide__img"  loading="{{ loop.first ? 'eager' : 'lazy' }}"
-  fetchpriority="{{ loop.first ? 'high' : 'low' }}"
-  decoding="async"
-  draggable="false">
+
+              <source
+                media="(max-width:768px)"
+                srcset="{{ mob }}"
+              >
+
+              <img
+                src="{{ img }}"
+                class="home-slide__img"
+                loading="{{ loop.first ? 'eager' : 'lazy' }}"
+                fetchpriority="{{ loop.first ? 'high' : 'low' }}"
+                decoding="async"
+                draggable="false"
+              >
+
             </picture>
 
             <div class="home-slider__content flex {{ el_slide.text_pos.selected[0].value ?: 'items-center justify-center text-center' }}">
@@ -47,6 +77,7 @@ id="home-main-slider-{{ position }}"
               >
 
                 {% if banner.banner_main %}
+
                 <h3
                   class="home-slide__title"
                   style="
@@ -66,9 +97,11 @@ id="home-main-slider-{{ position }}"
                   </span>
 
                 </h3>
+
                 {% endif %}
 
                 {% if banner.banne_des %}
+
                 <p
                   class="home-slide__body"
                   style="
@@ -78,9 +111,11 @@ id="home-main-slider-{{ position }}"
                 >
                   {{ banner.banne_des }}
                 </p>
+
                 {% endif %}
 
                 {% if banner.banner_button %}
+
                 <span
                   class="home-slide__btn"
                   style="
@@ -90,6 +125,7 @@ id="home-main-slider-{{ position }}"
                 >
                   {{ banner.banner_button }}
                 </span>
+
                 {% endif %}
 
               </div>
@@ -118,13 +154,6 @@ id="home-main-slider-{{ position }}"
   overflow:hidden;
 }
 
-.home-slider,
-.home-slider .swiper,
-.home-slider .swiper-wrapper{
-  direction:rtl;
-  overflow:hidden;
-}
-
 .home-slide{
   position:relative;
   min-height:650px;
@@ -137,9 +166,11 @@ id="home-main-slider-{{ position }}"
 {% endif %}
 
 .home-slide__link{
+  position:relative;
   display:block;
   width:100%;
   height:100%;
+  min-height:inherit;
 }
 
 .home-slide__img{
@@ -206,8 +237,8 @@ id="home-main-slider-{{ position }}"
   opacity:.9;
 }
 
-.home-slider .swiper-button-next,
-.home-slider .swiper-button-prev{
+#{{ slider_id }} .swiper-button-next,
+#{{ slider_id }} .swiper-button-prev{
   width:46px;
   height:46px;
   border-radius:50%;
@@ -217,17 +248,17 @@ id="home-main-slider-{{ position }}"
   color:#fff;
 }
 
-.home-slider .swiper-button-next:after,
-.home-slider .swiper-button-prev:after{
+#{{ slider_id }} .swiper-button-next:after,
+#{{ slider_id }} .swiper-button-prev:after{
   font-size:16px;
   font-weight:700;
 }
 
-.home-slider .swiper-pagination{
+#{{ slider_id }} .swiper-pagination{
   bottom:24px !important;
 }
 
-.home-slider .swiper-pagination-bullet{
+#{{ slider_id }} .swiper-pagination-bullet{
   width:12px;
   height:12px;
   background:#fff;
@@ -235,29 +266,29 @@ id="home-main-slider-{{ position }}"
   transition:.3s ease;
 }
 
-.home-slider .swiper-pagination-bullet-active{
+#{{ slider_id }} .swiper-pagination-bullet-active{
   opacity:1;
   transform:scale(1.12);
   background:{{ el_slide.main_color }};
 }
 
-{% if el_slide.shkl_aalamat_altnql.selected[0].value == 'line' %}
+{% if nav_shape == 'line' %}
 
-.home-slider .swiper-pagination-bullet{
+#{{ slider_id }} .swiper-pagination-bullet{
   width:45px;
   height:5px;
   border-radius:999px;
 }
 
-{% elseif el_slide.shkl_aalamat_altnql.selected[0].value == 'square' %}
+{% elseif nav_shape == 'square' %}
 
-.home-slider .swiper-pagination-bullet{
+#{{ slider_id }} .swiper-pagination-bullet{
   border-radius:4px;
 }
 
 {% else %}
 
-.home-slider .swiper-pagination-bullet{
+#{{ slider_id }} .swiper-pagination-bullet{
   border-radius:50%;
 }
 
@@ -286,6 +317,7 @@ id="home-main-slider-{{ position }}"
     transform:translateX(0);
     opacity:1;
   }
+
 }
 
 @media(max-width:768px){
@@ -329,7 +361,8 @@ id="home-main-slider-{{ position }}"
 
 document.addEventListener('DOMContentLoaded', function(){
 
-const slider = document.querySelector('#home-main-slider-{{ position }}');
+  const slider = document.querySelector('#{{ slider_id }}');
+
   if(!slider) return;
 
   function initSlider(){
@@ -340,6 +373,7 @@ const slider = document.querySelector('#home-main-slider-{{ position }}');
     }
 
     slider.swiper.update();
+
   }
 
   initSlider();
@@ -348,5 +382,3 @@ const slider = document.querySelector('#home-main-slider-{{ position }}');
 
 </script>
 {% endblock %}
-
-ءءءءءءءءءءءءءء
