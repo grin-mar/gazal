@@ -1461,22 +1461,6 @@
                     "required": false
                 },
                 {
-                    "id": "TIME1",
-                    "type": "number",
-                    "format": "float",
-                    "inputType": "number",
-                    "label": "سرعة التنقل التلقائي (ثانية)",
-                    "description": null,
-                    "labelHTML": null,
-                    "placeholder": null,
-                    "icon": "sicon-hashtag",
-                    "value": 5,
-                    "required": false,
-                    "step": "0",
-                    "minimum": null,
-                    "maximum": "100"
-                },
-                {
                     "id": "shkl_aalamat_altnql",
                     "type": "items",
                     "format": "radio-list",
@@ -1484,7 +1468,13 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-list",
-                    "selected": [],
+                    "selected": [
+                        {
+                            "label": "خطي",
+                            "value": "line",
+                            "key": "6d3989df-cda7-4d54-83b3-7b687dbc227e"
+                        }
+                    ],
                     "options": [
                         {
                             "label": "دائرة",
