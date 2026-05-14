@@ -13,28 +13,23 @@
       type="fullwidth"
       show-controls="true"
 
-      slider-config="{{ {
+  slider-config="{{ {
 
-        loop: true,
-        speed: 700,
-        allowTouchMove: true,
+  loop: true,
+  speed: 700,
+  allowTouchMove: true,
 
-        autoplay: {
-          delay: ((el_slide.TIME1 ?: 5) * 1000)|round,
-          disableOnInteraction: false
-        },
+  autoplay: {
+    delay: ((el_slide.TIME1 ?: 5) * 1000)|round,
+    disableOnInteraction: false
+  },
 
-        navigation: {
-          nextEl: '#' ~ slider_id ~ ' .swiper-button-next',
-          prevEl: '#' ~ slider_id ~ ' .swiper-button-prev'
-        },
+  pagination: {
+    el: '#' ~ slider_id ~ ' .swiper-pagination',
+    clickable: true
+  }
 
-        pagination: {
-          el: '#' ~ slider_id ~ ' .swiper-pagination',
-          clickable: true
-        }
-
-      }|json_encode|e('html_attr') }}"
+}|json_encode|e('html_attr') }}"
     >
 
       <div slot="items">
@@ -381,4 +376,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
-سسسسسسسسسسسسسس
+يةنم
