@@ -1,42 +1,39 @@
 {% set el_slide = component %}
 {% set slider_id = 'home-main-slider-' ~ position %}
-{% set nav_shape = el_slide.shkl_aalamat_altnql.selected[0].value|default('cricle') %}
+{% set nav_shape = el_slide.shkl_aalamat_altnql.selected[0].value ?: 'cricle' %}
 
-<section class="s-block s-block--default home-slider {{ el_slide.sec_width.selected[0].value == 'full' ? 's-block--full-bg' : '' }} {{ el_slide.txt_class }}">
+<section class="s-block s-block--default home-slider {{ el_slide.sec_width.selected[0].value == 'full' ? 's-block--full-bg' : '' }} {{ el_slide.txt_class }}" dir="rtl">
 
   <div class="{{ el_slide.sec_width.selected[0].value == 'Boxed' ? 'container' : '' }}">
 
-    <salla-slider
-      id="{{ slider_id }}"
-      auto-play
-      pagination
-      type="fullwidth"
-      show-controls="true"
+<salla-slider
+  id="{{ slider_id }}"
+  auto-play
+  pagination
+  type="fullwidth"
+  dir="rtl"
+  show-controls="true"
 
-      slider-config="{{ {
+  slider-config='{
+    "loop": true,
+    "speed": 700,
+    "allowTouchMove": true,
 
-        loop: true,
-        speed: 700,
-        allowTouchMove: true,
+    "autoplay": {
+      "delay": {{ (el_slide.TIME1|default(5) * 1000)|round }},
+      "disableOnInteraction": false
+    },
 
-        autoplay: {
-          delay: ((el_slide.TIME1 ?: 5) * 1000)|round,
-          disableOnInteraction: false
-        },
+    "navigation": {
+      "nextEl": "#{{ slider_id }} .swiper-button-next",
+      "prevEl": "#{{ slider_id }} .swiper-button-prev"
+    },
 
-        navigation: {
-          nextEl: '#' ~ slider_id ~ ' .swiper-button-next',
-          prevEl: '#' ~ slider_id ~ ' .swiper-button-prev'
-        },
-
-        pagination: {
-          el: '#' ~ slider_id ~ ' .swiper-pagination',
-          clickable: true
-        }
-
-      }|json_encode|e('html_attr') }}"
-    >
-
+    "pagination": {
+      "el": "#{{ slider_id }} .swiper-pagination",
+      "clickable": true
+    }
+  }'>
       <div slot="items">
 
         {% for banner in el_slide.banner_item %}
@@ -152,6 +149,7 @@
   position:relative;
   overflow:hidden;
 }
+
 
 .home-slide{
   position:relative;
@@ -381,4 +379,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
-يييييييييييييييييي
+يييييييييييييييييييييييييي
