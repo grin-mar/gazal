@@ -1,6 +1,6 @@
 {% set el_slide = component %}
 {% set slider_id = 'home-main-slider-' ~ position %}
-{% set nav_shape = el_slide.shkl_aalamat_altnql.selected[0].value|default('cricle')|trim %}
+{% set nav_shape = el_slide.shkl_aalamat_altnql.selected[0].value|default('cricle') %}
 
 <section class="s-block s-block--default home-slider {{ el_slide.sec_width.selected[0].value == 'full' ? 's-block--full-bg' : '' }} {{ el_slide.txt_class }}">
 
@@ -13,23 +13,23 @@
       type="fullwidth"
       show-controls="true"
 
-      slider-config="{{ {
+  slider-config="{{ {
 
-        loop: true,
-        speed: 700,
-        allowTouchMove: true,
+  loop: true,
+  speed: 700,
+  allowTouchMove: true,
 
-        autoplay: {
-          delay: ((el_slide.TIME1 ?: 5) * 1000)|round,
-          disableOnInteraction: false
-        },
+  autoplay: {
+    delay: ((el_slide.TIME1 ?: 5) * 1000)|round,
+    disableOnInteraction: false
+  },
 
-        pagination: {
-          el: '#' ~ slider_id ~ ' .swiper-pagination',
-          clickable: true
-        }
+  pagination: {
+    el: '#' ~ slider_id ~ ' .swiper-pagination',
+    clickable: true
+  }
 
-      }|json_encode|e('html_attr') }}"
+}|json_encode|e('html_attr') }}"
     >
 
       <div slot="items">
@@ -252,46 +252,41 @@
   bottom:24px !important;
 }
 
-{% if nav_shape == 'line' %}
-
-#{{ slider_id }} .swiper-pagination-bullet{
-  width:45px;
-  height:5px;
-  border-radius:999px;
-  background:#fff;
-  opacity:.35;
-  transition:.3s ease;
-}
-
-{% elseif nav_shape == 'square' %}
-
 #{{ slider_id }} .swiper-pagination-bullet{
   width:12px;
   height:12px;
-  border-radius:4px;
   background:#fff;
   opacity:.35;
   transition:.3s ease;
 }
-
-{% else %}
-
-#{{ slider_id }} .swiper-pagination-bullet{
-  width:12px;
-  height:12px;
-  border-radius:50%;
-  background:#fff;
-  opacity:.35;
-  transition:.3s ease;
-}
-
-{% endif %}
 
 #{{ slider_id }} .swiper-pagination-bullet-active{
   opacity:1;
   transform:scale(1.12);
   background:{{ el_slide.main_color }};
 }
+
+{% if nav_shape == 'line' %}
+
+#{{ slider_id }} .swiper-pagination-bullet{
+  width:45px;
+  height:5px;
+  border-radius:999px;
+}
+
+{% elseif nav_shape == 'square' %}
+
+#{{ slider_id }} .swiper-pagination-bullet{
+  border-radius:4px;
+}
+
+{% else %}
+
+#{{ slider_id }} .swiper-pagination-bullet{
+  border-radius:50%;
+}
+
+{% endif %}
 
 .swiper-slide-active .home-slide__title{
   animation:fadeRight .8s ease both;
@@ -381,5 +376,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
-
-سسسسسسسسسسبصثبصثب
+سسسسسسسسسسسسسس
