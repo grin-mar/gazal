@@ -1293,7 +1293,7 @@
                             "id": "banner_item.but_url",
                             "type": "items",
                             "format": "variable-list",
-                            "label": "رابط زر",
+                            "label": "رابط الزر  و البنر",
                             "icon": "sicon-link",
                             "required": false,
                             "searchable": true,
