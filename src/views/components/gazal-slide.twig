@@ -1,6 +1,18 @@
 {% set el_slide = component %}
 {% set slider_id = 'home-main-slider-' ~ position %}
-{% set nav_shape = el_slide.shkl_aalamat_altnql.selected[0].value|default('cricle') %}
+
+{% set nav_shape_raw = el_slide.shkl_aalamat_altnql %}
+{% set nav_shape = 'cricle' %}
+
+{% if nav_shape_raw %}
+  {% if nav_shape_raw.selected is defined and nav_shape_raw.selected[0] is defined %}
+    {% set nav_shape = nav_shape_raw.selected[0].value ?? 'cricle' %}
+  {% elseif nav_shape_raw.value is defined %}
+    {% set nav_shape = nav_shape_raw.value %}
+  {% endif %}
+{% endif %}
+
+{% set nav_shape = nav_shape|trim %}
 
 <section class="s-block s-block--default home-slider {{ el_slide.sec_width.selected[0].value == 'full' ? 's-block--full-bg' : '' }} {{ el_slide.txt_class }}">
 
@@ -142,6 +154,7 @@
 
 {% block styleslider %}
 <style>
+/* DEBUG NAV_SHAPE: Current value = '{{ nav_shape }}' */
 
 .home-slider{
   position:relative;
@@ -267,7 +280,7 @@
 }
 
 {% if nav_shape == 'line' %}
-
+/* CONDITION: Line style selected */
 #{{ slider_id }} .swiper-pagination-bullet{
   width:45px;
   height:5px;
@@ -275,13 +288,13 @@
 }
 
 {% elseif nav_shape == 'square' %}
-
+/* CONDITION: Square style selected */
 #{{ slider_id }} .swiper-pagination-bullet{
   border-radius:4px;
 }
 
 {% else %}
-
+/* CONDITION: Circle style (default) - actual nav_shape = '{{ nav_shape }}' */
 #{{ slider_id }} .swiper-pagination-bullet{
   border-radius:50%;
 }
@@ -376,4 +389,4 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
-يةنم
+سسسسسسسسسسبصثبصثب
