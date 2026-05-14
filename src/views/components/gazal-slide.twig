@@ -1,13 +1,13 @@
 {% set el_slide = component %}
 
-<section class="s-block s-block--default home-slider {{ el_slide.sec_width == 'full' ? 's-block--full-bg' : '' }}" dir="rtl">
+<section class="s-block s-block--default home-slider {{ el_slide.sec_width.selected[0].value == 'full' ? 's-block--full-bg' : '' }} {{ el_slide.txt_class }}" dir="rtl">
 
-  <div class="{{ el_slide.sec_width == 'Boxed' ? 'container' : '' }}">
+  <div class="{{ el_slide.sec_width.selected[0].value == 'Boxed' ? 'container' : '' }}">
 
     <salla-slider
       id="home-main-slider"
-      auto-play="{{ el_slide.TIME1 > 0 ? 'true' : 'false' }}"
-      interval="{{ el_slide.TIME1 > 0 and el_slide.TIME1 < 100 ? el_slide.TIME1 * 1000 : el_slide.TIME1 }}"
+      auto-play
+      interval="{{ el_slide.TIME1 * 1000 }}"
       pagination
       type="fullwidth"
       dir="rtl"
@@ -27,70 +27,73 @@
 
         <div class="swiper-slide home-slide">
 
-          <picture>
-            <source media="(max-width:768px)" srcset="{{ mob }}">
-            <img src="{{ img }}" class="home-slide__img">
-          </picture>
+          <a href="{{ banner.but_url }}" class="home-slide__link">
 
-<div class="home-slider__content flex {{ el_slide.text_pos}}">
-{# <div class="home-slider__content flex {{ banner.text_pos.selected[0].value }}"> #}
-            <div
-              class="home-slide__text {{ el_slide.blur2 ? 'has-blur' : '' }}"
-              {% if el_slide.blur2 %}
-              style="background: {{ el_slide.background22 }}80;"
-              {% endif %}
-            >
+            <picture>
+              <source media="(max-width:768px)" srcset="{{ mob }}">
+              <img src="{{ img }}" class="home-slide__img">
+            </picture>
 
-              {% if banner.banner_main %}
-              <h3
-                class="home-slide__title"
-                style="
-                  color:{{ el_slide.main_color }};
-                  font-size:{{ el_slide.pc_main_1 }}px;
-                "
+            <div class="home-slider__content flex {{ el_slide.text_pos.selected[0].value ?: 'items-center justify-center text-center' }}">
+
+              <div
+                class="home-slide__text {{ el_slide.blur2 ? 'has-blur' : '' }}"
+                {% if el_slide.blur2 %}
+                style="background: {{ el_slide.background22 }}80;"
+                {% endif %}
               >
 
-                {% set words = banner.banner_main|split(' ') %}
-                {% set last = words|last %}
-                {% set rest = words|slice(0, words|length - 1)|join(' ') %}
+                {% if banner.banner_main %}
+                <h3
+                  class="home-slide__title"
+                  style="
+                    color:{{ el_slide.main_color }};
+                    font-size:{{ el_slide.pc_main_1 }}px;
+                  "
+                >
 
-                {{ rest }}
+                  {% set words = banner.banner_main|split(' ') %}
+                  {% set last = words|last %}
+                  {% set rest = words|slice(0, words|length - 1)|join(' ') %}
 
-                <span style="color:{{ el_slide.special_word }}">
-                  {{ last }}
+                  {{ rest }}
+
+                  <span style="color:{{ el_slide.special_word }}">
+                    {{ last }}
+                  </span>
+
+                </h3>
+                {% endif %}
+
+                {% if banner.banne_des %}
+                <p
+                  class="home-slide__body"
+                  style="
+                    color:{{ el_slide.des_color }};
+                    font-size:{{ el_slide.pc_des }}px;
+                  "
+                >
+                  {{ banner.banne_des }}
+                </p>
+                {% endif %}
+
+                {% if banner.banner_button %}
+                <span
+                  class="home-slide__btn"
+                  style="
+                    background:{{ el_slide.burton_back }};
+                    color:{{ el_slide.button_color }};
+                  "
+                >
+                  {{ banner.banner_button }}
                 </span>
+                {% endif %}
 
-              </h3>
-              {% endif %}
-
-              {% if banner.banne_des %}
-              <p
-                class="home-slide__body"
-                style="
-                  color:{{ el_slide.des_color }};
-                  font-size:{{ el_slide.pc_des }}px;
-                "
-              >
-                {{ banner.banne_des }}
-              </p>
-              {% endif %}
-
-              {% if banner.banner_button %}
-              <a
-                href="{{ banner.but_url }}"
-                class="home-slide__btn"
-                style="
-                  background:{{ el_slide.burton_back }};
-                  color:{{ el_slide.button_color }};
-                "
-              >
-                {{ banner.banner_button }}
-              </a>
-              {% endif %}
+              </div>
 
             </div>
 
-          </div>
+          </a>
 
         </div>
 
@@ -112,9 +115,28 @@
   overflow:hidden;
 }
 
+.home-slider,
+.home-slider .swiper,
+.home-slider .swiper-wrapper{
+  direction:rtl;
+  overflow:hidden;
+}
+
 .home-slide{
   position:relative;
   min-height:650px;
+}
+
+{% if el_slide.height1 %}
+.home-slide{
+  min-height:auto;
+}
+{% endif %}
+
+.home-slide__link{
+  display:block;
+  width:100%;
+  height:100%;
 }
 
 .home-slide__img{
@@ -131,7 +153,6 @@
   display:flex;
   padding:40px;
   z-index:2;
-  pointer-events:none;
 }
 
 .home-slide__text{
@@ -143,7 +164,6 @@
   gap:16px;
   padding:26px;
   border-radius:18px;
-  pointer-events:auto;
   margin:20px;
 }
 
@@ -174,8 +194,7 @@
   min-width:160px;
   padding:14px 28px;
   border-radius:12px;
-  text-decoration:none;
-  transition:0.3s ease;
+  transition:.3s ease;
   font-weight:600;
 }
 
@@ -208,11 +227,18 @@
 .home-slider .swiper-pagination-bullet{
   width:12px;
   height:12px;
-  opacity:1;
   background:#fff;
+  opacity:.35;
+  transition:.3s ease;
 }
 
-{% if el_slide.shkl_aalamat_altnql == 'line' %}
+.home-slider .swiper-pagination-bullet-active{
+  opacity:1;
+  transform:scale(1.12);
+  background:{{ el_slide.main_color }};
+}
+
+{% if el_slide.shkl_aalamat_altnql.selected[0].value == 'line' %}
 
 .home-slider .swiper-pagination-bullet{
   width:45px;
@@ -220,7 +246,7 @@
   border-radius:999px;
 }
 
-{% elseif el_slide.shkl_aalamat_altnql == 'square' %}
+{% elseif el_slide.shkl_aalamat_altnql.selected[0].value == 'square' %}
 
 .home-slider .swiper-pagination-bullet{
   border-radius:4px;
@@ -311,22 +337,7 @@ document.addEventListener('DOMContentLoaded', function(){
       return;
     }
 
-    const swiper = slider.swiper;
-
-    let delay = Number({{ el_slide.TIME1|default(5) }});
-
-    if(delay > 0 && delay < 100){
-      delay = delay * 1000;
-    }
-
-    swiper.params.autoplay = {
-      delay: delay,
-      disableOnInteraction:false
-    };
-
-    swiper.autoplay.start();
-
-    swiper.update();
+    slider.swiper.update();
   }
 
   initSlider();
@@ -335,4 +346,3 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 {% endblock %}
-<h2>ييييييييييييييييييييييي</h2>
